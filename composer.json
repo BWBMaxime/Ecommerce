@@ -1,0 +1,29 @@
+{
+    "name": "fabriquebeweb/ecommerce",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "atlasrw",
+            "email": "atlasrw@icloud.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Wails\\Core\\": [
+                "src/",
+                "src/config/",
+                "src/interfaces/"
+            ],
+            "Wails\\Database\\": "database/",
+            "Wails\\Models\\": "models/",
+            "Wails\\Views\\": "views/",
+            "Wails\\Controllers\\": "controllers/"
+        }
+    },
+    "scripts": {
+        "db:create" : "\\Wails\\Core\\Scripts::db_create",
+        "db:seed" : "\\Wails\\Core\\Scripts::db_seed"
+    }
+}

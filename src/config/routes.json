@@ -1,0 +1,21 @@
+{
+
+    "/": "Test::home",
+    "/static": "Test::static",
+    "/dynamic/{id}": "Test::dynamic",
+    "/tests/{item}/test/{id}":
+    {
+        "GET": "Test::get",
+        "POST": "Test::post",
+        "PUT": "Test::put",
+        "DELETE": "Test::delete"
+    },
+    "/tests/{item}":
+    {
+        "GET": "Test::get",
+        "POST": "Test::post",
+        "PUT": "Test::put",
+        "DELETE": "Test::delete"
+    }
+
+}
