@@ -1,0 +1,10 @@
+insert into Category (name, VAT) VALUES ('Hard Tile & Stone', 15.67);
+insert into Category (name, VAT) VALUES ('Sitework & Site Utilities', 40.94);
+insert into Category (name, VAT) VALUES ('Hard Tile & Stone', 27.16);
+insert into Category (name, VAT) VALUES ('Construction Clean and Final Clean', 8.07);
+insert into Category (name, VAT) VALUES ('Fire Protection', 39.99);
+insert into Category (name, VAT) VALUES ('Overhead Doors', 49.65);
+insert into Category (name, VAT) VALUES ('Plumbing & Medical Gas', 26.29);
+insert into Category (name, VAT) VALUES ('HVAC', 4.35);
+insert into Category (name, VAT) VALUES ('Sitework & Site Utilities', 25.06);
+insert into Category (name, VAT) VALUES ('Site Furnishings', 28.76);

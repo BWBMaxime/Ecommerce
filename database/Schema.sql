@@ -21,16 +21,11 @@ USE `ecommerce` ;
 CREATE TABLE IF NOT EXISTS `ecommerce`.`PaymentMethod` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `type` ENUM('visa', 'mastercard', 'americanexpress', 'paypal') NOT NULL,
-  `number` INT NOT NULL,
+  `number` VARCHAR(16) NOT NULL,
   `name` TINYTEXT NOT NULL,
-  `expiration` DATE NOT NULL,
+  `expiration` DATETIME NOT NULL,
   `user` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `FK_payment_user`
-    FOREIGN KEY (`user`)
-    REFERENCES `ecommerce`.`User` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 CREATE INDEX `IDX_paymentmethod` ON `ecommerce`.`PaymentMethod` (`user` ASC) VISIBLE;
@@ -44,17 +39,12 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`DeliveryAddress` (
   `type` ENUM('home', 'pickup') NOT NULL DEFAULT 'home',
   `country` TINYTEXT NOT NULL,
   `city` TINYTEXT NOT NULL,
-  `zipcode` INT NOT NULL,
+  `zipcode` VARCHAR(10) NOT NULL,
   `street` TINYTEXT NOT NULL,
   `number` INT NOT NULL,
   `additional` LONGTEXT NULL,
   `user` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `FK_delivery_user`
-    FOREIGN KEY (`user`)
-    REFERENCES `ecommerce`.`User` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 CREATE INDEX `IDX_delivery` ON `ecommerce`.`DeliveryAddress` (`user` ASC) VISIBLE;
@@ -69,22 +59,12 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`User` (
   `mail` TINYTEXT NOT NULL,
   `firstname` TINYTEXT NULL,
   `lastname` TINYTEXT NULL,
-  `birth` DATE NULL,
-  `phone` INT NULL,
+  `birth` DATETIME NULL,
+  `phone` VARCHAR(12) NULL,
   `picture` TINYTEXT NULL,
   `payment` INT NULL,
   `delivery` INT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `FK_user_payment`
-    FOREIGN KEY (`payment`)
-    REFERENCES `ecommerce`.`PaymentMethod` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `FK_user_delivery`
-    FOREIGN KEY (`delivery`)
-    REFERENCES `ecommerce`.`DeliveryAddress` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 CREATE INDEX `IDX_user_payment` ON `ecommerce`.`User` (`payment` ASC) INVISIBLE;
@@ -93,9 +73,9 @@ CREATE INDEX `IDX_user_delivery` ON `ecommerce`.`User` (`delivery` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
--- Table `ecommerce`.`Order`
+-- Table `ecommerce`.`Ordered`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ecommerce`.`Order` (
+CREATE TABLE IF NOT EXISTS `ecommerce`.`Ordered` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `contact` TINYTEXT NOT NULL,
   `bill` TINYTEXT NOT NULL,
@@ -104,15 +84,10 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`Order` (
   `amount` FLOAT NOT NULL,
   `user` INT NULL,
   `state` TINYINT NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `FK_order_user`
-    FOREIGN KEY (`user`)
-    REFERENCES `ecommerce`.`User` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-CREATE INDEX `IDX_order` ON `ecommerce`.`Order` (`user` ASC, `date` ASC, `state` ASC) INVISIBLE;
+CREATE INDEX `IDX_ordered` ON `ecommerce`.`Ordered` (`user` ASC, `date` DESC, `state` ASC) INVISIBLE;
 
 
 -- -----------------------------------------------------
@@ -131,7 +106,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ecommerce`.`Product` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(250) NOT NULL,
+  `name` VARCHAR(500) NOT NULL,
   `description` LONGTEXT NULL,
   `price` FLOAT NOT NULL,
   `stock` INT NOT NULL,
@@ -139,38 +114,23 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`Product` (
   `picture2` TINYTEXT NULL,
   `picture3` TINYTEXT NULL,
   `category` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `FK_product_category`
-    FOREIGN KEY (`category`)
-    REFERENCES `ecommerce`.`Category` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 CREATE INDEX `IDX_product` ON `ecommerce`.`Product` (`category` ASC, `name` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
--- Table `ecommerce`.`OrderProduct`
+-- Table `ecommerce`.`OrderedProduct`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ecommerce`.`OrderProduct` (
-  `order` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `ecommerce`.`OrderedProduct` (
+  `ordered` INT NOT NULL,
   `product` INT NOT NULL,
   `quantity` INT NOT NULL,
-  PRIMARY KEY (`order`, `product`),
-  CONSTRAINT `FK_orderproduct_order`
-    FOREIGN KEY (`order`)
-    REFERENCES `ecommerce`.`Order` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `FK_orderproduct_product`
-    FOREIGN KEY (`product`)
-    REFERENCES `ecommerce`.`Product` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`ordered`, `product`))
 ENGINE = InnoDB;
 
-CREATE INDEX `IDX_orderproduct` ON `ecommerce`.`OrderProduct` (`product` ASC) INVISIBLE;
+CREATE INDEX `IDX_orderedproduct` ON `ecommerce`.`OrderedProduct` (`product` ASC) INVISIBLE;
 
 
 -- -----------------------------------------------------
@@ -181,17 +141,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`Cart` (
   `product` INT NOT NULL,
   `quantity` INT NOT NULL,
   `user` INT NULL,
-  PRIMARY KEY (`session`, `product`),
-  CONSTRAINT `FK_cart_user`
-    FOREIGN KEY (`user`)
-    REFERENCES `ecommerce`.`User` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `FK_cart_product`
-    FOREIGN KEY (`product`)
-    REFERENCES `ecommerce`.`Product` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`session`, `product`))
 ENGINE = InnoDB;
 
 CREATE INDEX `IDX_cart` ON `ecommerce`.`Cart` (`user` ASC, `session` ASC, `product` ASC) VISIBLE;
