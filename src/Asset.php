@@ -34,10 +34,10 @@ final class Asset
 
     }
 
-    public static function view(string $key)
+    public static function view(string $key, array $params = [])
     {
 
-        include $_SERVER['DOCUMENT_ROOT'] . Asset::get("/views/${key}", Asset::$views);
+        return $_SERVER['DOCUMENT_ROOT'] . Asset::get("/views/${key}", Asset::$views);
 
     }
 

@@ -29,35 +29,35 @@ final class Database
     public function query_file(string $file) : object
     {
 
-        return $this->pdo->query(file_get_contents($file));
+        return $this->query(file_get_contents($file));
 
     }
 
     public function query_array(string $query) : array
     {
 
-        return $this->pdo->query($query)->fetch(PDO::FETCH_ASSOC);
+        return $this->query($query)->fetch(PDO::FETCH_ASSOC);
 
     }
 
     public function query_arrays(string $query) : array
     {
 
-        return $this->pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        return $this->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
     }
 
     public function query_object(string $class, string $query) : object
     {
 
-        return $this->pdo->query($query)->fetchObject($class);
+        return $this->query($query)->fetchObject($class);
 
     }
 
-    public function query_objects(string $class, string $query) : object
+    public function query_objects(string $class, string $query) : array
     {
 
-        return $this->pdo->query($query)->fetchAll(PDO::FETCH_CLASS, $class);
+        return $this->query($query)->fetchAll(PDO::FETCH_CLASS, $class);
 
     }
 
