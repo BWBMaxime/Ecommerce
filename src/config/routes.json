@@ -1,6 +1,6 @@
 {
 
-    "/": "UserController::home",
+    "/": "ProductController::home",
     "/static": "Test::static"
 
 }
