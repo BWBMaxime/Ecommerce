@@ -9,9 +9,9 @@ final class View
     {
 
         extract(array(
-            "ASSET" => "\\Wails\\Core\\Asset",
-            "ERROR" => "\\Wails\\Core\\Error",
-            "UTILS" => "\\Wails\\Core\\Utils"
+            "_ASSET" => "\\Wails\\Core\\Asset",
+            "_ERROR" => "\\Wails\\Core\\Error",
+            "_UTILS" => "\\Wails\\Core\\Utils"
         ));
 
         extract($params);
