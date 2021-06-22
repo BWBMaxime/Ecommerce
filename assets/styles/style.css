@@ -19,7 +19,15 @@
         background-color: #263843;
     }
   
-    h1, h2, h3, h4, h5, h6 {
+    h1, h2, h3, h4, h5, h6, th {
         font-family: 'Montserrat', sans-serif;
         color: #4C7087;
+    }
+
+    .backUrgent {
+        background-color: #EF9343;
+    }
+
+    .colorUrgent {
+        color: #EF9343;
     }

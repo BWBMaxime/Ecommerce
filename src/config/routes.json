@@ -1,7 +1,8 @@
 {
 
     "/": "ProductController::productList",
-    "/product": "ProductController::product"
+    "/product": "ProductController::product",
+    "/cart": "CartController::cart"
     
 
 }
