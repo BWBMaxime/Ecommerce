@@ -1,5 +1,3 @@
-<? use Wails\Core\Asset; ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +24,7 @@
 </head>
 
 
-<? Asset::style("style") ?>
+<? $_ASSET::style("style") ?>
 <body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
 
     <!-- Cart -->
