@@ -97,7 +97,7 @@ final class Routing
         } else {
 
             Error::method($class, $method);
-            
+
         };
 
     }

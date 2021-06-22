@@ -23,7 +23,9 @@
         }
     },
     "scripts": {
-        "db:create" : "\\Wails\\Core\\Scripts::db_create",
-        "db:seed" : "\\Wails\\Core\\Scripts::db_seed"
+        "new:controller" : "\\Wails\\Core\\Script::new_controller",
+        "new:model" : "\\Wails\\Core\\Script::new_model",
+        "db:create" : "\\Wails\\Core\\Script::db_create",
+        "db:seed" : "\\Wails\\Core\\Script::db_seed"
     }
 }

@@ -48,4 +48,12 @@ final class Error
 
     }
 
+    public static function script($num)
+    {
+
+        Utils::log("SCRIPT ERROR : Missing arguments, number of required arguments is ${num}" . PHP_EOL);
+        exit();
+
+    }
+
 }
