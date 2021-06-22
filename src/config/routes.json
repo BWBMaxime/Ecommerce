@@ -1,7 +1,7 @@
 {
 
     "/": "ProductController::home",
-    "/product": "ProductDetailController::product",
-    "/static": "Test::static"
+    "/product": "ProductController::product"
+    
 
 }
