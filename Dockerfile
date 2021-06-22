@@ -8,4 +8,5 @@ RUN apt update
 RUN apt install -y gh
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 RUN docker-php-ext-install pdo_mysql
+RUN a2enmod rewrite
 WORKDIR /var/www/html
