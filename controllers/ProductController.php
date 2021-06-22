@@ -6,7 +6,7 @@ use Wails\Core\View;
 
 class ProductController extends Controller
 {
-    public function home()
+    public function productList()
     {
 
         View::render("product-list");

@@ -1,6 +1,6 @@
 {
 
-    "/": "ProductController::home",
+    "/": "ProductController::productList",
     "/product": "ProductController::product"
     
 
