@@ -4,15 +4,8 @@ namespace Wails\Controllers;
 use Wails\Core\Controller;
 use Wails\Core\View;
 
-final class ModelsController extends Controller
+final class SQL extends Controller
 {
-
-    public function home()
-    {
-
-        View::render('home');
-
-    }
 
     public function products()
     {
