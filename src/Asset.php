@@ -28,7 +28,7 @@ final class Asset
     public static function image(string $key, string $alt = '')
     {
 
-        echo "<img src=\".";
+        echo "<img src=\"" . $_SERVER['DOCUMENT_ROOT'];
         echo Asset::get("/assets/images/${key}", Asset::$images);
         echo ($alt) ? "\" alt=\"${alt}\">" : "\">";
 
@@ -44,7 +44,7 @@ final class Asset
     public static function script(string $key)
     {
 
-        echo "<script src=\".";
+        echo "<script src=\"" . $_SERVER['DOCUMENT_ROOT'];
         echo Asset::get("/assets/scripts/${key}", Asset::$scripts);
         echo "\"></script>";
 
@@ -53,7 +53,7 @@ final class Asset
     public static function style(string $key)
     {
 
-        echo "<link rel=\"stylesheet\" href=\".";
+        echo "<link rel=\"stylesheet\" href=\"" . $_SERVER['DOCUMENT_ROOT'];
         echo Asset::get("/assets/styles/${key}", Asset::$styles);
         echo "\">";
 
@@ -62,21 +62,21 @@ final class Asset
     public static function image_path(string $key)
     {
 
-        echo "." . Asset::get("/assets/images/${key}", Asset::$images);
+        echo $_SERVER['DOCUMENT_ROOT'] . Asset::get("/assets/images/${key}", Asset::$images);
 
     }
 
     public static function script_path(string $key)
     {
 
-        echo "." . Asset::get("/assets/scripts/${key}", Asset::$scripts);
+        echo $_SERVER['DOCUMENT_ROOT'] . Asset::get("/assets/scripts/${key}", Asset::$scripts);
 
     }
 
     public static function style_path(string $key)
     {
 
-        echo "." . Asset::get("/assets/styles/${key}", Asset::$styles);
+        echo $_SERVER['DOCUMENT_ROOT'] . Asset::get("/assets/styles/${key}", Asset::$styles);
 
     }
 
