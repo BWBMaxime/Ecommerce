@@ -1,6 +1,38 @@
 {
 
-    "/": "UserController::home",
-    "/static": "Test::static"
+    "/": "ProductController::home",
+    "/product/{product_id}": "ProductController::product",
+    "/cart": "CartController::getCart",
+    "/cart/{product_id}": {
+        "POST": "CartController::addProduct",
+        "PUT": "CartController::updateProduct",
+        "DELETE": "CartController::deleteProduct"
+    },
+    "/checkout/session": "CheckoutController::getSession",
+    "/checkout/delivery": "CheckoutController::getDelivery",
+    "/checkout/payment": "CheckoutController::getPayment",
+    "/checkout/finish": "CheckoutController::getFinish",
+    "/session": {
+        "GET": "SessionController::login",
+        "POST": "SessionController::signin",
+        "DELETE": "SessionController::logout"
+    },    
+    "/user/profile": {
+        "GET":  "UserController::getUserProfile",
+        "PUT": "UserController::editUserProfile",
+        "DELETE": "UserController::deleteUserProfile"
+    },
+    "/user/payment": {
+        "GET":  "UserController::getUserPayment",
+        "POST": "UserController::addUserPayment",
+        "PUT": "UserController::editUserPayment",
+        "DELETE": "UserController::deleteUserPayment"
+    },
+    "/user/delivery": {
+        "GET":  "UserController::getUserDelivery",
+        "POST": "UserController::addUserDelivery",
+        "PUT": "UserController::editUserDelivery",
+        "DELETE": "UserController::deleteUserDelivery"
+    }
 
 }
