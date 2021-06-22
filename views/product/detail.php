@@ -3,13 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Product Page with TailwindCSS</title>
-  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/tailwindcss@2.0.1/dist/tailwind.min.css'>
-  <link rel='stylesheet'
-    href='https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap'>
-  <link rel="stylesheet" href="./style.css">
-
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Tailwind Starter Template - Nordic Shop: Tailwind Toolbox</title>
@@ -20,10 +13,11 @@
   <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&family=Roboto:wght@300&display=swap" rel="stylesheet">
-
+  
+  <? $_ASSET::style("style") ?>
 </head>
 
-<? $_ASSET::style("style") ?>
+
 <body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
 
   <!-- Images -->
