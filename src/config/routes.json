@@ -2,18 +2,16 @@
 
     "/": "ProductController::home",
     "/product/{product_id}": "ProductController::product",
-    "/cart": "ProductController::getCart",
+    "/cart": "CartController::getCart",
     "/cart/{product_id}": {
-        "POST": "ProductController::addProduct",
-        "PUT": "ProductController::updateProduct",
-        "DELETE": "ProductController::deleteProduct"
+        "POST": "CartController::addProduct",
+        "PUT": "CartController::updateProduct",
+        "DELETE": "CartController::deleteProduct"
     },
-    "/checkout/session": "SessionController::getSession",
-    "/checkout/delivery": "SessionController::getDelivery",
-    "/checkout/payment": "SessionController::getPayment",
-    "/checkout/finish": "SessionController::getFinish",
-    "/payment/new": "SessionController::getNewPayment",
-    "/delivery/new": "SessionController::getNewDelivery",
+    "/checkout/session": "CheckoutController::getSession",
+    "/checkout/delivery": "CheckoutController::getDelivery",
+    "/checkout/payment": "CheckoutController::getPayment",
+    "/checkout/finish": "CheckoutController::getFinish",
     "/session": {
         "GET": "SessionController::login",
         "POST": "SessionController::signin",
