@@ -56,7 +56,7 @@ CREATE INDEX `IDX_delivery` ON `ecommerce`.`DeliveryAddress` (`user` ASC) VISIBL
 CREATE TABLE IF NOT EXISTS `ecommerce`.`User` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `token` TINYTEXT NOT NULL,
-  `mail` TINYTEXT NOT NULL,
+  `email` TINYTEXT NOT NULL,
   `firstname` TINYTEXT NULL,
   `lastname` TINYTEXT NULL,
   `birth` DATETIME NULL,

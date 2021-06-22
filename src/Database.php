@@ -29,7 +29,7 @@ final class Database
     public function query_file(string $file) : object
     {
 
-        return $this->pdo->query(file_get_contents($file));
+        return $this->query(file_get_contents($file));
 
     }
 
@@ -50,14 +50,14 @@ final class Database
     public function query_object(string $class, string $query) : object
     {
 
-        return $this->query($query)->fetchObject($class);
+        return $this->query($query)->fetchObject("\\Wails\\Models\\${class}");
 
     }
 
-    public function query_objects(string $class, string $query) : object
+    public function query_objects(string $class, string $query) : array
     {
 
-        return $this->query($query)->fetchAll(PDO::FETCH_CLASS, $class);
+        return $this->query($query)->fetchAll(PDO::FETCH_CLASS, "\\Wails\\Models\\${class}");
 
     }
 

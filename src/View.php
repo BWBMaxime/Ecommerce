@@ -8,26 +8,15 @@ final class View
     public static function render(string $view, array $params = [])
     {
 
-        self::yield_list($params);
+        extract(array(
+            "_ASSET" => "\\Wails\\Core\\Asset",
+            "_ERROR" => "\\Wails\\Core\\Error",
+            "_UTILS" => "\\Wails\\Core\\Utils"
+        ));
 
-        Asset::view($view);
+        extract($params);
 
-    }
-
-    public static function yield_list(array $yields)
-    {
-
-        foreach ($yields as $key => $value)
-        {
-            self::yield($key, $value);
-        }
-
-    }
-
-    public static function yield(string $key, mixed $value)
-    {
-
-        $$key = $value;
+        include Asset::view($view, $params);
 
     }
 
