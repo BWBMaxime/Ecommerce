@@ -1,3 +1,5 @@
+<? use Wails\Core\Asset; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,35 +25,7 @@
 
 </head>
 
-<style>
-  p,span {
-  font-family: 'Roboto', sans-serif;
-    color: #263843;
-  }
-
-  .color4C {
-    color: #4C7087;
-  }
-
-  .backColor4c {
-    background-color: #4C7087;
-  }
-
-  .color26 {
-    color: #263843;
-  }
-
-  .backColor26 {
-    background-color: #263843;
-  }
-
-  h1,h2,h3,h4,h5,h6 {
-      font-family: 'Montserrat', sans-serif;
-      color: #4C7087;
-  }
-</style>
-
-
+<? Asset::style("style") ?>
 <body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
 
   <!-- Images -->
@@ -76,7 +50,7 @@
               <span class="text-5xl">4</span>
             </div>
           </div>
-
+					<!-- Border image -->
           <div class="flex -mx-2 mb-4">
             <template x-for="i in 4">
               <div class="flex-1 px-2">
