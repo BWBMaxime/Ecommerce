@@ -11,7 +11,9 @@ final class UserController extends Controller
      * Afficher Profil Utilisateur
      */
     public function getUserProfile()
-    {}
+    {
+        View::render("user/profile");
+    }
     
     /**
      * Modifier infos profil Utilisateur
