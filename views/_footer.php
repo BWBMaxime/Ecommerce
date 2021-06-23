@@ -1,130 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    
-    <meta charset="UTF-8">
-    <title>CodePen - Product Page with TailwindCSS</title>
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/tailwindcss@2.0.1/dist/tailwind.min.css'>
-    <link rel='stylesheet'
-        href='https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap'>
-    <link rel="stylesheet" href="./style.css">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tailwind Starter Template - Nordic Shop: Tailwind Toolbox</title>
-    <meta name="description" content="Free open source Tailwind CSS Store template">
-    <meta name="keywords"
-        content="tailwind,tailwindcss,tailwind css,css,starter template,free template,store template, shop layout, minimal, monochrome, minimalistic, theme, nordic">
-
-    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-    <!--Replace with your tailwind.css once created-->
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
-
- <style>
-       
-.titre-entreprise {
-	font-family: 'Montserrat', sans-serif;
-	color: #263843;        
-    font-style: bold;
-	text-align: center;	
-    font-size: 20px;
-}
-
-.resume-entreprise {
-	font-family: 'Roboto', sans-serif;
-    color: #4C7087;
-    text-align: center;
-    padding-left: 20px;
-    margin-left: 10%;
-    margin-right: 10%;
-   
-}
-
-.mentions-legales{
-    font-family: 'Montserrat', sans-serif; 
-	color: #263843;
-	font-size: 17px;
-}
-
-.liens {
-	font-family: 'Roboto', sans-serif;
-	color: #4C7087;
-	font-size: 15px;
-}
-
-.reseaux {
-	font-family: 'Montserrat', sans-serif;
-	color: #263843;
-	font-size: 17px;
-}
-
-.reseaux-liens {
-	font-family: 'Roboto', sans-serif;
-	color: #4C7087;
-	font-size: 15px;
-}
-
-.contact {
-	font-family: 'Montserrat', sans-serif;
-	color: #263843;
-	font-size: 17px;
-}
-
-.contact-liens {
-	font-family: 'Roboto', sans-serif;
-	color: #4C7087;
-	font-size: 15px;
-}
-
-.copyright {
-	font-family: 'Montserrat', bold;
-    color: #263843;
-    text-align: center;
-	font-size: 10px;
-}
-
-.image {
-    text-align: center;
-    margin-left: 750px;
-}
-
-.image2 {
-    text-align: center;
-    margin-left: 745px;
-}
-
-.imagebis1 {
-    margin-left: 185px; 
-}
-
-.imagebis2 {
-    margin-left: 180px; 
-}
-
-</style>
-</head>
-
-
-<body>
-    <footer>
-	
-        <div class="container flex px-3 py-8 ">
-            <div class="w-full mx-auto flex flex-wrap">
+<? $_ASSET::style('footer') ?>
+<footer>
+    <div class="container flex px-3 py-8 ">
+        <div class="w-full mx-auto flex flex-wrap">
+            <div class="px-3 md:px-0">
+                <h3 class="titre-entreprise"> A propos de l'entreprise </h3>
+                <br>
                 
-				
-                    <div class="px-3 md:px-0">
-                        <h3 class="titre-entreprise"> A propos de l'entreprise </h3>
-						<br>
-                        
-						<p class="resume-entreprise">
-                            L'entreprise de e-commerce a été racheté par Marylise, Raphael, Maxime et Fanny en 2021 mais elle a été crée en 1853 par Monsieur et Madame Splaaaaf. Grâce à notre savoir faire et à notre professionnalisme, nous vous présentons des produits de grandes qualités.
-                        </p>
-                    </div>
+                <p class="resume-entreprise">
+                    L'entreprise de e-commerce a été racheté par Marylise, Raphael, Maxime et Fanny en 2021 mais elle a été crée en 1853 par Monsieur et Madame Splaaaaf. Grâce à notre savoir faire et à notre professionnalisme, nous vous présentons des produits de grandes qualités.
+                </p>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
 <hr>
 
@@ -151,27 +39,18 @@
                     <h2 class="reseaux">
                         RESEAUX SOCIAUX
                     </h2>
-
-<br>
-
+                    <br>
                     <ul>
                         <li class="reseaux-liens">
-                             
-             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Facebook_logo_36x36.svg/1200px-Facebook_logo_36x36.svg.png" 
-            alt="logo" height="30px" width="30px" class="imagebis1">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Facebook_logo_36x36.svg/1200px-Facebook_logo_36x36.svg.png" alt="logo" height="30px" width="30px" class="imagebis1">
                         </li>
-
-<br>
+                        <br>
                         <li class="reseaux-liens">
-                           
-            <img src="https://i2.wp.com/www.key-digital.co.uk/wp-content/uploads/2017/04/Twitter-logo-1.png" 
-            alt="logo" height="40px" width="40px" class="imagebis2">
-                             
+                            <img src="https://i2.wp.com/www.key-digital.co.uk/wp-content/uploads/2017/04/Twitter-logo-1.png" alt="logo" height="40px" width="40px" class="imagebis2">
                         </li>
                     </ul>
                 </div>
             </li>
-			
 			
             <li class="w-1/2 md:w-1/3 lg:w-1/3">
                 <div class="text-center">
@@ -201,15 +80,12 @@
         </ul>
     </div>
 
-
 <hr>
-    
-					<div class="px-3 md:px-0">
-                        <h3 class="copyright"> 2021 Copyright@e-commerce </h3>     
-                    </div>             
-    </footer>         
 
-
+    <div class="px-3 md:px-0">
+        <h3 class="copyright"> 2021 Copyright@e-commerce </h3>     
+    </div>             
+</footer>         
 
 </body>
 </html>
