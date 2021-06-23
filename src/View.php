@@ -22,7 +22,7 @@ final class View
 
     }
 
-    public static function render(string $view, string $title = null, array $params = [])
+    public static function render(string $view, array $params = [], string $title = null)
     {
 
         self::$PAGE = $view;
