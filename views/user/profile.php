@@ -9,10 +9,11 @@
     <? $_ASSET::style("form") ?>
 </head>
 <body>
-    <div class="flex mt-12 h-screen w-full justify-center">
+<div class="flex items-end h-screen w-full justify-center">
+    <div class="flex items-start mt-20 h-screen w-full justify-center">
 
         <!-- User Card -->
-        <div class="max-w-xs mt-6">
+        <div class="grid max-w-xs mt-6">
             <div class="bg-white shadow-lg rounded-lg border border-gray-800">
                 <div class="photo-wrapper pt-4">
                     <img class="w-32 h-32 rounded-full mx-auto shadow-lg" src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp" alt="John Doe">
@@ -185,77 +186,77 @@
                 </div>
             </main>
         </div>
+    </div>
 
 
         <!-- Order Table -->
-        <div class="flex flex-col absolute bottom-0">
-            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow-lg overflow-hidden border border-gray-800 sm:rounded-lg">
-                    <p scope="col" class="text-m text-left font-bold color4C p-4">
-                        Order history
-                    </p>
-                <table class="min-w-full divide-y divide-gray-300">
-                    <thead class="bg-gray-100">
+        <div class="flex absolute bottom-0">
+            <div class="grid overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="shadow-lg overflow-hidden border border-gray-800 sm:rounded-lg">
+                        <p scope="col" class="text-m text-left font-bold color4C p-4">
+                            Order history
+                        </p>
+                    <table class="min-w-full divide-y divide-gray-300">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                                    Date
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                                    Order number
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                                    Tracking number
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                                    Products ordered
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                                    Total order
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                                    Status
+                                </th>
+                                <th scope="col" class="relative px-6 py-3">
+                                    <span class="sr-only">Edit</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
                         <tr>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                                Date
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                                Order number
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                                Tracking number
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                                Products ordered
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                                Total order
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                                Status
-                            </th>
-                            <th scope="col" class="relative px-6 py-3">
-                                <span class="sr-only">Edit</span>
-                            </th>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-center font-semibold">10/12/2020</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-center font-semibold">1</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                <span class="px-2 inline-flex text-xs leading-7 font-semibold rounded-full bg-gray-200 hover:text-gray-500">
+                                    <a href="" class="underline">658212682</a>
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-center font-semibold">4</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-center font-semibold">39.90€</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-7 font-semibold rounded-full bg-green-100 text-green-800">
+                                    Delivered
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-xs font-medium">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900 hover:underline">Edit the invoice</a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-center font-semibold">10/12/2020</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-center font-semibold">1</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                            <span class="px-2 inline-flex text-xs leading-7 font-semibold rounded-full bg-gray-200 hover:text-gray-500">
-                                <a href="" class="underline">658212682</a>
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-center font-semibold">4</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-center font-semibold">39.90€</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-7 font-semibold rounded-full bg-green-100 text-green-800">
-                                Delivered
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-xs font-medium">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900 hover:underline">Edit the invoice</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                    </div>
                 </div>
             </div>
-            </div>
         </div>
-
-    </div>
+</div>
 </body>
 </html>
