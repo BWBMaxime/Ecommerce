@@ -11,7 +11,9 @@ final class CartController extends Controller
      * Afficher Panier Session/Utilisateur
      */
     public function getCart()
-    {}
+    {
+        View::render("cart/cart");
+    }
 
     /**
      * Ajouter Produit Panier Session/Utilisateur
