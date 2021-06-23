@@ -34,7 +34,7 @@ final class Asset
 
     }
 
-    public static function view(string $key, array $params = [])
+    public static function view(string $key)
     {
 
         return $_SERVER['DOCUMENT_ROOT'] . Asset::get("/views/${key}", Asset::$views);
