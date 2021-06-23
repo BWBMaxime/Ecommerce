@@ -8,7 +8,7 @@ final class Asset
     private static array $images = ['jpg', 'png', 'svg', 'ico', 'gif'];
     private static array $scripts = ['js', 'jsx', 'ts', 'tsx'];
     private static array $styles = ['css', 'sass', 'scss'];
-    private static array $databases = ['sql', 'php'];
+    // private static array $databases = ['sql', 'php'];
     private static array $views = ['php', 'html'];
 
     private static function get(string $path, array $extensions) : string
@@ -25,19 +25,19 @@ final class Asset
 
     }
 
+    public static function view(string $key)
+    {
+
+        return $_SERVER['DOCUMENT_ROOT'] . Asset::get("/views/${key}", Asset::$views);
+
+    }
+
     public static function image(string $key, string $alt = '')
     {
 
         echo "<img src=\"..";
         echo Asset::get("/assets/images/${key}", Asset::$images);
         echo ($alt) ? "\" alt=\"${alt}\">" : "\">";
-
-    }
-
-    public static function view(string $key)
-    {
-
-        return $_SERVER['DOCUMENT_ROOT'] . Asset::get("/views/${key}", Asset::$views);
 
     }
 
@@ -56,6 +56,28 @@ final class Asset
         echo "<link rel=\"stylesheet\" href=\"..";
         echo Asset::get("/assets/styles/${key}", Asset::$styles);
         echo "\">";
+
+    }
+
+    public static function image_url(string $key, string $alt = '')
+    {
+
+        echo "<img src=\"${key}";
+        echo ($alt) ? "\" alt=\"${alt}\">" : "\">";
+
+    }
+
+    public static function script_url(string $key)
+    {
+
+        echo "<script src=\"${key}\"></script>";
+
+    }
+    
+    public static function style_url(string $key)
+    {
+
+        echo "<link rel=\"stylesheet\" href=\"${key}\">";
 
     }
 

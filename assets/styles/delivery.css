@@ -1,0 +1,28 @@
+#map {
+    height: 700px;
+    width: 700px;
+    margin-left:190px;
+    margin-top:-660px;
+}
+.form-meth{
+    margin-left:190px;
+    margin-top: 150px;
+}
+.geo-infos{
+    margin-left:1200px;
+    margin-top: 150px;
+}
+
+.place {
+    margin-left:150px;
+   
+}
+
+input:checked + svg {
+  display: block;
+}
+
+.btn-place {
+  margin-left: 10px;
+  margin-top:150px;
+}

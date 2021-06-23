@@ -13,6 +13,10 @@ final class UserController extends Controller
     public function getUserProfile()
     {
         
+        View::render('user/profile', array(
+            'user' => $this->getUser(1)
+        ), 'Your Profile');
+
     }
     
     /**
@@ -74,5 +78,27 @@ final class UserController extends Controller
      */
     public function deleteUserDelivery()
     {}
+
+    private function getUserMin(string $id)
+    {
+
+        return $this->db->query_object('UserModel',
+           "SELECT id, firstname, picture
+            FROM User
+            WHERE id = ${id}"
+        );
+
+    }
+
+    private function getUser(string $id)
+    {
+
+        return $this->db->query_object('UserModel',
+           "SELECT id, email, firstname, lastname, birth, phone, picture, payment, delivery
+            FROM User
+            WHERE id = ${id}"
+        );
+
+    }
 
 }
