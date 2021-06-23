@@ -1,11 +1,11 @@
 <? $_ASSET::style('footer') ?>
+
 <footer>
     <div class="container flex px-3 py-8 ">
         <div class="w-full mx-auto flex flex-wrap">
             <div class="px-3 md:px-0">
                 <h3 class="titre-entreprise"> A propos de l'entreprise </h3>
                 <br>
-                
                 <p class="resume-entreprise">
                     L'entreprise de e-commerce a été racheté par Marylise, Raphael, Maxime et Fanny en 2021 mais elle a été crée en 1853 par Monsieur et Madame Splaaaaf. Grâce à notre savoir faire et à notre professionnalisme, nous vous présentons des produits de grandes qualités.
                 </p>

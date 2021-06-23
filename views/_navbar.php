@@ -1,9 +1,9 @@
 <? $_ASSET::style('navbar') ?>
 
-<nav id="navbar" class="w-full z-30 top-0 py-1">
-    <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
+<nav id="navbar" class="w-full fixed bg-white z-50 top-0 py-1 shadow-xl">
+    <div class="w-full container mx-auto flex items-center justify-between mt-0 px-6 py-3">
         <label for="menu-toggle" class="cursor-pointer md:hidden block">
-            <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20"viewBox="0 0 20 20">
+            <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
             </svg>
         </label>
@@ -11,7 +11,10 @@
         <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">   
             <nav>
                 <ul class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0" id="cartsize">
-                    <img src="http://4.bp.blogspot.com/-WjnObzM_WNc/UEcrf7xznAI/AAAAAAAABAQ/OSb-Rc1czpU/s1600/E-commerce.jpg" alt="logo" height="100px" width="100px" class="image">
+                    <a class="flex items-center" href="/">
+                        <? $_ASSET::image('logo', 'ECOMMERCE Website Logo') ?>
+                        <h1 class="font-bold pl-5">ECOMMERCE</h1>
+                    </a>                    
                     <div class="dropdown">
                     <button class="dropbtn">Category</button>
                     <div class="dropdown-content">
@@ -23,7 +26,7 @@
             </nav>
         </div>
 
-        <div class="order-6 md:order-2 w-1/2 px--6">  <!-- barre de recherche -->
+        <div class="order-6 md:order-2 w-1/2">  <!-- barre de recherche -->
             <input type="text" class="col-8 border-2 p-2 w-full " placeholder="Search a product..."
                 id="search-filter">
         </div>
@@ -50,3 +53,5 @@
         </div>
     </div>
 </nav>
+
+<hr class="h-20">
