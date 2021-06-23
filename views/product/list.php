@@ -68,8 +68,9 @@
         }
     </style>
 
+    <? $_ASSET::style("style") ?>
+
 </head>
-<? $_ASSET::style("style") ?>
 <body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
 
     <!-- Carousel -->
