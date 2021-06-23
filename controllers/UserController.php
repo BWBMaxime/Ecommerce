@@ -12,7 +12,7 @@ final class UserController extends Controller
      */
     public function getUserProfile()
     {
-        View::render("user/profile");
+        
     }
     
     /**
