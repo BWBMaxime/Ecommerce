@@ -1,33 +1,33 @@
-    p,span {
-        font-family: 'Roboto', sans-serif;
-        color: #263843;
-    }
-  
-    .color4C {
-        color: #4C7087;
-    }
-  
-    .backColor4c {
-        background-color: #4C7087;
-    }
-  
-    .color26 {
-        color: #263843;
-    }
-  
-    .backColor26 {
-        background-color: #263843;
-    }
-  
-    h1, h2, h3, h4, h5, h6, th {
-        font-family: 'Montserrat', sans-serif;
-        color: #4C7087;
-    }
+p,span {
+    font-family: 'Roboto', sans-serif;
+    color: #263843;
+}
 
-    .backUrgent {
-        background-color: #EF9343;
-    }
+.color4C {
+    color: #4C7087;
+}
 
-    .colorUrgent {
-        color: #EF9343;
-    }
+.backColor4c {
+    background-color: #4C7087;
+}
+
+.color26 {
+    color: #263843;
+}
+
+.backColor26 {
+    background-color: #263843;
+}
+
+h1, h2, h3, h4, h5, h6, th {
+    font-family: 'Montserrat', sans-serif;
+    color: #4C7087;
+}
+
+.backUrgent {
+    background-color: #EF9343;
+}
+
+.colorUrgent {
+    color: #EF9343;
+}
