@@ -1,6 +1,6 @@
 <? $ASSET::style('navbar') ?>
 
-<nav id="navbar" class="w-full fixed bg-white z-50 top-0 py-1 shadow-xl">
+<nav id="navbar" class="w-full fixed bg-white z-100 top-0 py-1 shadow-xl">
     <div class="w-full container mx-auto flex items-center justify-between mt-0 px-6 py-3">
         <label for="menu-toggle" class="cursor-pointer md:hidden block">
             <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
@@ -10,18 +10,12 @@
         <input class="hidden" type="checkbox" id="menu-toggle">
         <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">   
             <nav>
+                <!-- Logo -->
                 <ul class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0" id="cartsize">
                     <a class="flex items-center" href="/">
                         <? $ASSET::image('logo', 'ECOMMERCE Website Logo') ?>
                         <h1 class="font-bold pl-5">ECOMMERCE</h1>
-                    </a>                    
-                    <div class="dropdown">
-                    <button class="dropbtn">Category</button>
-                    <div class="dropdown-content">
-                        <a href="#"> Phone </a>      
-                        <a href="#"> PC </a>
-                        <a href="#"> Tablette </a>
-                    </div>
+                    </a>
                 </ul>
             </nav>
         </div>
@@ -39,8 +33,8 @@
             <div><input class="favorite styled" type="button" value="Login"></div>  <!-- Bouton Login -->
             <div><input class="favorite styled2" type="button" value="Sign In"></div>   <!-- Bouton Sign In-->
         <? endif ?>
-            <a class="pl-3 inline-block no-underline hover:text-black" href="/cart">     <!-- icone du panier --> 
-                <svg class="cart" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            <a class="pl-3 inline-block no-underline hover:text-gray" href="/cart">     <!-- icone du panier --> 
+                <svg class="cart" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                     viewBox="0 0 24 24">
                     <path
                         d="M21,7H7.462L5.91,3.586C5.748,3.229,5.392,3,5,3H2v2h2.356L9.09,15.414C9.252,15.771,9.608,16,10,16h8 c0.4,0,0.762-0.238,0.919-0.606l3-7c0.133-0.309,0.101-0.663-0.084-0.944C21.649,7.169,21.336,7,21,7z M17.341,14h-6.697L8.371,9 h11.112L17.341,14z" />

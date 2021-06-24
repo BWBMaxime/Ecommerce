@@ -18,7 +18,7 @@
                                     <label for="fname">First Name</label>
                                 </div>
                                 <div class="col-75 text-sm text-gray-400">
-                                    <input type="text" id="fname" name="firstname" placeholder="John">
+                                    <input type="text" id="fname" name="firstname" placeholder=<?= $user->firstname() ?>>
                                 </div>
                             </div>
                             <div class="row">
@@ -26,7 +26,7 @@
                                     <label for="lname">Last Name</label>
                                 </div>
                                 <div class="col-75 text-sm text-gray-400">
-                                    <input type="text" id="lname" name="lastname" placeholder="Doe">
+                                    <input type="text" id="lname" name="lastname" placeholder=<?= $user->lastname() ?>>
                                 </div>
                             </div>
                             <div class="row">
@@ -34,7 +34,7 @@
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="col-75 text-sm text-gray-400">
-                                    <input type="text" id="email" name="email" placeholder="johndoe.gmail.com">
+                                    <input type="text" id="email" name="email" placeholder=<?= $user->email() ?>>
                                 </div>
                             </div>
                             <div class="row">
@@ -42,7 +42,7 @@
                                     <label for="birth">Birthday</label>
                                 </div>
                                 <div class="col-75 text-sm text-gray-400">
-                                <input type="date" id="birth" name="birth" value="2018-07-22">
+                                <input type="date" id="birth" name="birth" value=<?= $user->birth() ?>>
                                 </div>
                             </div>
                             <div class="row">
@@ -50,7 +50,7 @@
                                     <label for="phone">Phone number</label>
                                 </div>
                                 <div class="col-75 text-sm text-gray-400">
-                                    <input type="text" id="phone" name="phone" placeholder="0625484236">
+                                    <input type="text" id="phone" name="phone" placeholder=<?= $user->phone() ?>>
                                 </div>
                             </div>
                             <div class="row text-sm text-gray-600 text-white">
@@ -72,9 +72,9 @@
                         <div class="flex items-center p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800 border border-gray-800">
                             <div class="space-y-6">
                                 <div>
-                                    <h3 class="text-m font-bold">
+                                    <p class="text-m font-bold color4C">
                                         Default payment method
-                                    </h3>
+                                    </p>
                                     <p class="mt-4 text-sm">
                                         Bank card
                                     </p>
@@ -82,7 +82,7 @@
                                         Type : MasterCard
                                     </p>
                                     <p class="text-sm">
-                                        Name : John Doe
+                                        Name : <?= $user->firstname() ?>  <?= $user->lastname() ?>
                                     </p>
                                 </div>
                                 <div class="w-64 h-40 m-auto rounded-xl relative text-white shadow-xl transition-transform transform hover:scale-105">
@@ -95,7 +95,7 @@
                                                     Name
                                                 </p>
                                                 <p class="font-medium tracking-widest text-xs">
-                                                    Karthik P
+                                                    <?= $user->firstname() ?>  <?= $user->lastname() ?>
                                                 </p>
                                             </div>
                                             <img class="w-12 h-12" src="https://i.imgur.com/bbPHJVe.png"/>
@@ -139,7 +139,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <a class="text-xs text-indigo-500 hover:underline hover:text-indigo-600 font-medium" href="#">View all</a>
+                                    <a class="text-xs text-indigo-500 hover:underline hover:text-indigo-600 font-medium" href="/user/payment">View all</a>
                                 </div>
                             </div>
                         </div>
@@ -147,14 +147,14 @@
                         <div class="flex items-center p-8 bg-white rounded-lg shadow-xl border border-gray-800">
                             <div class="space-y-6">
                                 <div>
-                                    <p class="text-m font-bold color4C dark:text-gray-400">
+                                    <p class="text-m font-bold color4C">
                                         Default delivery method
                                     </p>
                                     <p class="mt-4 text-sm font-light dark:text-gray-400">
-                                        John Doe
+                                        <?= $user->firstname() ?>  <?= $user->lastname() ?>
                                     </p>
                                     <p class="text-sm font-light dark:text-gray-400">
-                                        12 avenue de Toulouse
+                                        388 avenue de Toulouse
                                     </p>
                                     <p class="text-sm font-light dark:text-gray-400">
                                         34000 Montpellier
@@ -170,7 +170,7 @@
                                     sizes="(max-width: 1068px) 100vw, 1068px" alt="" title="capture">
                                 </div>
                                 <div class="text-center">
-                                    <a class="text-xs text-indigo-500 hover:underline hover:text-indigo-600 font-medium" href="#">View all</a>
+                                    <a class="text-xs text-indigo-500 hover:underline hover:text-indigo-600 font-medium" href="/user/delivery">View all</a>
                                 </div>
                             </div>
                         </div>
