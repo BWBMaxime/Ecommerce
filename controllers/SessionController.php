@@ -35,10 +35,11 @@ final class SessionController extends Controller
     public function login()
     {
 
-        $user = $this->getUser($_POST['ID'], $_POST['TOKEN']);
+        $user = $this->getUser($_POST['TOKEN']);
         
         if ($user) {
 
+            Session::status(true);
             setcookie("ID", $user->id(), time()+3600);
             setcookie("TOKEN", $user->token(), time()+3600);
 
@@ -62,6 +63,7 @@ final class SessionController extends Controller
     public function logout()
     {
 
+        Session::status(false);
         setcookie("ID", null, time()-3600);
         setcookie("TOKEN", null, time()-3600);
 
@@ -73,8 +75,18 @@ final class SessionController extends Controller
     public static function guard()
     {
 
-        $session = new self();
-        if (!$session->isLogged()) $session->getLogin();
+        $controller = new self();
+
+        if ($controller->isLogged()) {
+
+            Session::status(true);
+
+        } else {
+
+            Session::status(false);
+            $controller->getLogin();
+
+        };
 
     }
 
@@ -86,8 +98,12 @@ final class SessionController extends Controller
 
         setcookie('ID', '1', time()+3600);
         setcookie('TOKEN', 'v9fFLsdDjwYgZHNAaQGUrvreakSpg1PGyV3hZd', time()+3600);
-        return (Session::isSet() && $this->checkUser('1', 'v9fFLsdDjwYgZHNAaQGUrvreakSpg1PGyV3hZd')) ? true : false;
-        // return (Session::isSet() && $this->checkUser($_COOKIE['ID'], $_COOKIE['TOKEN'])) ? true : false;
+        // $this->logout();
+
+        if (Session::isSet() && isset($_COOKIE['ID']) && isset($_COOKIE['TOKEN']))
+            // return ($this->checkUser('1', 'v9fFLsdDjwYgZHNAaQGUrvreakSpg1PGyV3hZd')) ? true : false;
+            return ($this->checkUser($_COOKIE['ID'], $_COOKIE['TOKEN'])) ? true : false;
+        return false;
 
     }
 
