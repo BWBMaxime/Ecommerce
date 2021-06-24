@@ -8,7 +8,9 @@
             "email": "atlasrw@icloud.com"
         }
     ],
-    "require": {},
+    "require": {
+        "stripe/stripe-php": "^7.85"
+    },
     "autoload": {
         "psr-4": {
             "Wails\\Core\\": [
