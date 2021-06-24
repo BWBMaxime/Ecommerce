@@ -12,22 +12,27 @@ final class View
     {
 
         extract(array(
-            "_ASSET" => "\\Wails\\Core\\Asset",
-            "_VIEW" => "\\Wails\\Core\\View"            
+            "ASSET" => "\\Wails\\Core\\Asset",
+            "SESSION" => "\\Wails\\Core\\Session",
+            "VIEW" => "\\Wails\\Core\\View"          
         ));
 
         extract($params);
 
-        include Asset::view($view);
+        include Asset::view_path($view);
 
     }
 
     public static function render(string $view, array $params = [], string $title = null)
     {
 
+        extract($params);
+
         self::$PAGE = $view;
         self::$PARAMS = $params;
-        self::include('layout', array("_TITLE" => $title));
+        self::include('layout', array("TITLE" => $title));
+
+        exit();
 
     }
 

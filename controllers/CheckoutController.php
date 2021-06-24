@@ -2,6 +2,8 @@
 
 namespace Wails\Controllers;
 use Wails\Core\Controller;
+use Wails\Core\Error;
+use Wails\Core\Session;
 use Wails\Core\View;
 
 final class CheckoutController extends Controller
@@ -23,7 +25,11 @@ final class CheckoutController extends Controller
      * Choix du moyen de paiement
      */
     public function getPayment()
-    {}
+    {
+
+        View::include('checkout/placeholder');
+
+    }
 
     /**
      * Validation de la commande

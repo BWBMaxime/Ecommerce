@@ -1,6 +1,7 @@
 {
 
     "/": "ProductController::home",
+    "/{page_number}": "ProductController::home",
     "/product/{product_id}": "ProductController::product",
     "/cart": "CartController::getCart",
     "/cart/{product_id}": {
@@ -13,10 +14,14 @@
     "/checkout/payment": "CheckoutController::getPayment",
     "/checkout/finish": "CheckoutController::getFinish",
     "/session": {
-        "GET": "SessionController::login",
-        "POST": "SessionController::signin",
+        "GET": "SessionController::getLogin",
+        "POST": "SessionController::login",
         "DELETE": "SessionController::logout"
-    },    
+    },
+    "/session/new": {
+        "GET": "SessionController::getSignup",
+        "POST": "SessionController::signup"
+    },
     "/user/profile": {
         "GET":  "UserController::getUserProfile",
         "PUT": "UserController::editUserProfile",

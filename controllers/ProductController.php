@@ -2,6 +2,8 @@
 
 namespace Wails\Controllers;
 use Wails\Core\Controller;
+use Wails\Core\Error;
+use Wails\Core\Session;
 use Wails\Core\View;
 
 final class ProductController extends Controller
@@ -10,11 +12,13 @@ final class ProductController extends Controller
     /**
      * Liste des Produits
      */
-    public function home()
+    public function home(string $page = '1')
     {
         
         View::render('product/list', array(
-            'products' => $this->getAllProducts()
+            'products' => $this->getPagedProducts($page),
+            'current_page' => $page,
+            'last_page' => $this->getLastPage()
         ));
 
     }
@@ -27,15 +31,38 @@ final class ProductController extends Controller
 
         $product = $this->getProduct($id);
 
-        View::render('product/detail', array(
-            'product' => $product
-        ), $product->name());
+        if ($product) {
+
+            View::render('product/detail', array(
+                'product' => $product
+            ), $product->name());
+
+        } else {
+
+            Error::status(404);
+ 
+        }
+
+    }
+
+    private function getPagedProducts($page = 1, $limit = 20)
+    {
+
+        return $this->db->query_objects('ProductModel',
+          "SELECT Product.id, Product.name, Product.price, Product.stock, Product.picture1, Category.VAT
+           FROM Product 
+           INNER JOIN Category
+           ON Product.category = Category.id
+           LIMIT ${limit}
+           OFFSET " . (($page < 1) ? 0 : ($page - 1)) * $limit
+        );
 
     }
 
     private function getAllProducts()
     {
 
+        
         return $this->db->query_objects('ProductModel',
           "SELECT Product.id, Product.name, Product.price, Product.stock, Product.picture1, Category.VAT
            FROM Product 
@@ -56,6 +83,16 @@ final class ProductController extends Controller
             ON Product.category = Category.id
             WHERE Product.id = ${id}"
         );
+
+    }
+
+    private function getLastPage($limit = 20)
+    {
+
+        return ceil($this->db->query_result(
+          "SELECT COUNT(id) AS result
+           FROM Product"
+        ) / $limit);
 
     }
 
