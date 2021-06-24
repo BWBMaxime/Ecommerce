@@ -141,7 +141,7 @@
 <div class="flex items-center justify-center mb-20">
 
     <? if ($current_page > 2): ?>
-    <a href="/1"  title="Go to first page">
+    <a href="/products/1"  title="Go to first page">
         <button title="Go to first page" class="text-purple-500 bg-transparent border-l border-t border-b border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-l outline-none focus:outline-none mb-1 ease-linear transition-all duration-150">
             <i class="fas fa-angle-double-left"></i>
         </button>
@@ -149,7 +149,7 @@
     <? endif ?>
 
     <? if ($current_page > 1): ?>
-    <a href="/<?= $current_page - 1 ?>" title="Go to previous page">
+    <a href="/products/<?= $current_page - 1 ?>" title="Go to previous page">
         <button title="Go to previous page" class="text-purple-500 bg-transparent border-l border-t border-b border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150">
             <i class="fas fa-angle-left"></i>
         </button>
@@ -162,7 +162,7 @@
     </button>
 
     <? if ($current_page < $last_page): ?>
-    <a href="/<?= $current_page + 1 ?>" title="Go to next page">
+    <a href="/products/<?= $current_page + 1 ?>" title="Go to next page">
         <button title="Go to next page" class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150">
             <i class="fas fa-angle-right"></i>
         </button>
@@ -170,7 +170,7 @@
     <? endif ?>
 
     <? if ($current_page < ($last_page - 1)): ?>
-    <a href="/<?= $last_page ?>" title="Go to last page">
+    <a href="/products/<?= $last_page ?>" title="Go to last page">
         <button title="Go to last page" class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150">
             <i class="fas fa-angle-double-right"></i>
         </button>
