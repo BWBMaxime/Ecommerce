@@ -15,7 +15,7 @@ final class ProductController extends Controller
     public function home(string $page = '1')
     {
         
-        SessionController::guard();
+        // SessionController::guard();
         View::render('product/list', array(
             'products' => $this->getPagedProducts($page),
             'current_page' => $page,
