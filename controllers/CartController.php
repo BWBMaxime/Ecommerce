@@ -71,6 +71,7 @@ final class CartController extends Controller
         );
 
     }
+    
     private function getTotalPrice(string $id)
     {
         
@@ -84,10 +85,6 @@ final class CartController extends Controller
             WHERE Cart.session = ${id}"
          
         );
-
     }
     
-
-
-
 }
