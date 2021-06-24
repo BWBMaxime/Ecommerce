@@ -2,6 +2,8 @@
 
 namespace Wails\Controllers;
 use Wails\Core\Controller;
+use Wails\Core\Error;
+use Wails\Core\Session;
 use Wails\Core\View;
 
 final class ProductController extends Controller
@@ -13,6 +15,7 @@ final class ProductController extends Controller
     public function home()
     {
         
+        SessionController::guard();
         View::render('product/list', array(
             'products' => $this->getAllProducts()
         ));
@@ -27,9 +30,17 @@ final class ProductController extends Controller
 
         $product = $this->getProduct($id);
 
-        View::render('product/detail', array(
-            'product' => $product
-        ), $product->name());
+        if ($product) {
+
+            View::render('product/detail', array(
+                'product' => $product
+            ), $product->name());
+
+        } else {
+
+            Error::status(404);
+ 
+        }
 
     }
 

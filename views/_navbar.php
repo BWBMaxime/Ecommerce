@@ -54,4 +54,5 @@
     </div>
 </nav>
 
-<hr class="h-20">
+<hr class="h-12">
+<hr class="h-10">

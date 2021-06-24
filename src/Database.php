@@ -19,42 +19,42 @@ final class Database
 
     }
 
-    public function query(string $query) : object
+    public function query(string $query) : object|false
     {
 
         return $this->pdo->query($query);
 
     }
 
-    public function query_file(string $file) : object
+    public function query_file(string $file) : object|false
     {
 
         return $this->query(file_get_contents($file));
 
     }
 
-    public function query_array(string $query) : array
+    public function query_array(string $query) : array|false
     {
 
         return $this->query($query)->fetch(PDO::FETCH_ASSOC);
 
     }
 
-    public function query_arrays(string $query) : array
+    public function query_arrays(string $query) : array|false
     {
 
         return $this->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
     }
 
-    public function query_object(string $class, string $query) : object
+    public function query_object(string $class, string $query) : object|false
     {
 
         return $this->query($query)->fetchObject("\\Wails\\Models\\${class}");
 
     }
 
-    public function query_objects(string $class, string $query) : array
+    public function query_objects(string $class, string $query) : array|false
     {
 
         return $this->query($query)->fetchAll(PDO::FETCH_CLASS, "\\Wails\\Models\\${class}");
