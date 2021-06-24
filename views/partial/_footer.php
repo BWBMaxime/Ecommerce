@@ -27,9 +27,11 @@
                         </h2>
                         <ul>
                             <li class="liens">
-                                    <p> <a href="file:///C:/Users/fanny/OneDrive/Bureau/RGPD/PDF%20des%203%20documents%20RGPD/CGU.pdf"> Conditions Générales de Ventes </a> <br>  
-                                    <p> <a href="file:///C:/Users/fanny/OneDrive/Bureau/RGPD/PDF%20des%203%20documents%20RGPD/CGU.pdf"> Conditions Générales d'Utilisation </a> 
-                                    <p> <a href="file:///C:/Users/fanny/OneDrive/Bureau/RGPD/PDF%20des%203%20documents%20RGPD/Cookies-Protection-Donn%C3%A9es-Personnelles.pdf"> Cookies et Protection des Données Personnelles </a> 
+                                <? $ASSET::document('test', 'Conditions Générales de Ventes', true) ?>
+                                <br>
+                                <? $ASSET::document('test', 'Conditions Générales d\'Utilisation', true) ?>
+                                <br>
+                                <? $ASSET::document('test', 'Cookies et Protection des Données Personnelles', true) ?>
                             </li> 
                         </ul>
                     </div>

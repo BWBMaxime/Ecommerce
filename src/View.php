@@ -19,7 +19,7 @@ final class View
 
         extract($params);
 
-        include Asset::view($view);
+        include Asset::view_path($view);
 
     }
 

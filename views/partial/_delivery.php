@@ -66,4 +66,4 @@
 <div id="map"></div>
 
 <? $ASSET::script('delivery') ?>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCpvvuzkpusOIBZHnZeKSDeWFP-KBO5UOg&callback=initMap" async defer></script>
+<? $ASSET::script_url('https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCpvvuzkpusOIBZHnZeKSDeWFP-KBO5UOg&callback=initMap', true) ?>
