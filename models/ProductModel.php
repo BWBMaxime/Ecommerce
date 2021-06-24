@@ -11,6 +11,7 @@ final class ProductModel extends Model
     private string|null $description;
     private string|null $price;
     private string|null $stock;
+    private string|null $quantity;
     private string|null $picture1;
     private string|null $picture2;
     private string|null $picture3;
@@ -21,6 +22,7 @@ final class ProductModel extends Model
     public function name() { return $this->name; }
     public function description() { return $this->description; }
     public function stock() { return $this->stock; }
+    public function quantity() { return $this->quantity; }
     public function picture1() { return $this->picture1; }
     public function picture2() { return $this->picture2; }
     public function picture3() { return $this->picture3; }
