@@ -1,6 +1,7 @@
 {
 
     "/": "ProductController::home",
+    "/{page_number}": "ProductController::home",
     "/product/{product_id}": "ProductController::product",
     "/cart": "CartController::getCart",
     "/cart/{product_id}": {

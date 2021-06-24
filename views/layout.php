@@ -16,11 +16,11 @@
 
 <body class="w-full bg-white text-gray-600 leading-normal text-base tracking-normal">
 
-<? $VIEW::include('_navbar') ?>
+<? $VIEW::include('partial/_navbar') ?>
 
     <? $VIEW::yield() ?>
 
-<? $VIEW::include('_footer') ?>
+<? $VIEW::include('partial/_footer') ?>
 
 </body>
 

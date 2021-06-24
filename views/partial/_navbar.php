@@ -39,7 +39,7 @@
             <div><input class="favorite styled" type="button" value="Login"></div>  <!-- Bouton Login -->
             <div><input class="favorite styled2" type="button" value="Sign In"></div>   <!-- Bouton Sign In-->
         <? endif ?>
-            <a class="pl-3 inline-block no-underline hover:text-black" href="#">     <!-- icone du panier --> 
+            <a class="pl-3 inline-block no-underline hover:text-black" href="/cart">     <!-- icone du panier --> 
                 <svg class="cart" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24">
                     <path

@@ -61,4 +61,11 @@ final class Database
 
     }
 
+    public function query_result(string $query) : mixed
+    {
+
+        return $this->query_array($query)['result'];
+
+    }
+
 }
