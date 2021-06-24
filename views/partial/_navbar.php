@@ -1,6 +1,6 @@
 <? $ASSET::style('navbar') ?>
 
-<nav id="navbar" class="w-full fixed bg-white z-100 top-0 py-1 shadow-xl">
+<nav id="navbar" class="w-full fixed bg-white z-40 top-0 py-1 shadow-xl">
     <div class="w-full container mx-auto flex items-center justify-between mt-0 px-6 py-3">
         <label for="menu-toggle" class="cursor-pointer md:hidden block">
             <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">

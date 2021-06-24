@@ -8,7 +8,7 @@
         <div class="grid max-w-xs mt-6">
             <div class="bg-white shadow-lg rounded-lg border border-gray-800">
                 <div class="photo-wrapper pt-4">
-                    <img class="w-32 h-32 rounded-full mx-auto shadow-lg" src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp" alt="John Doe">
+                    <img class="w-32 h-32 rounded-full mx-auto shadow-lg" src="<?= $user->picture() ?>" alt="Picture user">
                 </div>
                 <div class="">
                     <div class="container">
@@ -67,7 +67,7 @@
             <main class="h-full overflow-y-auto">
                 <div class="container mx-auto grid">
                 <!-- Cards -->
-                    <div class="grid gap-6 mb-8 ml-8 md:grid-cols-1 xl:grid-cols-2">
+                    <div class="grid gap-6 z-0 mb-8 ml-8 md:grid-cols-1 xl:grid-cols-2">
                         <!-- Card Payment -->
                         <div class="flex items-center p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800 border border-gray-800">
                             <div class="space-y-6">
@@ -79,10 +79,10 @@
                                         Bank card
                                     </p>
                                     <p class="text-sm">
-                                        Type : MasterCard
+                                        Type : <?= $paymentUser->type() ?>
                                     </p>
                                     <p class="text-sm">
-                                        Name : <?= $user->firstname() ?>  <?= $user->lastname() ?>
+                                        Name : <?= $paymentUser->name() ?>
                                     </p>
                                 </div>
                                 <div class="w-64 h-40 m-auto rounded-xl relative text-white shadow-xl transition-transform transform hover:scale-105">
@@ -95,7 +95,7 @@
                                                     Name
                                                 </p>
                                                 <p class="font-medium tracking-widest text-xs">
-                                                    <?= $user->firstname() ?>  <?= $user->lastname() ?>
+                                                    <?= $paymentUser->name() ?>
                                                 </p>
                                             </div>
                                             <img class="w-12 h-12" src="https://i.imgur.com/bbPHJVe.png"/>
@@ -105,7 +105,7 @@
                                                 Card Number
                                             </p>
                                             <p class="font-medium tracking-more-wider text-xs">
-                                                ****  ****  ****  7632
+                                                <?= $paymentUser->number() ?>
                                             </p>
                                         </div>
                                         <div class="pt-2 pr-2">
@@ -123,7 +123,7 @@
                                                         Expiry
                                                     </h1>
                                                     <p class="font-medium tracking-wider text-xs">
-                                                        **/25
+                                                        <?= $paymentUser->expiration() ?>
                                                     </p>
                                                 </div>
                                                 <div class="">
@@ -150,17 +150,17 @@
                                     <p class="text-m font-bold color4C">
                                         Default delivery method
                                     </p>
-                                    <p class="mt-4 text-sm font-light dark:text-gray-400">
+                                    <p class="mt-4 text-sm font-light dark:text-gray-400 uppercase font-semibold">
+                                        <?= $deliveryUser->type() ?>
+                                    </p>
+                                    <p class="text-sm font-light dark:text-gray-400">
                                         <?= $user->firstname() ?>  <?= $user->lastname() ?>
                                     </p>
                                     <p class="text-sm font-light dark:text-gray-400">
-                                        388 avenue de Toulouse
+                                        <?= $deliveryUser->number() . " " . $deliveryUser->street() . " - " . $deliveryUser->additional() ?>
                                     </p>
                                     <p class="text-sm font-light dark:text-gray-400">
-                                        34000 Montpellier
-                                    </p>
-                                    <p class="text-sm font-light dark:text-gray-400">
-                                        France
+                                        <?= $deliveryUser->zipcode() . " " . $deliveryUser->city() . ", " . $deliveryUser->country()?>
                                     </p>
                                 </div>
                                 <div class="w-64 h-40 rounded-xl relative text-white shadow-lg transition-transform transform hover:scale-105">
@@ -196,7 +196,7 @@
                                 Date
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                                Order number
+                                Contact
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                                 Tracking number
@@ -218,21 +218,21 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-center font-semibold">10/12/2020</div>
+                            <div class="text-sm text-center font-semibold"><?= $order->date() ?></div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-center font-semibold">1</div>
+                            <div class="text-sm text-center font-semibold"><?= $order->contact() ?></div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center">
                             <span class="px-2 inline-flex text-xs leading-7 font-semibold rounded-full bg-gray-200 hover:text-gray-500">
-                                <a href="" class="underline">658212682</a>
+                                <a href="" class="underline truncate w-60"><?= $order->tracking() ?></a>
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="text-sm text-center font-semibold">4</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-center font-semibold">39.90€</div>
+                            <div class="text-sm text-center font-semibold"><?= $order->amount() ?> $</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <span class="px-2 inline-flex text-xs leading-7 font-semibold rounded-full bg-green-100 text-green-800">
@@ -240,7 +240,7 @@
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-xs font-medium">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900 hover:underline">Edit the invoice</a>
+                            <a href="<?= $order->bill() ?>" class="text-indigo-600 hover:text-indigo-900 hover:underline">Edit the invoice</a>
                         </td>
                     </tr>
                     </tbody>

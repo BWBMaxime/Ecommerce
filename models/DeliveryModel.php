@@ -13,7 +13,7 @@ final class DeliveryModel extends Model
     private string|null $zipcode;
     private string|null $street;
     private string|null $number;
-    private string|null $additionnal;
+    private string|null $additional;
     private string|null $user;
 
     public function id() { return $this->id; }
@@ -23,7 +23,7 @@ final class DeliveryModel extends Model
     public function zipcode() { return $this->zipcode; }
     public function street() { return $this->street; }
     public function number() { return $this->number; }
-    public function additionnal() { return $this->additionnal; }
+    public function additional() { return $this->additional; }
     public function user() { return $this->user; }
 
 }

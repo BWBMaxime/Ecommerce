@@ -14,12 +14,14 @@ final class UserController extends Controller
      */
     public function getUserProfile()
     {
-        
         View::render('user/profile', array(
-            'user' => $this->getUser(2)
+            'user' => $this->getUser(5),
+            'deliveryUser' => $this->getDeliveryByUser(5),
+            'paymentUser' => $this->getPaymentByUser(5),
+            'order' => $this->getOrderByUser(5)
         ), 'Your Profile');
-
     }
+
     
     /**
      * Modifier infos profil Utilisateur
@@ -34,9 +36,9 @@ final class UserController extends Controller
     {}
 
     /**
-     * Afficher méthodes de paiement Utilisateur
+     * Afficher 1 méthode de paiement
      */
-    public function getUserPayment()
+    public function getPayment()
     {
         View::render('user/payment', array(
             'payment' => $this->getPaymentMethod(1)
@@ -89,6 +91,8 @@ final class UserController extends Controller
     public function deleteUserDelivery()
     {}
 
+
+
     private function getUserMin(string $id)
     {
 
@@ -113,24 +117,46 @@ final class UserController extends Controller
 
     private function getDeliveryMethod(string $id)
     {
-
         return $this->db->query_object('DeliveryModel',
            "SELECT id, type, country, city, zipcode, street, number, additional, user
             FROM DeliveryAddress
             WHERE id = ${id}"
         );
-
     }
 
     private function getPaymentMethod(string $id)
     {
-
-        return $this->db->query_object('DeliveryModel',
+        return $this->db->query_object('PaymentModel',
            "SELECT id, type, number, name, expiration, user
             FROM PaymentMethod
             WHERE id = ${id}"
         );
+    }
 
+    private function getDeliveryByUser(string $userId)
+    {
+        return $this->db->query_object('DeliveryModel',
+           "SELECT id, type, country, city, zipcode, street, number, additional
+            FROM DeliveryAddress
+            WHERE user = ${userId}"
+        );
+    }
+
+    private function getPaymentByUser(string $userId)
+    {
+        return $this->db->query_object('PaymentModel',
+           "SELECT id, type, number, name, expiration
+            FROM PaymentMethod
+            WHERE user = ${userId}"
+        );
+    }
+    private function getOrderByUser(string $userId)
+    {
+        return $this->db->query_object('OrderedModel',
+           "SELECT id, contact, bill, tracking, date, amount, state
+            FROM Ordered
+            WHERE user = ${userId}"
+        );
     }
 
 }
