@@ -15,7 +15,6 @@ final class ProductController extends Controller
     public function home(string $page = '1')
     {
         
-        // SessionController::guard();
         View::render('product/list', array(
             'products' => $this->getPagedProducts($page),
             'current_page' => $page,
@@ -68,7 +67,7 @@ final class ProductController extends Controller
           "SELECT Product.id, Product.name, Product.price, Product.stock, Product.picture1, Category.VAT
            FROM Product 
            INNER JOIN Category
-           ON Product.category = Category.id}"
+           ON Product.category = Category.id"
         );
 
     }

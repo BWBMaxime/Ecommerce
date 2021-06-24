@@ -30,7 +30,7 @@ final class View
 
         self::$PAGE = $view;
         self::$PARAMS = $params;
-        self::include('layout', array("_TITLE" => $title));
+        self::include('layout', array("TITLE" => $title));
 
         exit();
 
