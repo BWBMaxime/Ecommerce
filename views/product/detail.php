@@ -1,6 +1,5 @@
-<? $_ASSET::style('style') ?>
-<? $products = getProduct($id); ?>
-  <? foreach($products as $product) : ?>
+<? $ASSET::style_url('https://use.fontawesome.com/releases/v5.11.2/css/all.css') ?>
+<? $ASSET::style('style') ?>
     <!-- Images -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
       <div class="flex flex-col md:flex-row -mx-4">
@@ -8,24 +7,20 @@
           <div x-data="{ image: 1 }" x-cloak>
             <div class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
               <div x-show="image === 1" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                <span class="text-5xl">1</span>
+                  <img src="<?= $product->picture1() ?>">
               </div>
 
               <div x-show="image === 2" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                <span class="text-5xl">2</span>
+                <img src="<?= $product->picture2() ?>">
               </div>
 
               <div x-show="image === 3" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                <span class="text-5xl">3</span>
-              </div>
-
-              <div x-show="image === 4" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                <span class="text-5xl">4</span>
+                <img src="<?= $product->picture3() ?>">
               </div>
             </div>
-            <!-- Border image -->
+            <!-- Small image -->
             <div class="flex -mx-2 mb-4">
-              <template x-for="i in 4">
+              <template x-for="i in 3">
                 <div class="flex-1 px-2">
                   <button x-on:click="image = i" :class="{ 'ring-1 ring-gray-600 ring-inset': image === i }"
                     class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
@@ -39,7 +34,7 @@
 
         <!-- Name of product -->
         <div class="md:flex-1 px-4">
-          <h2 class="mb-3 leading-tight tracking-tight font-light text-3xl md:text-4xl color26"><?= $product["name"]?>
+          <h2 class="mb-3 leading-tight tracking-tight font-light text-3xl md:text-4xl color26"><?= $product->name() ?>
             <!-- Favorite -->
             <button class="inline-block ml-6 p-3 text-center text-white transition border border-gray-900 rounded-full ripple hover:bg-gray-50 focus:outline-none">
               <svg class="w-4 h-4 color26" xmlns="http://www.w3.org/2000/svg" viewBox="2 2 16 16"
@@ -54,16 +49,18 @@
           <div class="flex items-center space-x-4 my-4">
             <div>
               <div class="rounded-lg bg-gray-100 flex py-2 px-3">
-                <span class="color4C mr-1 mt-1">€</span>
-                <span class="color4C text-2xl"><?= $product["price"]?></span>
+                <span class="color4C mr-1 mt-1">$</span>
+                <span class="color4C text-2xl"><?= $product->price(true) ?></span>
               </div>
             </div>
             <div class="flex-1">
+              <p class="color4C font-bold text-sm ml-4 mt-1">Stock : <?= $product->stock() ?></p>
             </div>
           </div>
 
+
           <!-- Summary -->
-          <p class="text-gray-500"><?= $product["description"]?></p>
+          <p class="text-gray-500"><?= $product->description() ?></p>
 
           <!-- Quantity -->
           <div class="flex py-4 space-x-4">
@@ -105,10 +102,9 @@
         <a class="uppercase tracking-wide no-underline hover:no-underline font-medium color4c text-xl mb-8" href="#">
           Description
         </a>
-        <p class="mt-6"><?= $product["description"]?></p>
+        <p class="mt-6"><?= $product->description() ?></p>
       </div>
     </section>
-  <? endforeach ?>
 
 <!-- Script carousel images -->
-<? $_ASSET::script_url('https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js') ?>
+<? $ASSET::script_url('https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js') ?>
