@@ -5,8 +5,7 @@
     "/product/{product_id}": "ProductController::product",
     "/cart": "CartController::getCart",
     "/cart/{product_id}": {
-        "POST": "CartController::addProduct",
-        "PUT": "CartController::updateProduct",
+        "POST": "CartController::updateProduct",
         "DELETE": "CartController::deleteProduct"
     },
     "/checkout/session": "CheckoutController::getSession",
@@ -24,19 +23,17 @@
     },
     "/user/profile": {
         "GET":  "UserController::getUserProfile",
-        "PUT": "UserController::editUserProfile",
+        "POST": "UserController::editUserProfile",
         "DELETE": "UserController::deleteUserProfile"
     },
     "/user/payment": {
         "GET":  "UserController::getUserPayment",
-        "POST": "UserController::addUserPayment",
-        "PUT": "UserController::editUserPayment",
+        "POST": "UserController::editUserPayment",
         "DELETE": "UserController::deleteUserPayment"
     },
     "/user/delivery": {
         "GET":  "UserController::getUserDelivery",
-        "POST": "UserController::addUserDelivery",
-        "PUT": "UserController::editUserDelivery",
+        "POST": "UserController::editUserDelivery",
         "DELETE": "UserController::deleteUserDelivery"
     }
 
