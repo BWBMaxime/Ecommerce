@@ -7,7 +7,7 @@ abstract class Controller implements CRUDInterface, RepositoryInterface
 
     protected object $db;
 
-    public function __construct()
+    public final function __construct()
     {
 
         $this->db = new Database();

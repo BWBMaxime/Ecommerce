@@ -1,4 +1,4 @@
-<? $_ASSET::style('style') ?>
+<? $ASSET::style('style') ?>
 
 <!-- Cart -->
 <div class="w-full flex justify-center my-6">
@@ -139,4 +139,4 @@
     </div>
 </div>
 
-<? $_ASSET::script_url('https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js') ?>
+<? $ASSET::script_url('https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js') ?>
