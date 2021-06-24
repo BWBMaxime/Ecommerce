@@ -12,8 +12,9 @@ final class View
     {
 
         extract(array(
-            "_ASSET" => "\\Wails\\Core\\Asset",
-            "_VIEW" => "\\Wails\\Core\\View"            
+            "ASSET" => "\\Wails\\Core\\Asset",
+            "SESSION" => "\\Wails\\Core\\Session",
+            "VIEW" => "\\Wails\\Core\\View"          
         ));
 
         extract($params);
@@ -25,9 +26,12 @@ final class View
     public static function render(string $view, array $params = [], string $title = null)
     {
 
+        extract($params);
+
         self::$PAGE = $view;
         self::$PARAMS = $params;
         self::include('layout', array("_TITLE" => $title));
+
         exit();
 
     }

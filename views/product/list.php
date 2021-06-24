@@ -1,5 +1,5 @@
-<? $_ASSET::style('style') ?>
-<? $_ASSET::style('product') ?>
+<? $ASSET::style('style') ?>
+<? $ASSET::style('product') ?>
 
 <!-- Carousel -->
 <div class="carousel relative container mx-auto" style="max-width:1600px;">

@@ -1,5 +1,5 @@
-<? $_ASSET::script_url("https://polyfill.io/v3/polyfill.min.js?features=default") ?>
-<? $_ASSET::style('delivery') ?>
+<? $ASSET::script_url("https://polyfill.io/v3/polyfill.min.js?features=default") ?>
+<? $ASSET::style('delivery') ?>
 
 <div class="form-meth">
     <p class="text-black text-4xl my-4 ">Methode de livraison</p>
@@ -65,5 +65,5 @@
 <!-- Google map -->
 <div id="map"></div>
 
-<? $_ASSET::script('delivery') ?>
+<? $ASSET::script('delivery') ?>
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCpvvuzkpusOIBZHnZeKSDeWFP-KBO5UOg&callback=initMap" async defer></script>

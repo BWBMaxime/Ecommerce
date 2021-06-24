@@ -1,4 +1,4 @@
-<? $_ASSET::style('style') ?>
+<? $ASSET::style('style') ?>
 
 <!-- Images -->
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
@@ -118,4 +118,4 @@
 </section>
 
 <!-- Script carousel images -->
-<? $_ASSET::script_url('https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js') ?>
+<? $ASSET::script_url('https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js') ?>

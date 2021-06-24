@@ -1,4 +1,4 @@
-<? $_ASSET::style('navbar') ?>
+<? $ASSET::style('navbar') ?>
 
 <nav id="navbar" class="w-full fixed bg-white z-50 top-0 py-1 shadow-xl">
     <div class="w-full container mx-auto flex items-center justify-between mt-0 px-6 py-3">
@@ -12,7 +12,7 @@
             <nav>
                 <ul class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0" id="cartsize">
                     <a class="flex items-center" href="/">
-                        <? $_ASSET::image('logo', 'ECOMMERCE Website Logo') ?>
+                        <? $ASSET::image('logo', 'ECOMMERCE Website Logo') ?>
                         <h1 class="font-bold pl-5">ECOMMERCE</h1>
                     </a>                    
                     <div class="dropdown">
@@ -32,15 +32,13 @@
         </div>
 
         <div class="order-2 md:order-3 flex items-center" id="nav-content">
-
-            <div>
-                <input class="favorite styled" type="button" value="Login"> </input>  <!-- Bouton Login -->
-            </div>
-
-            <div>
-                <input class="favorite styled2" type="button" value="Sign In"> </input>   <!-- Bouton Sign In-->
-            </div>
-            
+        <? if ($SESSION::isLogged()): ?>
+            <div><input class="favorite styled" type="button" value="Profile"></div>  <!-- Bouton Profil -->
+            <div><input class="favorite styled2" type="button" value="Logout"></div>   <!-- Bouton Log Out-->
+        <? else: ?>
+            <div><input class="favorite styled" type="button" value="Login"></div>  <!-- Bouton Login -->
+            <div><input class="favorite styled2" type="button" value="Sign In"></div>   <!-- Bouton Sign In-->
+        <? endif ?>
             <a class="pl-3 inline-block no-underline hover:text-black" href="#">     <!-- icone du panier --> 
                 <svg class="cart" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24">
@@ -54,5 +52,7 @@
     </div>
 </nav>
 
-<hr class="h-12">
-<hr class="h-10">
+<hr class="h-20">
+<hr class="h-2">
+
+<? $ASSET::script('navbar') ?>

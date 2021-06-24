@@ -1,4 +1,4 @@
-<? $_ASSET::style('footer') ?>
+<? $ASSET::style('footer') ?>
 
 <footer class="flex flex-col justify-center">
     <section class="w-full flex justify-center">
