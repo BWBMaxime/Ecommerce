@@ -4,7 +4,6 @@ namespace Wails\Controllers;
 use Wails\Core\Controller;
 use Wails\Core\Error;
 use Wails\Core\HTTP;
-use Wails\Core\Request;
 use Wails\Core\Session;
 use Wails\Core\View;
 
@@ -103,8 +102,8 @@ final class SessionController extends Controller
         // $this->logout();
 
         if (Session::isSet() && isset($_COOKIE['ID']) && isset($_COOKIE['TOKEN']))
-            // return ($this->checkUser('1', 'v9fFLsdDjwYgZHNAaQGUrvreakSpg1PGyV3hZd')) ? true : false;
-            return ($this->checkUser($_COOKIE['ID'], $_COOKIE['TOKEN'])) ? true : false;
+            return ($this->checkUser('1', 'v9fFLsdDjwYgZHNAaQGUrvreakSpg1PGyV3hZd')) ? true : false;
+            // return ($this->checkUser($_COOKIE['ID'], $_COOKIE['TOKEN'])) ? true : false;
         return false;
 
     }

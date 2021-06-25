@@ -21,6 +21,7 @@ final class Script
                 namespace Wails\Controllers;
                 use Wails\Core\Controller;
                 use Wails\Core\Error;
+                use Wails\Core\HTTP;
                 use Wails\Core\Session;
                 use Wails\Core\View;
                 
