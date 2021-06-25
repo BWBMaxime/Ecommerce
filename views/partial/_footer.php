@@ -27,11 +27,11 @@
                         </h2>
                         <ul>
                             <li class="liens">
-                                <? $ASSET::document('test', 'Conditions Générales de Ventes', true) ?>
+                                <? $ASSET::document('cgv', 'Conditions Générales de Ventes', true) ?>
                                 <br>
-                                <? $ASSET::document('test', 'Conditions Générales d\'Utilisation', true) ?>
+                                <? $ASSET::document('cgu', 'Conditions Générales d\'Utilisation', true) ?>
                                 <br>
-                                <? $ASSET::document('test', 'Cookies et Protection des Données Personnelles', true) ?>
+                                <? $ASSET::document('cookies', 'Cookies et Protection des Données Personnelles', true) ?>
                             </li> 
                         </ul>
                     </div>
