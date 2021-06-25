@@ -15,7 +15,7 @@ final class CartController extends Controller
     public function getCart()
     {
         $session = '9';
-        View::render("cart/cart", array(
+        View::render('session/cart', array(
             'cart' => $this->getSessionCart($session),
             'cart_subtotal' => $this->getSubtotalPrice($session),
             'cart_total' => $this->getTotalPrice($session)

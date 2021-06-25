@@ -3,6 +3,8 @@
 namespace Wails\Controllers;
 use Wails\Core\Controller;
 use Wails\Core\Error;
+use Wails\Core\HTTP;
+use Wails\Core\Request;
 use Wails\Core\Session;
 use Wails\Core\View;
 
@@ -35,19 +37,19 @@ final class SessionController extends Controller
     public function login()
     {
 
-        $user = $this->getUser($_POST['TOKEN']);
+        // $user = $this->getUser($_POST['TOKEN']);
         
-        if ($user) {
+        // if ($user) {
 
-            Session::status(true);
-            setcookie("ID", $user->id(), time()+3600);
-            setcookie("TOKEN", $user->token(), time()+3600);
+        //     Session::status(true);
+        //     setcookie("ID", $user->id(), time()+3600);
+        //     setcookie("TOKEN", $user->token(), time()+3600);
 
-        } else {
+        // } else {
 
-            $this->logout();
+        //     $this->logout();
 
-        }
+        // }
 
     }
 

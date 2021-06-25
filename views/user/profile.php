@@ -1,5 +1,4 @@
-<? $ASSET::style("style") ?>
-<? $ASSET::style("form") ?>
+<? $ASSET::style('form') ?>
 
 <div class="flex items-end h-screen w-full justify-center">
     <div class="flex items-start mt-20 h-screen w-full justify-center">

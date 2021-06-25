@@ -1,5 +1,3 @@
-<? $ASSET::style('style') ?>
-
 <!-- Cart -->
 <div class="w-full flex justify-center my-6">
     <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
@@ -21,18 +19,13 @@
                 <tbody>
                     <!-- One product -->
                     <? foreach ($cart as $product): ?>
-                    <tr>
-                        <td class="hidden pb-4 md:table-cell">
-                            <a href="#">
-                                <img src=<?= $product->picture1() ?>
-                                    class="w-20 rounded" alt="Thumbnail">
-                            </a>
-                        </td>
-                        <!-- Product name -->
-                        <td>
-                            <a href="#">
+                    <tr id="<?= $product->id() ?>">
+                        <td class="hidden pb-4 md:table-cell flex">
+                            <a href="/product/<?= $product->id() ?>" class="flex items-center">
+                                <!-- Product picture -->
+                                <img src="<?= $product->picture1() ?>" class="w-20 mr-5 rounded" alt="Thumbnail">
+                                <!-- Product name -->
                                 <p class="text-left font-bold text-xl hover:text-gray-400"><?= $product->name() ?></p>
-                               
                             </a>
                         </td>
                         <!-- Quantity -->
