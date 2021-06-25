@@ -1,7 +1,5 @@
-
-
-	<div class="payment-method ">
-PAYMENT METHOD
+<div class="payment-method">
+ PAYMENT METHOD
 	</div>
 	
 	
@@ -17,7 +15,7 @@ PAYMENT METHOD
 	 
 	 
 			<div>
-				<h2 "px-2 text-gray-1000"> Nom: </h2>
+				<h2 class=""px-2 text-gray-1000"> Nom: </h2>
 				<h2 "px-2 text-gray-1000"> Prénom: </h2>
 				<h2 "px-2 text-gray-1000"> N° of card: </h2>
 				<h2 "px-2 text-gray-1000"> Expiry date: </h2>

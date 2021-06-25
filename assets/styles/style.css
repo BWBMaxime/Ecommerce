@@ -31,3 +31,17 @@ h1, h2, h3, h4, h5, h6, th {
 .colorUrgent {
     color: #EF9343;
 }
+
+.colorPositif {
+    color: #89EF43;
+}
+
+
+.payment-method {
+    font-family: 'Montserrat', sans-serif;
+	color: #263843;        
+    font-style: bold;
+	text-align: center;	
+    font-size: 20px;
+  
+}

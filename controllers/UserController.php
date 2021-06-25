@@ -37,7 +37,10 @@ final class UserController extends Controller
      * Afficher méthodes de paiement Utilisateur
      */
     public function getUserPayment()
-    {}
+    { 
+        View::render('payment', array(), 
+        'Your Payment');
+    }
 
     /**
      * Ajouter méthode de paiement Utilisateur
