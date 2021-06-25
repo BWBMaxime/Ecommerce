@@ -20,26 +20,13 @@
                         </header>
                         <div class="filter-content ml-0.5" id="collapse_aside1">
                             <div class="card-body"> 
-                                <label class="custom-control">
-                                    <div class="custom-control-label">
-                                        <input type="checkbox" checked="" class="custom-control-input"> Electronics
-                                    </div>
-                                </label>
-                                <label class="custom-control">
-                                    <div class="custom-control-label">
-                                        <input type="checkbox" checked="" class="custom-control-input"> Computers
-                                    </div>
-                                </label>
-                                <label class="custom-control">
-                                    <div class="custom-control-label">
-                                        <input type="checkbox" checked="" class="custom-control-input"> Portable
-                                    </div>
-                                </label>
-                                <label class="custom-control">
-                                    <div class="custom-control-label">
-                                        <input type="checkbox" checked="" class="custom-control-input"> Audio
-                                    </div>
-                                </label>
+                                <? foreach ($categories as $category): ?>
+                                    <label class="custom-control">
+                                        <div class="custom-control-label">
+                                            <input type="checkbox" checked="" class="custom-control-input"><?= " " . $category->name() ?>
+                                        </div>
+                                    </label>
+                                <? endforeach ?>
                             </div>
                         </article>
                         <!-- Price -->

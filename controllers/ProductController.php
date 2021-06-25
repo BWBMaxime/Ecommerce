@@ -17,6 +17,7 @@ final class ProductController extends Controller
         
         View::render('product/list', array(
             'products' => $this->getPagedProducts($page),
+            'categories' => $this->getCategory(),
             'current_page' => $page,
             'last_page' => $this->getLastPage()
         ));
@@ -42,7 +43,6 @@ final class ProductController extends Controller
             Error::status(404);
  
         }
-
     }
 
     private function getPagedProducts($page = 1, $limit = 20)
@@ -95,5 +95,14 @@ final class ProductController extends Controller
         ) / $limit);
 
     }
+
+    private function getCategory()
+    {
+        return $this->db->query_objects('CategoryModel',
+           "SELECT *
+            FROM Category"
+        );
+    }
+
 
 }

@@ -17,7 +17,7 @@ final class PaymentModel extends Model
     public function type() { return $this->type; }
     public function number() { return $this->number; }
     public function name() { return $this->name; }
-    public function expiration() { return $this->expiration; }
+    public function expiration() { return date_format(date_create($this->expiration), 'm/Y'); }
     public function user() { return $this->user; }
 
 }
