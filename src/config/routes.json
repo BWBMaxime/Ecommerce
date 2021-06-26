@@ -3,25 +3,22 @@
     "/": "ProductController::home",
     "/products/{page_number}": "ProductController::home",
     "/product/{product_id}": "ProductController::product",
-    "/cart": "CartController::getCart",
-    "/cart/{product_id}": {
+    "/cart": {
+        "GET": "CartController::getCart",
         "POST": "CartController::updateProduct",
         "DELETE": "CartController::deleteProduct"
     },
-    "/checkout/session": "CheckoutController::getSession",
-    "/checkout/delivery": "CheckoutController::getDelivery",
-    "/checkout/payment": "CheckoutController::getPayment",
+    "/checkout": {
+        "GET": "CheckoutController::getCheckout",
+        "POST": "CheckoutController::updateCheckout"
+    },
     "/checkout/finish": "CheckoutController::getFinish",
     "/session": {
-        "GET": "SessionController::getLogin",
-        "POST": "SessionController::login",
+        "GET": "SessionController::login",
+        "POST": "SessionController::auth",
         "DELETE": "SessionController::logout"
     },
-    "/session/new": {
-        "GET": "SessionController::getSignup",
-        "POST": "SessionController::signup"
-    },
-    "/user/profile": {
+    "/user": {
         "GET":  "UserController::getUserProfile",
         "POST": "UserController::editUserProfile",
         "DELETE": "UserController::deleteUserProfile"
