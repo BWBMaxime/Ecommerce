@@ -5,19 +5,18 @@ namespace Wails\Core;
 final class Session
 {
 
-    private static bool $status = false;
-
     public function __construct()
     {
 
-        if (!Session::isSet()) session_start();
+        session_start();
+        if (!Session::isSet()) Session::status(false);
 
     }
 
     public static function status(bool $bool)
     {
 
-        self::$status = $bool;
+        $_SESSION['STATUS'] = $bool;
 
     }
 
@@ -31,7 +30,7 @@ final class Session
     public static function isLogged() : bool
     {
 
-        return (self::$status) ? true : false;
+        return (isset($_SESSION['STATUS'])) ? $_SESSION['STATUS'] : false;
 
     }
 

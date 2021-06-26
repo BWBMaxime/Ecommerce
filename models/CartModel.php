@@ -18,6 +18,15 @@ final class CartModel extends Model
     public function products()
     { return $this->products; }
 
+    public function totalVAT()
+    {
+
+        return array_sum(array_map(function($obj) {
+            return $obj->totalPrice(true) - $obj->totalPrice(false);
+        }, $this->products));
+        
+    }
+
     public function totalPrice(bool $VAT = false)
     {
 
