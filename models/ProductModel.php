@@ -18,20 +18,52 @@ final class ProductModel extends Model
     private string|null $category;
     private string|null $VAT;
 
-    public function id() { return $this->id; }
-    public function name() { return $this->name; }
-    public function description() { return $this->description; }
-    public function stock() { return $this->stock; }
-    public function quantity() { return $this->quantity; }
-    public function picture1() { return $this->picture1; }
-    public function picture2() { return $this->picture2; }
-    public function picture3() { return $this->picture3; }
-    public function category() { return $this->category; }
-    public function VAT() { return $this->VAT; }
-    
+    public function id()
+    { return $this->id; }
+
+    public function name()
+    { return $this->name; }
+
+    public function description()
+    { return $this->description; }
+
+    public function stock()
+    { return $this->stock; }
+
+    public function quantity()
+    { return $this->quantity; }
+
+    public function picture1()
+    { return $this->picture1; }
+
+    public function picture2()
+    { return $this->picture2; }
+
+    public function picture3()
+    { return $this->picture3; }
+
+    public function category()
+    { return $this->category; }
+
+    public function VAT()
+    { return $this->VAT; }
+
     public function price(bool $VAT = false)
     {
+
         return number_format(($VAT) ? $this->price + ($this->price * $this->VAT / 100) : $this->price, 2);
+
     }
+    
+    public function totalPrice(bool $VAT = false)
+    {
+
+        return number_format($this->price($VAT) * $this->quantity(), 2);
+
+    }
+
+    public function setQuantity($value)
+    { $this->quantity = $value; }
+
 
 }

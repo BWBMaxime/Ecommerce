@@ -15,13 +15,29 @@ final class OrderedModel extends Model
     private string|null $user;
     private string|null $state;
 
-    public function id() { return $this->id; }
-    public function contact() { return $this->contact; }
-    public function bill() { return $this->bill; }
-    public function tracking() { return $this->tracking; }
-    public function date() { return $this->date; }
-    public function amount() { return $this->amount; }
-    public function user() { return $this->user; }
-    public function state() { return $this->state; }
+    
+    public function id()
+    { return $this->id; }
+    
+    public function contact()
+    { return $this->contact; }
+    
+    public function bill()
+    { return $this->bill; }
+    
+    public function tracking()
+    { return $this->tracking; }
+    
+    public function date()
+    { return $this->date; }
+    
+    public function amount()
+    { return $this->amount; }
+    
+    public function user()
+    { return $this->user; }
+    
+    public function state()
+    { return $this->state; }
 
 }

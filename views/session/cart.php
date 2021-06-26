@@ -7,50 +7,46 @@
                 <thead>
                     <!-- Titles table -->
                     <tr class="h-12 uppercase">
-                        <th class="hidden md:table-cell"></th>
-                        <th class="text-left font-medium text-base">Product</th>
-                        <th class="lg:text-right text-left pl-5 lg:pl-0 font-medium text-base">Quantity</th>
-                        <th class="hidden text-right md:table-cell font-medium text-base">Unit price</th>
-                        <th class="text-right font-medium text-base">Total price</th>
-                        <th class="text-right font-medium text-base"></th>
+                        <th class="text-center font-medium text-base">Product</th>
+                        <th class="text-center font-medium text-base">Quantity</th>
+                        <th class="hidden text-center md:table-cell font-medium text-base">Unit price</th>
+                        <th class="text-center font-medium text-base">Total price</th>
+                        <th class="text-center font-medium text-base"></th>
                     </tr>
                 </thead>
                 <!-- Cart products -->
                 <tbody>
                     <!-- One product -->
-                    <? foreach ($cart as $product): ?>
+                    <? foreach ($cart->products() as $product): ?>
                     <tr id="<?= $product->id() ?>">
-                        <td class="hidden pb-4 md:table-cell flex">
+                        <td class="hidden pb-4 md:table-cell flex justify-center items-center w-3/6">
                             <a href="/product/<?= $product->id() ?>" class="flex items-center">
                                 <!-- Product picture -->
-                                <img src="<?= $product->picture1() ?>" class="w-20 mr-5 rounded" alt="Thumbnail">
+                                <img src="<?= $product->picture1() ?>" class="w-20 rounded bg-gray-300 border border-1 border-gray-400" alt="Thumbnail">
                                 <!-- Product name -->
-                                <p class="text-left font-bold text-xl hover:text-gray-400"><?= $product->name() ?></p>
+                                <p class="px-5 w-max font-bold text-lg mt-4 hover:text-gray-400 truncate"><?= $product->name() ?></p>
                             </a>
                         </td>
                         <!-- Quantity -->
-                        <td class="justify-center md:justify-end md:flex mt-7">
-                            <div class="w-20 h-10">
-                                <div class="relative flex flex-row w-full h-9">
-                                    <input type="number" value="<?= $product->quantity() ?>"
-                                        class="w-full rounded-xl font-semibold text-center text-gray-700 bg-gray-100 outline-none focus:outline-none hover:text-black focus:text-black" />
-                                </div>
+                        <td class="justify-center flex mt-7">
+                            <div class="relative flex justify-center w-5/6 h-10">
+                                <input type="number" value="<?= $product->quantity() ?>" min="1" max="<?= $product->stock() ?>" class="w-full px-2 rounded-xl font-semibold text-center text-gray-700 bg-gray-300 outline-none focus:outline-none hover:text-black focus:text-black" />
                             </div>
                         </td>
                         <!-- Unit price -->
-                        <td class="hidden text-right md:table-cell">
+                        <td class="hidden text-center md:table-cell">
                             <span class="text-sm lg:text-base font-bold">
-                            <?= $product->price(true) ?>
+                            <?= $product->price(true) ?> $
                             </span>
                         </td>
                         <!-- Total price -->
-                        <td class="text-right">
+                        <td class="text-center">
                             <span class="text-sm lg:text-base font-bold">
-                            <?= $product->price(true) * $product->quantity() ?>
+                            <?= $product->totalPrice(true) ?> $
                             </span>
                         </td>
                         <!-- Delete icon -->
-                        <td class="text-right">
+                        <td class="text-center">
                             <button
                                 class="inline-block p-3 text-center text-white transition rounded-full shadow ripple hover:shadow-lg focus:outline-none backUrgent">
                                 <svg class="w-5 h-5 text-white backUrgent" xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +88,7 @@
                                 SubTotal
                             </div>
                             <div class="lg:px-4 lg:py-2 lg:text-base text-center text-gray-900">
-                            <?= number_format($cart_subtotal, 2) ?> $
+                            <?= $cart->totalPrice(false) ?> $
                             </div>
                         </div>
                         <div class="flex justify-between pt-4 border-b">
@@ -100,7 +96,7 @@
                                 TVA
                             </div>
                             <div class="lg:px-4 lg:py-2 lg:text-base text-center text-gray-900">
-                            <?= number_format($cart_total - $cart_subtotal, 2) ?> $
+                            <?= $cart->totalPrice(true) - $cart->totalPrice(false) ?> $
                             </div>
                         </div>
                         <div class="flex justify-between pt-4 border-b">
@@ -108,7 +104,7 @@
                                 Total
                             </div>
                             <div class="lg:px-4 lg:py-2 m-1 lg:text-lg font-bold text-center text-gray-900">
-                            <?= number_format($cart_total, 2) ?> $
+                            <?= $cart->totalPrice(true) ?> $
                             </div>
                         </div>
                         <!-- Button checkout -->

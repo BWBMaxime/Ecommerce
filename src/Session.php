@@ -10,7 +10,7 @@ final class Session
     public function __construct()
     {
 
-        session_start();
+        if (!Session::isSet()) session_start();
 
     }
 
