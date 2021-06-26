@@ -1,1 +1,0 @@
-<p>CHECKOUT</p>

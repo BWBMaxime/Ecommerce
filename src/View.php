@@ -32,7 +32,7 @@ final class View
         self::$PARAMS = $params;
         self::include('layout', array("TITLE" => $title));
 
-        exit();
+        exit;
 
     }
 
@@ -40,6 +40,14 @@ final class View
     {
 
         self::include(self::$PAGE, self::$PARAMS);
+
+    }
+
+    public static function redirect(string $url)
+    {
+        
+        header("Location: ${url}");
+        exit;
 
     }
 

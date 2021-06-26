@@ -8,9 +8,12 @@ final class Error
     public static function status(int $status)
     {
 
-        Utils::pre(match ($status) {
-            200 => "OK",
-            404 => "STATUS ERROR : 404 Content Not Found"
+        Utils::log(match ($status) {
+            400 => "ERROR 400 : Bad Request",
+            401 => "ERROR 401 : Unauthorized",
+            403 => "ERROR 403 : Forbidden",
+            404 => "ERROR 404 : Not Found",
+            418 => "ERROR 418 : I'm a teapot"
         });
         exit();
 

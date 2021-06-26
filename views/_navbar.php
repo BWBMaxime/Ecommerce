@@ -30,7 +30,7 @@
             <div><input class="favorite styled" type="button" value="Profile"></div>  <!-- Bouton Profil -->
             <div><input class="favorite styled2" type="button" value="Logout"></div>   <!-- Bouton Log Out-->
         <? else: ?>
-            <div><input class="favorite styled" type="button" value="Login"></div>  <!-- Bouton Login -->
+            <a href="/session"><input class="favorite styled" type="button" value="Login"></a>  <!-- Bouton Login -->
             <div><input class="favorite styled2" type="button" value="Sign In"></div>   <!-- Bouton Sign In-->
         <? endif ?>
             <a class="pl-3 inline-block no-underline hover:text-gray" href="/cart">     <!-- icone du panier --> 
@@ -47,6 +47,5 @@
 </nav>
 
 <hr class="h-20">
-<hr class="h-2">
 
 <? $ASSET::script('navbar') ?>

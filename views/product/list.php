@@ -4,78 +4,12 @@
 <? $VIEW::include('product/_carousel') ?>
 
 <!--Section Filtre-->
-<div class="flex">
-    <section class="w-1/6 ml-2">
-        <h2 class="mt-16 mb-4 text-lg font-regular">FILTERS</h2>
-        <div id="filters" class="">
-            <hr class="solid col-9 mx-auto">
+<div class="flex flex-nowrap justify-center w-full">
 
-            <div class="d-md-flex d-lg-flex d-xl-flex justify-content-around col-9 mx-auto">
-                <!-- Categories -->
-                <div class="col-lg-4 col-xl-3 col-md-6">
-                    <article class="filter-group">
-                        <header class="card-header">
-                            <h6 class="title mt-6 mb-2 ml-3 font-extra-light">Categories</h6>
-                        </header>
-                        <div class="filter-content ml-0.5" id="collapse_aside1">
-                            <div class="card-body"> 
-                                <? foreach ($categories as $category): ?>
-                                    <label class="custom-control">
-                                        <div class="custom-control-label">
-                                            <input type="checkbox" checked="" class="custom-control-input"><?= " " . $category->name() ?>
-                                        </div>
-                                    </label>
-                                <? endforeach ?>
-                            </div>
-                        </article>
-                        <!-- Price -->
-                        <article class="filter-group">
-                            <header class="card-header">
-                                <h6 class="title mt-6 mb-2 ml-3 font-extra-light">Price</h6>
-                            </header>
-                            <div class="filter-content ml-0.5" id="collapse_aside3">
-                                <div class="card-body">
-                                    <label class="checkbox-btn">
-                                        <div class="btn btn-light">
-                                            <input type="checkbox" name="price" onclick="onlyOne(this)"> 1€ - 10€
-                                        </div>
-                                    </label>
-                                    <label class="checkbox-btn">
-                                        <div class="btn btn-light">
-                                            <input type="checkbox" name="price" onclick="onlyOne(this)"> 10€ - 25€
-                                        </div>
-                                    </label>
-                                    <label class="checkbox-btn">
-                                        <div class="btn btn-light">
-                                            <input type="checkbox" name="price" onclick="onlyOne(this)"> 25€ - 50€
-                                        </div>
-                                    </label>
-                                    <label class="checkbox-btn">
-                                        <div class="btn btn-light">
-                                            <input type="checkbox" name="price" onclick="onlyOne(this)"> 50€ - 100€
-                                        </div>
-                                    </label>
-                                    <label class="checkbox-btn">
-                                        <div class="btn btn-light">
-                                            <input type="checkbox" name="price" onclick="onlyOne(this)"> greater than 100€
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <!-- Button -->
-                <div class="col-lg-4 col-xl-3 col-md-6 mt-3">
-                    <button class="p-2 my-2 bg-gray-500 text-white rounded-md focus:outline-none focus:ring-2 ring-gray-300 ring-offset-2">
-                        <a href="#">Apply Now</a>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
+    <? // $VIEW::include('product/_filters', array('categories' => $categories)) ?>
+
     <!-- Product section -->
-    <section class="bg-white py-8 w-5/6">
+    <section class="bg-white py-8 w-4/6">
         <div class="container mx-auto flex items-center flex-wrap pt-4 pb-4">
             <nav id="store" class="w-full z-30 top-0 px-6 py-1">
                 <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
@@ -124,41 +58,6 @@
 <!-- Pagination -->
 <div class="flex items-center justify-center mb-20">
 
-    <? if ($current_page > 2): ?>
-    <a href="/products/1"  title="Go to first page">
-        <button title="Go to first page" class="text-purple-500 bg-transparent border-l border-t border-b border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-l outline-none focus:outline-none mb-1 ease-linear transition-all duration-150">
-            <i class="fas fa-angle-double-left"></i>
-        </button>
-    </a>
-    <? endif ?>
+    <? $VIEW::include('product/_pagination', array('current_page' => $current_page, 'last_page' => $last_page)) ?>
 
-    <? if ($current_page > 1): ?>
-    <a href="/products/<?= $current_page - 1 ?>" title="Go to previous page">
-        <button title="Go to previous page" class="text-purple-500 bg-transparent border-l border-t border-b border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150">
-            <i class="fas fa-angle-left"></i>
-        </button>
-    </a>
-    <? endif ?>
-
-    <button title="Current page" class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-xs px-5 py-3 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
-        type="button">
-        <?= ($current_page < 1) ? 1 : $current_page ?>
-    </button>
-
-    <? if ($current_page < $last_page): ?>
-    <a href="/products/<?= $current_page + 1 ?>" title="Go to next page">
-        <button title="Go to next page" class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150">
-            <i class="fas fa-angle-right"></i>
-        </button>
-    </a>
-    <? endif ?>
-
-    <? if ($current_page < ($last_page - 1)): ?>
-    <a href="/products/<?= $last_page ?>" title="Go to last page">
-        <button title="Go to last page" class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150">
-            <i class="fas fa-angle-double-right"></i>
-        </button>
-    </a>
-    <? endif ?>
-
-    </div>
+</div>
