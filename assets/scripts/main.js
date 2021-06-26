@@ -3,12 +3,12 @@ class HTTP
 
     static #host = `${window.location.protocol}//${window.location.host}`
 
-    static get(url, callback)
+    static get(url, callback, json = false)
     {
 
         try {
 
-            HTTP.#request('GET', url, false, callback)
+            HTTP.#request('GET', url, false, json, callback)
 
         } catch (error) {
 
@@ -18,12 +18,12 @@ class HTTP
 
     }
 
-    static post(url, value, callback = false)
+    static post(url, value, json = false, callback = false)
     {
 
         try {
 
-            HTTP.#request('POST', HTTP.#check(url), value, callback)
+            HTTP.#request('POST', HTTP.#check(url), value, json, callback)
 
         } catch (error) {
 
@@ -33,12 +33,12 @@ class HTTP
 
     }
 
-    static put(url, value, callback = false)
+    static put(url, value, json = false, callback = false)
     {
 
         try {
 
-            HTTP.#request('PUT', HTTP.#check(url), value, callback)
+            HTTP.#request('PUT', HTTP.#check(url), value, json, callback)
 
         } catch (error) {
 
@@ -48,12 +48,12 @@ class HTTP
 
     }
     
-    static delete(url, value, callback = false)
+    static delete(url, value, json = false, callback = false)
     {
 
         try {
 
-            HTTP.#request('DELETE', HTTP.#check(url), value, callback)
+            HTTP.#request('DELETE', HTTP.#check(url), value, json, callback)
 
         } catch (error) {
 
@@ -71,7 +71,7 @@ class HTTP
 
     }
 
-    static #request(method, url, value = false, callback = false)
+    static #request(method, url, value = false, json = false, callback = false)
     {
 
         const request = new XMLHttpRequest()
@@ -79,9 +79,11 @@ class HTTP
         request.setRequestHeader('Access-Control-Allow-Origin', '*')
         request.setRequestHeader('Content-Type', 'application/json')
         request.setRequestHeader('charset', 'utf8')
-        request.addEventListener('load', () => { if (callback) callback(request.responseText) })
+        request.addEventListener('load', () => {
+            if (callback) callback((json) ? JSON.parse(request.responseText) : request.responseText)
+        })
         request.addEventListener('error', () => { throw new Error(`${method}:${url}`) })
-        request.send((value) ? value : null)
+        request.send((value && json) ? JSON.stringify(value) : (value) ? value : null)
 
     }
 
