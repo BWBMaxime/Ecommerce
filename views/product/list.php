@@ -19,61 +19,48 @@
                         </header>
                         <div class="filter-content ml-0.5" id="collapse_aside1">
                             <div class="card-body"> 
-                                <label class="custom-control">
-                                    <div class="custom-control-label">
-                                        <input type="checkbox" checked="" class="custom-control-input"> Electronics
-                                    </div>
-                                </label>
-                                <label class="custom-control">
-                                    <div class="custom-control-label">
-                                        <input type="checkbox" checked="" class="custom-control-input"> Computers
-                                    </div>
-                                </label>
-                                <label class="custom-control">
-                                    <div class="custom-control-label">
-                                        <input type="checkbox" checked="" class="custom-control-input"> Portable
-                                    </div>
-                                </label>
-                                <label class="custom-control">
-                                    <div class="custom-control-label">
-                                        <input type="checkbox" checked="" class="custom-control-input"> Audio
-                                    </div>
-                                </label>
+                                <? foreach ($categories as $category): ?>
+                                    <label class="custom-control">
+                                        <div class="custom-control-label">
+                                            <input type="checkbox" checked="" class="custom-control-input"><?= " " . $category->name() ?>
+                                        </div>
+                                    </label>
+                                <? endforeach ?>
                             </div>
-                        </div>
-                    </article>
-                    <!-- Price -->
-                    <article class="filter-group">
-                        <header class="card-header">
-                            <h6 class="title mt-6 mb-2 ml-3 font-extra-light">Price</h6>
-                        </header>
-                        <div class="filter-content ml-0.5" id="collapse_aside3">
-                            <div class="card-body">
-                                <label class="checkbox-btn">
-                                    <div class="btn btn-light">
-                                        <input type="checkbox" name="price" onclick="onlyOne(this)"> 1€ - 10€
-                                    </div>
-                                </label>
-                                <label class="checkbox-btn">
-                                    <div class="btn btn-light">
-                                        <input type="checkbox" name="price" onclick="onlyOne(this)"> 10€ - 25€
-                                    </div>
-                                </label>
-                                <label class="checkbox-btn">
-                                    <div class="btn btn-light">
-                                        <input type="checkbox" name="price" onclick="onlyOne(this)"> 25€ - 50€
-                                    </div>
-                                </label>
-                                <label class="checkbox-btn">
-                                    <div class="btn btn-light">
-                                        <input type="checkbox" name="price" onclick="onlyOne(this)"> 50€ - 100€
-                                    </div>
-                                </label>
-                                <label class="checkbox-btn">
-                                    <div class="btn btn-light">
-                                        <input type="checkbox" name="price" onclick="onlyOne(this)"> greater than 100€
-                                    </div>
-                                </label>
+                        </article>
+                        <!-- Price -->
+                        <article class="filter-group">
+                            <header class="card-header">
+                                <h6 class="title mt-6 mb-2 ml-3 font-extra-light">Price</h6>
+                            </header>
+                            <div class="filter-content ml-0.5" id="collapse_aside3">
+                                <div class="card-body">
+                                    <label class="checkbox-btn">
+                                        <div class="btn btn-light">
+                                            <input type="checkbox" name="price" onclick="onlyOne(this)"> 1€ - 10€
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-btn">
+                                        <div class="btn btn-light">
+                                            <input type="checkbox" name="price" onclick="onlyOne(this)"> 10€ - 25€
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-btn">
+                                        <div class="btn btn-light">
+                                            <input type="checkbox" name="price" onclick="onlyOne(this)"> 25€ - 50€
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-btn">
+                                        <div class="btn btn-light">
+                                            <input type="checkbox" name="price" onclick="onlyOne(this)"> 50€ - 100€
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-btn">
+                                        <div class="btn btn-light">
+                                            <input type="checkbox" name="price" onclick="onlyOne(this)"> greater than 100€
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </article>
@@ -174,4 +161,4 @@
     </a>
     <? endif ?>
 
-</div>
+    </div>
