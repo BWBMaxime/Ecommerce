@@ -1,5 +1,3 @@
-<? $ASSET::style('style') ?>
-
 <!-- Cart -->
 <div class="w-full flex justify-center my-6">
     <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
@@ -20,29 +18,21 @@
                 <!-- Cart products -->
                 <tbody>
                     <!-- One product -->
-                    <tr>
-                        <td class="hidden pb-4 md:table-cell">
-                            <a href="#">
-                                <img src="https://limg.app/i/Calm-Cormorant-Catholic-Pinball-Blaster-yM4oub.jpeg"
-                                    class="w-20 rounded" alt="Thumbnail">
-                            </a>
-                        </td>
-                        <!-- Product name -->
-                        <td>
-                            <a href="#">
-                                <p class="text-left font-bold text-xl hover:text-gray-400">Earphone</p>
-                                <form action="" method="POST">
-                                    <button type="submit">
-                                        <small class="hover:text-gray-400 hover:underline text-xs color4C">(Remove item)</small>
-                                    </button>
-                                </form>
+                    <? foreach ($cart as $product): ?>
+                    <tr id="<?= $product->id() ?>">
+                        <td class="hidden pb-4 md:table-cell flex">
+                            <a href="/product/<?= $product->id() ?>" class="flex items-center">
+                                <!-- Product picture -->
+                                <img src="<?= $product->picture1() ?>" class="w-20 mr-5 rounded" alt="Thumbnail">
+                                <!-- Product name -->
+                                <p class="text-left font-bold text-xl hover:text-gray-400"><?= $product->name() ?></p>
                             </a>
                         </td>
                         <!-- Quantity -->
                         <td class="justify-center md:justify-end md:flex mt-7">
                             <div class="w-20 h-10">
                                 <div class="relative flex flex-row w-full h-9">
-                                    <input type="number" value="2"
+                                    <input type="number" value="<?= $product->quantity() ?>"
                                         class="w-full rounded-xl font-semibold text-center text-gray-700 bg-gray-100 outline-none focus:outline-none hover:text-black focus:text-black" />
                                 </div>
                             </div>
@@ -50,13 +40,13 @@
                         <!-- Unit price -->
                         <td class="hidden text-right md:table-cell">
                             <span class="text-sm lg:text-base font-bold">
-                                10.99€
+                            <?= $product->price(true) ?>
                             </span>
                         </td>
                         <!-- Total price -->
                         <td class="text-right">
                             <span class="text-sm lg:text-base font-bold">
-                                21,98€
+                            <?= $product->price(true) * $product->quantity() ?>
                             </span>
                         </td>
                         <!-- Delete icon -->
@@ -72,6 +62,7 @@
                             </button>
                         </td>
                     </tr>
+                    <? endforeach ?>
                 </tbody>
             </table>
 
@@ -98,10 +89,10 @@
                         <p class="mb-6 italic text-xs">Shipping and additionnal costs are calculated based on values you have entered</p>
                         <div class="flex justify-between border-b">
                             <div class="lg:px-4 lg:py-2 text-base lg:text-lg text-center text-gray-800">
-                                Subtotal
+                                SubTotal
                             </div>
                             <div class="lg:px-4 lg:py-2 lg:text-base text-center text-gray-900">
-                                21,98€
+                            <?= number_format($cart_subtotal, 2) ?> $
                             </div>
                         </div>
                         <div class="flex justify-between pt-4 border-b">
@@ -109,7 +100,7 @@
                                 TVA
                             </div>
                             <div class="lg:px-4 lg:py-2 lg:text-base text-center text-gray-900">
-                                20%
+                            <?= number_format($cart_total - $cart_subtotal, 2) ?> $
                             </div>
                         </div>
                         <div class="flex justify-between pt-4 border-b">
@@ -117,7 +108,7 @@
                                 Total
                             </div>
                             <div class="lg:px-4 lg:py-2 m-1 lg:text-lg font-bold text-center text-gray-900">
-                                26,52€
+                            <?= number_format($cart_total, 2) ?> $
                             </div>
                         </div>
                         <!-- Button checkout -->

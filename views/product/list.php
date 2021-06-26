@@ -1,8 +1,7 @@
 <? $ASSET::style_url('https://use.fontawesome.com/releases/v5.11.2/css/all.css') ?>
-<? $ASSET::style('style') ?>
 <? $ASSET::style('product') ?>
 
-<? $VIEW::include('partial/_carousel') ?>
+<? $VIEW::include('product/_carousel') ?>
 
 <!--Section Filtre-->
 <div class="flex">
@@ -75,14 +74,12 @@
             </div>
         </div>
     </section>
-
     <!-- Product section -->
     <section class="bg-white py-8 w-5/6">
         <div class="container mx-auto flex items-center flex-wrap pt-4 pb-4">
             <nav id="store" class="w-full z-30 top-0 px-6 py-1">
                 <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
-                    <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-xl "
-                        href="#">
+                    <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-xl" href="#">
                         Store
                     </a>
                     <div class="flex items-center" id="store-nav-content">

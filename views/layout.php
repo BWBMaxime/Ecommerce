@@ -9,18 +9,20 @@
     <meta name="description" content="free & open source PHP ecommerce framework">
     <meta name="keywords" content="ecommerce, commerce, shop, platform, product, checkout">
 
-    <? $ASSET::style_url('https://unpkg.com/tailwindcss/dist/tailwind.min.css') ?>
     <? $ASSET::style_url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&family=Roboto:wght@300&display=swap') ?>
+    <? $ASSET::style_url('https://unpkg.com/tailwindcss/dist/tailwind.min.css') ?>
+    <? $ASSET::style('main') ?>
+    <? $ASSET::script('main') ?>
 
 </head>
 
 <body class="w-full bg-white text-gray-600 leading-normal text-base tracking-normal">
 
-<? $VIEW::include('partial/_navbar') ?>
+<? $VIEW::include('_navbar') ?>
 
     <? $VIEW::yield() ?>
 
-<? $VIEW::include('partial/_footer') ?>
+<? $VIEW::include('_footer') ?>
 
 </body>
 

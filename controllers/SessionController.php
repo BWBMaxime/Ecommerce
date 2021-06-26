@@ -3,6 +3,7 @@
 namespace Wails\Controllers;
 use Wails\Core\Controller;
 use Wails\Core\Error;
+use Wails\Core\HTTP;
 use Wails\Core\Session;
 use Wails\Core\View;
 
@@ -35,19 +36,19 @@ final class SessionController extends Controller
     public function login()
     {
 
-        $user = $this->getUser($_POST['TOKEN']);
+        // $user = $this->getUser($_POST['TOKEN']);
         
-        if ($user) {
+        // if ($user) {
 
-            Session::status(true);
-            setcookie("ID", $user->id(), time()+3600);
-            setcookie("TOKEN", $user->token(), time()+3600);
+        //     Session::status(true);
+        //     setcookie("ID", $user->id(), time()+3600);
+        //     setcookie("TOKEN", $user->token(), time()+3600);
 
-        } else {
+        // } else {
 
-            $this->logout();
+        //     $this->logout();
 
-        }
+        // }
 
     }
 
@@ -101,8 +102,8 @@ final class SessionController extends Controller
         // $this->logout();
 
         if (Session::isSet() && isset($_COOKIE['ID']) && isset($_COOKIE['TOKEN']))
-            // return ($this->checkUser('1', 'v9fFLsdDjwYgZHNAaQGUrvreakSpg1PGyV3hZd')) ? true : false;
-            return ($this->checkUser($_COOKIE['ID'], $_COOKIE['TOKEN'])) ? true : false;
+            return ($this->checkUser('1', 'v9fFLsdDjwYgZHNAaQGUrvreakSpg1PGyV3hZd')) ? true : false;
+            // return ($this->checkUser($_COOKIE['ID'], $_COOKIE['TOKEN'])) ? true : false;
         return false;
 
     }
