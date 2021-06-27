@@ -8,8 +8,8 @@
         "POST": "CartController::updateProduct",
         "DELETE": "CartController::deleteProduct"
     },
-    "/checkout": {
-        "GET": "CartController::getCheckout",
+    "/checkout/{checkout_id}": "CartController::getCheckout",
+    "/checkout" : {
         "POST": "CartController::checkout"
     },
     "/session": {
