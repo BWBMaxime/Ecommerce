@@ -1,5 +1,5 @@
 <!-- Images -->
-<div id="<?=$product->id() ?>" class="product max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+<div id="<?=$product->id() ?>" class="product max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 py-16">
   <div class="flex flex-col md:flex-row -mx-4">
     <div class="md:flex-1 px-4">
       <div x-data="{ image: 1 }" x-cloak>
@@ -28,17 +28,8 @@
 
     <!-- Name of product -->
     <div class="md:flex-1 px-4">
-      <h2 class="mb-3 leading-tight tracking-tight font-light text-3xl md:text-4xl color26"><?= $product->name() ?>
-        <!-- Favorite -->
-        <button class="inline-block ml-6 p-3 text-center text-white transition border border-gray-900 rounded-full ripple hover:bg-gray-50 focus:outline-none">
-          <svg class="w-4 h-4 color26" xmlns="http://www.w3.org/2000/svg" viewBox="2 2 16 16"
-            fill="currentColor">
-            <path
-              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
-        </button>
-      </h2>
-
+      <h2 class="mb-3 leading-tight tracking-tight font-light text-3xl md:text-4xl color26"><?= $product->name() ?></h2>
+       
       <!-- Price -->
       <div class="flex items-center space-x-4 my-4">
         <div>
@@ -51,10 +42,6 @@
           <p class="color4C font-bold text-sm ml-4 mt-1">Stock : <?= $product->stock() ?></p>
         </div>
       </div>
-
-
-      <!-- Summary -->
-      <p class="text-gray-500"><?= $product->description() ?></p>
 
       <!-- Quantity -->
       <div class="flex py-4 space-x-4">
@@ -76,10 +63,10 @@
     </div>
   </div>
 </div>
-
+<hr>
 <!-- Description -->
 <section class="bg-white py-8">
-  <div class="container py-6 px-6 mx-auto border-t border-gray-600">
+  <div class="container py-32 px-6 mx-auto">
     <a class="uppercase tracking-wide no-underline hover:no-underline font-medium color4c text-xl mb-8" href="#">
       Description
     </a>

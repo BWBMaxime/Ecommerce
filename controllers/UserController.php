@@ -29,7 +29,28 @@ final class UserController extends Controller
      * Modifier infos profil Utilisateur
      */
     public function editUserProfile()
-    {}
+    {
+        // récupérer chaque valeur
+        $firstname = (string) HTTP::request(true)->firstname;
+        $lastname = (string) HTTP::request(true)->lastname;
+        $email = (string) HTTP::request(true)->email;
+        $birth = (string) HTTP::request(true)->birth;
+        $phone = (string) HTTP::request(true)->phone;
+        //$id = $_SESSION['user'];
+        $id = 5;
+
+        // mettre à jour l'utilisateur en base de données
+        $result = $this->updateUser($id, $firstname, $lastname, $email, $birth, $phone);
+        // repondre 200 avec un message de success ou 500 d'erreur
+        $httpCodeResponse = 200;
+        if ($result == false) {
+            $httpCodeResponse = 500;
+        } else {
+            $result = ["status" => "success"];
+        }
+
+        HTTP::response($httpCodeResponse, $result, true);
+    }
 
     /**
      * Supprimer Profil Utilisateur
@@ -140,6 +161,17 @@ final class UserController extends Controller
            "SELECT id, contact, bill, tracking, date, amount, state
             FROM Checkout
             WHERE user = ${userId}"
+        );
+    }
+    private function updateUser($id, $firstname, $lastname, $email, $birth, $phone) { 
+        return $this->db->query(
+            "UPDATE User
+            SET firstname = '${firstname}',
+                lastname = '${lastname}',
+                email = '${email}',
+                birth = '${birth}',
+                phone = '${phone}'
+            WHERE id = ${id}"
         );
     }
 
