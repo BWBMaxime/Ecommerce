@@ -44,14 +44,15 @@ final class ProductModel extends Model
     public function price(bool $VAT = false)
     {
 
-        return ($VAT) ? $this->getPrice() + ($this->getPrice() * $this->VAT() / 100) : $this->getPrice();
+        return (float) number_format(($VAT) ?
+            $this->getPrice() + ($this->getPrice() * $this->VAT() / 100) : $this->getPrice(), 2);
 
     }
     
     public function totalPrice(bool $VAT = false)
     {
 
-        return $this->price($VAT) * $this->quantity();
+        return (float) number_format($this->price($VAT) * $this->quantity(), 2);
 
     }
 

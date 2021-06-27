@@ -88,3 +88,9 @@ class HTTP
     }
 
 }
+
+function refresh(num = 0) {
+
+    setTimeout(() => { window.location.reload() }, num)
+
+}

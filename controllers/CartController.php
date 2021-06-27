@@ -81,13 +81,13 @@ final class CartController extends Controller
 
             $id = HTTP::request(true)->id;
 
-            $this->setCart(array_values(
+            $_SESSION['CART'] = array_values(
                 array_filter($_SESSION['CART'], function($obj) use($id)
                     {
                         return $obj['id'] !== (int) $id;
                     }  
                 )
-            ));
+            );
 
             HTTP::response(200);
 
@@ -121,13 +121,6 @@ final class CartController extends Controller
         if (!isset($_SESSION['CART'])) $_SESSION['CART'] = [];
         return (count($_SESSION['CART']) < 1) ?
             array() : new CartModel($this->getCartProducts($_SESSION['CART']));
-
-    }
-
-    private function setCart(mixed $value)
-    {
-
-        $_SESSION['CART'] = $value;
 
     }
 

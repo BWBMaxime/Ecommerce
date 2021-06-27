@@ -15,7 +15,7 @@ final class Cookie
     public static function set(string $name, mixed $value, int $time)
     {
 
-        setcookie($name, $value, time() + $time);
+        setcookie($name, $value, time() + $time, '/');
 
     }
     
