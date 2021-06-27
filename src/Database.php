@@ -33,6 +33,13 @@ final class Database
 
     }
 
+    public function query_default(string $query) : mixed
+    {
+
+        return $this->query($query)->fetch();
+
+    }
+
     public function query_array(string $query) : array|false
     {
 

@@ -1,20 +1,31 @@
-const products = document.querySelectorAll('tr.product');
+const products = document.querySelectorAll('tr.product')
+const checkout = document.querySelector('button#checkout')
 
-products.forEach(product => {
+if (products && checkout)
+{
 
-    product.querySelector('input.quantity').addEventListener('change', event => {
-        HTTP.post('/cart', {
-            'id': product.id,
-            'quantity': product.querySelector('input.quantity').value,
-            'stock': product.querySelector('input.quantity').max,
-            'add': false
-        }, true)
-        setTimeout(() => { window.location.reload() }, 300)
+    products.forEach(product => {
+
+        product.querySelector('input.quantity').addEventListener('change', () => {
+            HTTP.post('/cart', {
+                'id': product.id,
+                'quantity': product.querySelector('input.quantity').value,
+                'stock': product.querySelector('input.quantity').max,
+                'add': false
+            }, true, () => refresh())
+        })
+    
+        product.querySelector('button.delete').addEventListener('click', () => {
+            HTTP.delete('/cart', { 'id': product.id }, true, () => refresh())
+        })
+    
+    })
+    
+    checkout.addEventListener('click', () => {
+        HTTP.post('/checkout', null, true, e => {
+            console.log(e)
+            refresh()
+        })
     })
 
-    product.querySelector('button.delete').addEventListener('click', event => {
-        HTTP.delete('/cart', { 'id': product.id }, true)
-        setTimeout(() => { window.location.reload() }, 300)
-    })
-
-})
+}

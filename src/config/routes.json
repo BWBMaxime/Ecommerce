@@ -10,7 +10,7 @@
     },
     "/checkout": {
         "GET": "CartController::getCheckout",
-        "POST": "CartController::updateCheckout"
+        "POST": "CartController::checkout"
     },
     "/session": {
         "GET": "SessionController::login",
