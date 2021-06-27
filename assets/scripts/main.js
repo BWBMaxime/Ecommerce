@@ -89,8 +89,16 @@ class HTTP
 
 }
 
-function refresh(num = 0) {
+function refresh(num = 0)
+{
 
     setTimeout(() => { window.location.reload() }, num)
+
+}
+
+function redirect(url)
+{
+
+    window.location.href = url
 
 }
