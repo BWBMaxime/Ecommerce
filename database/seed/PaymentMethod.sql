@@ -3,8 +3,8 @@ INSERT INTO PaymentMethod (type, number, name, expiration, user) VALUES ('americ
 INSERT INTO PaymentMethod (type, number, name, expiration, user) VALUES ('americanexpress', '374622234982816', 'Britney Spears', '2021-07-22', 3);
 INSERT INTO PaymentMethod (type, number, name, expiration, user) VALUES ('visa', '4041373819340294', 'Sidney Bogoss', '2021-07-15', 4);
 INSERT INTO PaymentMethod (type, number, name, expiration, user) VALUES ('americanexpress', '337941404165481', 'John Athan', '2021-07-17', 5);
-INSERT INTO PaymentMethod (type, number, name, expiration, user) VALUES ('visa', '4041596977567395', 'Lonni Dunlop', '2021-07-10', 6);
-INSERT INTO PaymentMethod (type, number, name, expiration, user) VALUES ('americanexpress', '337941533362157', 'Adolph Cregin', '2021-07-17', 7);
-INSERT INTO PaymentMethod (type, number, name, expiration, user) VALUES ('mastercard', '5048377199561478', 'Ilyssa Pittson', '2021-07-17', 8);
-INSERT INTO PaymentMethod (type, number, name, expiration, user) VALUES ('americanexpress', '337941011767117', 'Stinky Marcam', '2021-07-22', 9);
-INSERT INTO PaymentMethod (type, number, name, expiration, user) VALUES ('visa', '4041374960631960', 'Spike Scandrick', '2021-07-17', 10);
+INSERT INTO PaymentMethod (type, number, name, expiration, user) VALUES ('visa', '4041596977567395', 'Lonni Dunlop', '2021-07-10', 1);
+INSERT INTO PaymentMethod (type, number, name, expiration, user) VALUES ('americanexpress', '337941533362157', 'Adolph Cregin', '2021-07-17', 2);
+INSERT INTO PaymentMethod (type, number, name, expiration, user) VALUES ('mastercard', '5048377199561478', 'Ilyssa Pittson', '2021-07-17', 3);
+INSERT INTO PaymentMethod (type, number, name, expiration, user) VALUES ('americanexpress', '337941011767117', 'Stinky Marcam', '2021-07-22', 4);
+INSERT INTO PaymentMethod (type, number, name, expiration, user) VALUES ('visa', '4041374960631960', 'Spike Scandrick', '2021-07-17', 5);

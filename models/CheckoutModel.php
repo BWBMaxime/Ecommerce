@@ -3,7 +3,7 @@
 namespace Wails\Models;
 use Wails\Core\Model;
 
-final class OrderedModel extends Model
+final class CheckoutModel extends Model
 {
 
     private string|null $id, $contact, $bill, $tracking, $date, $amount, $user, $state;

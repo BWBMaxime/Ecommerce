@@ -73,9 +73,9 @@ CREATE INDEX `IDX_user_delivery` ON `ecommerce`.`User` (`delivery` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
--- Table `ecommerce`.`Ordered`
+-- Table `ecommerce`.`Checkout`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ecommerce`.`Ordered` (
+CREATE TABLE IF NOT EXISTS `ecommerce`.`Checkout` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `contact` TINYTEXT NOT NULL,
   `bill` TINYTEXT NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`Ordered` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-CREATE INDEX `IDX_ordered` ON `ecommerce`.`Ordered` (`user` ASC, `date` DESC, `state` ASC) INVISIBLE;
+CREATE INDEX `IDX_checkout` ON `ecommerce`.`Checkout` (`user` ASC, `date` DESC, `state` ASC) INVISIBLE;
 
 
 -- -----------------------------------------------------
@@ -121,30 +121,16 @@ CREATE INDEX `IDX_product` ON `ecommerce`.`Product` (`category` ASC, `name` ASC)
 
 
 -- -----------------------------------------------------
--- Table `ecommerce`.`OrderedProduct`
+-- Table `ecommerce`.`CheckoutProduct`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ecommerce`.`OrderedProduct` (
-  `ordered` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `ecommerce`.`CheckoutProduct` (
+  `checkout` INT NOT NULL,
   `product` INT NOT NULL,
   `quantity` INT NOT NULL,
-  PRIMARY KEY (`ordered`, `product`))
+  PRIMARY KEY (`checkout`, `product`))
 ENGINE = InnoDB;
 
-CREATE INDEX `IDX_orderedproduct` ON `ecommerce`.`OrderedProduct` (`product` ASC) INVISIBLE;
-
-
--- -----------------------------------------------------
--- Table `ecommerce`.`Cart`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ecommerce`.`Cart` (
-  `session` INT NOT NULL,
-  `product` INT NOT NULL,
-  `quantity` INT NOT NULL,
-  `user` INT NULL,
-  PRIMARY KEY (`session`, `product`))
-ENGINE = InnoDB;
-
-CREATE INDEX `IDX_cart` ON `ecommerce`.`Cart` (`user` ASC, `session` ASC, `product` ASC) VISIBLE;
+CREATE INDEX `IDX_checkoutproduct` ON `ecommerce`.`CheckoutProduct` (`product` ASC) INVISIBLE;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

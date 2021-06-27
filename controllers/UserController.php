@@ -48,24 +48,6 @@ final class UserController extends Controller
     }
 
     /**
-     * Ajouter méthode de paiement Utilisateur
-     */
-    public function addUserPayment()
-    {}
-
-    /**
-     * Modifier méthodes de paiement Utilisateur
-     */
-    public function editUserPayment()
-    {}
-
-    /**
-     * Supprimer méthode de paiement Utilisateur
-     */
-    public function deleteUserPayment()
-    {}
-
-    /**
      * Afficher addresses de livraison Utilisateur
      */
     public function getUserDelivery()
@@ -154,9 +136,9 @@ final class UserController extends Controller
     }
     private function getOrderByUser(string $userId)
     {
-        return $this->db->query_object('OrderedModel',
+        return $this->db->query_object('CheckoutModel',
            "SELECT id, contact, bill, tracking, date, amount, state
-            FROM Ordered
+            FROM Checkout
             WHERE user = ${userId}"
         );
     }

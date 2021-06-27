@@ -9,10 +9,9 @@
         "DELETE": "CartController::deleteProduct"
     },
     "/checkout": {
-        "GET": "CheckoutController::getCheckout",
-        "POST": "CheckoutController::updateCheckout"
+        "GET": "CartController::getCheckout",
+        "POST": "CartController::updateCheckout"
     },
-    "/checkout/finish": "CheckoutController::getFinish",
     "/session": {
         "GET": "SessionController::login",
         "POST": "SessionController::auth",
@@ -22,11 +21,6 @@
         "GET":  "UserController::getUserProfile",
         "POST": "UserController::editUserProfile",
         "DELETE": "UserController::deleteUserProfile"
-    },
-    "/user/payment": {
-        "GET":  "UserController::getUserPayment",
-        "POST": "UserController::editUserPayment",
-        "DELETE": "UserController::deleteUserPayment"
     },
     "/user/delivery": {
         "GET":  "UserController::getUserDelivery",

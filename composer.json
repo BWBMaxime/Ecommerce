@@ -8,12 +8,16 @@
             "email": "atlasrw@icloud.com"
         }
     ],
-    "require": {},
+    "require": {
+        "league/oauth2-client": "^2.6",
+        "microsoft/microsoft-graph": "^1.34"
+    },
     "autoload": {
         "psr-4": {
             "Wails\\Core\\": [
                 "src/",
                 "src/config/",
+                "src/providers/",
                 "src/interfaces/"
             ],
             "Wails\\Database\\": "database/",

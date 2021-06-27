@@ -99,6 +99,22 @@ final class CartController extends Controller
 
     }
 
+    /**
+     * Commande validée
+     */
+    public function getCheckout()
+    {
+        
+        View::render('checkout/finish', array(), 'Checkout');
+
+    }
+    
+    /**
+     * Mise à jour / Validation de la commande
+     */
+    public function updateCheckout()
+    {}
+
     private function cart()
     {
 
