@@ -24,7 +24,9 @@ final class UserModel extends Model
     { return $this->lastname; }
     
     public function birth()
-    { return $this->birth; }
+    { 
+        return date_format(date_create($this->birth), 'Y-m-d'); 
+    }
     
     public function phone()
     { return $this->phone; }

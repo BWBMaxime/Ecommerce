@@ -11,49 +11,49 @@
                 </div>
                 <div class="">
                     <div class="container">
-                        <form method="POST">
+                        <form>
                             <div class="row">
-                                <div class="col-25 mt-3 text-sm text-gray-600">
+                                <div class="col-25 mt-3 text-sm">
                                     <label for="fname">First Name</label>
                                 </div>
-                                <div class="col-75 text-sm text-gray-400">
-                                    <input type="text" id="fname" name="firstname" placeholder=<?= $user->firstname() ?>>
+                                <div class="col-75 text-sm">
+                                    <input class="data" type="text" name="firstname" placeholder="John" value="<?= $user->firstname() ?>">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-25 mt-3 text-sm text-gray-600">
+                                <div class="col-25 mt-3 text-sm ">
                                     <label for="lname">Last Name</label>
                                 </div>
-                                <div class="col-75 text-sm text-gray-400">
-                                    <input type="text" id="lname" name="lastname" placeholder=<?= $user->lastname() ?>>
+                                <div class="col-75 text-sm">
+                                    <input class="data" type="text" name="lastname" placeholder="Doe" value="<?= $user->lastname() ?>">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-25 mt-3 text-sm text-gray-600">
+                                <div class="col-25 mt-3 text-sm">
                                     <label for="email">Email</label>
                                 </div>
-                                <div class="col-75 text-sm text-gray-400">
-                                    <input type="text" id="email" name="email" placeholder=<?= $user->email() ?>>
+                                <div class="col-75 text-sm">
+                                    <input class="data" type="text" name="email" placeholder="john@mail.com" value="<?= $user->email() ?>">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-25 mt-3 text-sm text-gray-600">
+                                <div class="col-25 mt-3 text-sm">
                                     <label for="birth">Birthday</label>
                                 </div>
-                                <div class="col-75 text-sm text-gray-400">
-                                <input type="date" id="birth" name="birth" value=<?= $user->birth() ?>>
+                                <div class="col-75 text-sm text-gray-800">
+                                <input class="data" type="date" name="birth" value="<?= $user->birth() ?>">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-25 mt-3 text-sm text-gray-600">
+                                <div class="col-25 mt-3 text-sm">
                                     <label for="phone">Phone number</label>
                                 </div>
-                                <div class="col-75 text-sm text-gray-400">
-                                    <input type="text" id="phone" name="phone" placeholder=<?= $user->phone() ?>>
+                                <div class="col-75 text-sm">
+                                    <input class="data" type="text" name="phone" placeholder="065-078-258" value="<?= $user->phone() ?>">
                                 </div>
                             </div>
                             <div class="row text-sm text-gray-600 text-white">
-                                <input id="btnSubmit" type="submit" value="Submit">
+                                <input id="btnSubmit" type="button" value="Submit">
                             </div>
                         </form>
                     </div>
@@ -249,3 +249,4 @@
         </div>
     </div>
 </div>
+<? $ASSET::script('user') ?>
