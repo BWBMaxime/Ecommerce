@@ -12,7 +12,6 @@ final class PaymentModel extends Model
     private string|null $name;
     private string|null $expiration;
     private string|null $user;
-
     
     public function id()
     { return $this->id; }

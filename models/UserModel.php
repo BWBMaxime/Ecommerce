@@ -16,7 +16,6 @@ final class UserModel extends Model
     private string|null $picture;
     private string|null $payment;
     private string|null $delivery;
-
     
     public function id()
     { return $this->id; }

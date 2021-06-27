@@ -14,7 +14,6 @@ final class OrderedModel extends Model
     private string|null $amount;
     private string|null $user;
     private string|null $state;
-
     
     public function id()
     { return $this->id; }
