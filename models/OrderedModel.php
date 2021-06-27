@@ -6,14 +6,7 @@ use Wails\Core\Model;
 final class OrderedModel extends Model
 {
 
-    private string|null $id;
-    private string|null $contact;
-    private string|null $bill;
-    private string|null $tracking;
-    private string|null $date;
-    private string|null $amount;
-    private string|null $user;
-    private string|null $state;
+    private string|null $id, $contact, $bill, $tracking, $date, $amount, $user, $state;
     
     public function id()
     { return $this->id; }

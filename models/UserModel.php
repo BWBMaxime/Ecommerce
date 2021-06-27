@@ -5,17 +5,8 @@ use Wails\Core\Model;
 
 final class UserModel extends Model
 {
-
-    private string|null $id;
-    private string|null $token;
-    private string|null $email;
-    private string|null $firstname;
-    private string|null $lastname;
-    private string|null $birth;
-    private string|null $phone;
-    private string|null $picture;
-    private string|null $payment;
-    private string|null $delivery;
+    
+    private string|null $id, $token, $email, $firstname, $lastname, $birth, $phone, $picture, $payment, $delivery;
     
     public function id()
     { return $this->id; }

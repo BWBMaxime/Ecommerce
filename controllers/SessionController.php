@@ -7,6 +7,8 @@ use Wails\Core\Error;
 use Wails\Core\HTTP;
 use Wails\Core\Session;
 use Wails\Core\View;
+use Microsoft\Graph\Graph;
+use Microsoft\Graph\Model;
 
 final class SessionController extends Controller
 {
@@ -23,7 +25,7 @@ final class SessionController extends Controller
 
         } else {
 
-            $_SESSION['REDIRECT_URL'] = (isset($_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : '/';
+            Session::setURL();
             View::redirect($_SESSION['REDIRECT_URL']);
 
         }
@@ -39,7 +41,7 @@ final class SessionController extends Controller
         if (true) {
 
             Session::status(true);
-            View::redirect(($_SESSION['REDIRECT_URL']) ? $_SESSION['REDIRECT_URL'] : '/');
+            View::redirect(Session::getURL());
 
         } else {
 
@@ -55,31 +57,40 @@ final class SessionController extends Controller
     public function logout()
     {
 
+        Session::setURL();
         Session::status(false);
         Cookie::unset('TOKEN');
+        View::redirect(Session::getURL());
 
     }
 
-    // /**
-    //  * Redirige l'utilisateur vers la page de connexion si l'utilisateur n'est pas connecté
-    //  */
-    // public static function guard()
-    // {
+    /**
+     * Redirige l'utilisateur vers la page de connexion si l'utilisateur n'est pas connecté
+     */
+    public static function guard()
+    {
 
-    //     $controller = new self();
+        Session::setURL();
+        // if (!$this->security->acceptConnexion()) View::redirect('/session');
 
-    //     if ($controller->isLogged()) {
 
-    //         Session::status(true);
 
-    //     } else {
 
-    //         Session::status(false);
-    //         $controller->login();
 
-    //     };
+        // $controller = new self();
 
-    // }
+        // if ($controller->isLogged()) {
+
+        //     Session::status(true);
+
+        // } else {
+
+        //     Session::status(false);
+        //     $controller->login();
+
+        // };
+
+    }
 
     // /**
     //  * Vérifie si l'utilisateur est connecté

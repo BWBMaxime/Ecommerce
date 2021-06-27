@@ -4,6 +4,7 @@ product.querySelector('button.add').addEventListener('click', event => {
     HTTP.post('/cart', {
         'id': product.id,
         'quantity': product.querySelector('input.quantity').value,
+        'stock': product.querySelector('input.quantity').max,
         'add': true
     }, true)
 })

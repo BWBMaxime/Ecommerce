@@ -35,16 +35,17 @@ final class CartController extends Controller
 
             $id = (int) HTTP::request(true)->id;
             $quantity = (int) HTTP::request(true)->quantity;
+            $stock = (int) HTTP::request(true)->stock;
             $add = (bool) HTTP::request(true)->add;
 
             if ($this->inCart($id)) {
 
                 $_SESSION['CART'] = array_values(
-                    array_map(function($product) use($id, $quantity, $add)
+                    array_map(function($product) use($id, $quantity, $stock, $add)
                         {
                             return ($product['id'] !== $id) ? $product : array(
                                 'id' => $id,
-                                'quantity' => ($add) ? $product['quantity'] + $quantity : $quantity
+                                'quantity' => $this->updateQuantity($quantity, $stock, $add, $product)
                             );
                         }, $_SESSION['CART']
                     )
@@ -54,7 +55,7 @@ final class CartController extends Controller
 
                 array_push($_SESSION['CART'], array(
                     'id' => $id,
-                    'quantity' => $quantity
+                    'quantity' => $this->updateQuantity($quantity, $stock, $add)
                 ));
 
             }
@@ -114,14 +115,15 @@ final class CartController extends Controller
 
     }
 
-    private function checkRequest()
+    private function checkRequest() : bool
     {
 
-        return isset(HTTP::request(true)->id) && isset(HTTP::request(true)->quantity) && isset(HTTP::request(true)->add);
+        return isset(HTTP::request(true)->id) && isset(HTTP::request(true)->quantity)
+            && isset(HTTP::request(true)->stock) && isset(HTTP::request(true)->add);
 
     }
 
-    private function inCart(int $id)
+    private function inCart(int $id) : bool
     {
 
         return (count(array_filter($_SESSION['CART'], function($product) use($id)
@@ -132,47 +134,17 @@ final class CartController extends Controller
 
     }
 
+    private function updateQuantity(int $quantity, int $stock, bool $add, array $product = array('quantity' => 0)) : int
+    {
 
-    // private function getSessionCart(string $id)
-    // {
-        
-    //     return $this->db->query_objects('ProductModel',
-    //         "SELECT Product.id, Product.name, Product.picture1, Product.price, Category.VAT, Cart.quantity 
-    //         FROM Cart 
-    //         INNER JOIN Product
-    //         ON Cart.product = Product.id
-    //         INNER JOIN Category
-    //         ON Product.category = Category.id
-    //         WHERE Cart.session = ${id}"
-    //     );
+        $result = match ($add) {
+            true => $product['quantity'] + $quantity,
+            default => $quantity
+        };
 
-    // }
-    
-    // private function getSubtotalPrice(string $id)
-    // {
-        
-    //     return $this->db->query_result(
-    //         "SELECT SUM(Product.price * Cart.quantity) AS result
-    //         FROM Cart 
-    //         INNER JOIN Product
-    //         ON Cart.product = Product.id
-    //         INNER JOIN Category
-    //         ON Product.category = Category.id
-    //         WHERE Cart.session = ${id}"
-    //     );
+        return ($result >= $stock) ? $stock : $result;
 
-    // }
-    
-    // private function getUnitPrice(string $id)
-    // {
-        
-    //     return $this->db->query_result(
-    //        "SELECT Product.price AS result
-    //         FROM Product
-    //         WHERE Product.id = ${id}"
-    //     );
-
-    // }
+    }
 
     private function getCartProducts(array $products)
     {
@@ -188,56 +160,5 @@ final class CartController extends Controller
         return $result;
 
     }
-
-    // private function getCartUnitPrice(array $products)
-    // {
-        
-    //     return $this->db->query_result(
-    //        "SELECT SUM(price) AS result
-    //         FROM Product
-    //         WHERE id = " . join(" OR id = ", $products)
-    //     );
-
-    // }
-    // private function getCartVATPrice(array $products)
-    // {
-        
-    //     return $this->db->query_result(
-    //        "SELECT SUM(Product.price + (Product.price * Category.VAT / 100)) AS result
-    //         FROM Product
-    //         INNER JOIN Category
-    //         ON Product.category = Category.id
-    //         WHERE Product.id = " . join(" OR Product.id = ", $products)
-    //     );
-
-    // }
-
-    // private function getVATPrice(string $id)
-    // {
-        
-    //     return $this->db->query_result(
-    //        "SELECT Product.price + (Product.price * Category.VAT / 100) AS result
-    //         FROM Product
-    //         INNER JOIN Category
-    //         ON Product.category = Category.id
-    //         WHERE Product.id = ${id}"
-    //     );
-
-    // }
-    
-    // private function getTotalPrice(string $id)
-    // {
-        
-    //     return $this->db->query_result(
-    //        "SELECT SUM(Product.price + (Product.price * Category.VAT / 100)) AS result 
-    //         FROM Cart 
-    //         INNER JOIN Product
-    //         ON Cart.product = Product.id
-    //         INNER JOIN Category
-    //         ON Product.category = Category.id
-    //         WHERE Cart.session = ${id}"
-         
-    //     );
-    // }
     
 }

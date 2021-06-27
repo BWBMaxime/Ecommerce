@@ -6,9 +6,7 @@ use Wails\Core\Model;
 final class CategoryModel extends Model
 {
 
-    private string|null $id;
-    private string|null $name;
-    private string|null $VAT;
+    private string|null $id, $name, $VAT;
 
     public function id()
     { return $this->id; }

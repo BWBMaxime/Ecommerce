@@ -6,6 +6,7 @@ products.forEach(product => {
         HTTP.post('/cart', {
             'id': product.id,
             'quantity': product.querySelector('input.quantity').value,
+            'stock': product.querySelector('input.quantity').max,
             'add': false
         }, true)
         setTimeout(() => { window.location.reload() }, 300)

@@ -34,4 +34,18 @@ final class Session
 
     }
 
+    public static function setURL()
+    {
+
+        $_SESSION['REDIRECT_URL'] = (isset($_SERVER['REDIRECT_URL'])) ? $_SERVER['REDIRECT_URL'] : '/';
+
+    }
+
+    public static function getURL()
+    {
+
+        return ($_SESSION['REDIRECT_URL']) ? $_SESSION['REDIRECT_URL'] : '/';
+
+    }
+
 }

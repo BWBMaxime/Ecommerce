@@ -6,15 +6,7 @@ use Wails\Core\Model;
 final class DeliveryModel extends Model
 {
 
-    private string|null $id;
-    private string|null $type;
-    private string|null $country;
-    private string|null $city;
-    private string|null $zipcode;
-    private string|null $street;
-    private string|null $number;
-    private string|null $additional;
-    private string|null $user;
+    private string|null $id, $type, $country, $city, $zipcode, $street, $number, $additional, $user;
 
     public function id()
     { return $this->id; }

@@ -6,12 +6,7 @@ use Wails\Core\Model;
 final class PaymentModel extends Model
 {
 
-    private string|null $id;
-    private string|null $type;
-    private string|null $number;
-    private string|null $name;
-    private string|null $expiration;
-    private string|null $user;
+    private string|null $id, $type, $number, $name, $expiration, $user;
     
     public function id()
     { return $this->id; }

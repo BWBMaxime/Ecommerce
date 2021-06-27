@@ -6,17 +6,7 @@ use Wails\Core\Model;
 final class ProductModel extends Model
 {
 
-    private string|null $id;
-    private string|null $name;
-    private string|null $description;
-    private string|null $price;
-    private string|null $stock;
-    private string|null $quantity;
-    private string|null $picture1;
-    private string|null $picture2;
-    private string|null $picture3;
-    private string|null $category;
-    private string|null $VAT;
+    private string|null $id, $name, $description, $price, $stock, $quantity, $picture1, $picture2, $picture3, $category, $VAT;
 
     public function id()
     { return (int) $this->id; }
