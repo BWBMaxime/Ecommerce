@@ -2,6 +2,7 @@
 
 namespace Wails\Controllers;
 use Wails\Core\Controller;
+use Wails\Core\Cookie;
 use Wails\Core\Error;
 use Wails\Core\HTTP;
 use Wails\Core\Session;
@@ -11,52 +12,42 @@ final class SessionController extends Controller
 {
 
     /**
-     * Connexion
-     */
-    public function getLogin()
-    {
-
-        View::render('session/login', array(), 'Connexion');
-
-    }
-
-    /**
-     * Inscription
-     */
-    public function getSignup()
-    {
-
-        View::render('session/signup', array(), 'Inscription');
-
-    }
-
-    /**
-     * Connexion
+     * Connexion / Redirection vers OpenID
      */
     public function login()
     {
-
-        // $user = $this->getUser($_POST['TOKEN']);
         
-        // if ($user) {
+        if (Session::isLogged()) {
 
-        //     Session::status(true);
-        //     setcookie("ID", $user->id(), time()+3600);
-        //     setcookie("TOKEN", $user->token(), time()+3600);
+            View::redirect('/user');
 
-        // } else {
+        } else {
 
-        //     $this->logout();
+            $_SESSION['REDIRECT_URL'] = (isset($_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : '/';
+            View::redirect($_SESSION['REDIRECT_URL']);
 
-        // }
+        }
 
     }
 
     /**
-     * Inscription
+     * Redirection une fois la connexion validée
      */
-    public function signup()
-    {}
+    public function auth()
+    {
+
+        if (true) {
+
+            Session::status(true);
+            View::redirect(($_SESSION['REDIRECT_URL']) ? $_SESSION['REDIRECT_URL'] : '/');
+
+        } else {
+
+            Error::status(403);
+
+        }
+
+    }
 
     /**
      * Déconnexion
@@ -65,70 +56,69 @@ final class SessionController extends Controller
     {
 
         Session::status(false);
-        setcookie("ID", null, time()-3600);
-        setcookie("TOKEN", null, time()-3600);
+        Cookie::unset('TOKEN');
 
     }
 
-    /**
-     * Redirige l'utilisateur vers la page de connexion si l'utilisateur n'est pas connecté
-     */
-    public static function guard()
-    {
+    // /**
+    //  * Redirige l'utilisateur vers la page de connexion si l'utilisateur n'est pas connecté
+    //  */
+    // public static function guard()
+    // {
 
-        $controller = new self();
+    //     $controller = new self();
 
-        if ($controller->isLogged()) {
+    //     if ($controller->isLogged()) {
 
-            Session::status(true);
+    //         Session::status(true);
 
-        } else {
+    //     } else {
 
-            Session::status(false);
-            $controller->getLogin();
+    //         Session::status(false);
+    //         $controller->login();
 
-        };
+    //     };
 
-    }
+    // }
 
-    /**
-     * Vérifie si l'utilisateur est connecté
-     */
-    private function isLogged() : bool
-    {
+    // /**
+    //  * Vérifie si l'utilisateur est connecté
+    //  */
+    // private function isLogged() : bool
+    // {
 
-        setcookie('ID', '1', time()+3600);
-        setcookie('TOKEN', 'v9fFLsdDjwYgZHNAaQGUrvreakSpg1PGyV3hZd', time()+3600);
-        // $this->logout();
+    //     setcookie('ID', '1', time()+3600);
+    //     setcookie('TOKEN', 'v9fFLsdDjwYgZHNAaQGUrvreakSpg1PGyV3hZd', time()+3600);
+    //     // $this->logout();
 
-        if (Session::isSet() && isset($_COOKIE['ID']) && isset($_COOKIE['TOKEN']))
-            return ($this->checkUser('1', 'v9fFLsdDjwYgZHNAaQGUrvreakSpg1PGyV3hZd')) ? true : false;
-            // return ($this->checkUser($_COOKIE['ID'], $_COOKIE['TOKEN'])) ? true : false;
-        return false;
+    //     if (Session::isSet() && isset($_COOKIE['ID']) && isset($_COOKIE['TOKEN']))
+    //         return ($this->checkUser('1', 'v9fFLsdDjwYgZHNAaQGUrvreakSpg1PGyV3hZd')) ? true : false;
+    //         // return ($this->checkUser($_COOKIE['ID'], $_COOKIE['TOKEN'])) ? true : false;
+    //     return false;
 
-    }
+    // }
 
-    private function getUser(string $token) : object|false
-    {
+    // private function getUser(string $token) : object|false
+    // {
 
-        return $this->db->query_object("UserModel",
-           "SELECT id, token
-            FROM User
-            WHERE token = '${token}'"
-        );
+    //     return $this->db->query_object("UserModel",
+    //        "SELECT id, token
+    //         FROM User
+    //         WHERE token = '${token}'"
+    //     );
 
-    }
+    // }
 
-    private function checkUser(string $id, string $token) : object|false
-    {
+    // private function checkUser(string $id, string $token) : object|false
+    // {
 
-        return $this->db->query_object("UserModel",
-           "SELECT id
-            FROM User
-            WHERE id = ${id}
-            AND token = '${token}'"
-        );
+    //     return $this->db->query_object("UserModel",
+    //        "SELECT id
+    //         FROM User
+    //         WHERE id = ${id}
+    //         AND token = '${token}'"
+    //     );
 
-    }
+    // }
 
 }

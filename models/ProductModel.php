@@ -19,7 +19,7 @@ final class ProductModel extends Model
     private string|null $VAT;
 
     public function id()
-    { return $this->id; }
+    { return (int) $this->id; }
 
     public function name()
     { return $this->name; }
@@ -28,10 +28,13 @@ final class ProductModel extends Model
     { return $this->description; }
 
     public function stock()
-    { return $this->stock; }
+    { return (int) $this->stock; }
+
+    public function getPrice()
+    { return (float) number_format($this->price, 2); }
 
     public function quantity()
-    { return $this->quantity; }
+    { return (int) $this->quantity; }
 
     public function picture1()
     { return $this->picture1; }
@@ -46,24 +49,24 @@ final class ProductModel extends Model
     { return $this->category; }
 
     public function VAT()
-    { return $this->VAT; }
+    { return (int) $this->VAT; }
 
     public function price(bool $VAT = false)
     {
 
-        return number_format(($VAT) ? $this->price + ($this->price * $this->VAT / 100) : $this->price, 2);
+        return ($VAT) ? $this->getPrice() + ($this->getPrice() * $this->VAT() / 100) : $this->getPrice();
 
     }
     
     public function totalPrice(bool $VAT = false)
     {
 
-        return number_format($this->price($VAT) * $this->quantity(), 2);
+        return $this->price($VAT) * $this->quantity();
 
     }
 
     public function setQuantity($value)
-    { $this->quantity = $value; }
+    { $this->quantity = (string) $value; }
 
 
 }

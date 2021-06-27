@@ -2,6 +2,7 @@
 <div class="w-full flex justify-center my-6">
     <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
         <div class="flex-1">
+            <? if ($cart): ?>
             <!-- Table of cart -->
             <table class="w-full text-sm lg:text-base" cellspacing="0">
                 <thead>
@@ -18,7 +19,7 @@
                 <tbody>
                     <!-- One product -->
                     <? foreach ($cart->products() as $product): ?>
-                    <tr id="<?= $product->id() ?>">
+                    <tr id="<?= $product->id() ?>" class="product">
                         <td class="hidden pb-4 md:table-cell flex justify-center items-center w-3/6">
                             <a href="/product/<?= $product->id() ?>" class="flex items-center">
                                 <!-- Product picture -->
@@ -30,7 +31,7 @@
                         <!-- Quantity -->
                         <td class="justify-center flex mt-7">
                             <div class="relative flex justify-center w-5/6 h-10">
-                                <input type="number" value="<?= $product->quantity() ?>" min="1" max="<?= $product->stock() ?>" class="w-full px-2 rounded-xl font-semibold text-center text-gray-700 bg-gray-300 outline-none focus:outline-none hover:text-black focus:text-black" />
+                                <input type="number" value="<?= $product->quantity() ?>" min="1" max="<?= $product->stock() ?>" class="quantity w-full px-2 rounded-xl font-semibold text-center text-gray-700 bg-gray-300 outline-none focus:outline-none hover:text-black focus:text-black" />
                             </div>
                         </td>
                         <!-- Unit price -->
@@ -47,8 +48,7 @@
                         </td>
                         <!-- Delete icon -->
                         <td class="text-center">
-                            <button
-                                class="inline-block p-3 text-center text-white transition rounded-full shadow ripple hover:shadow-lg focus:outline-none backUrgent">
+                            <button class="delete inline-block p-3 text-center text-white transition rounded-full shadow ripple hover:shadow-lg focus:outline-none backUrgent">
                                 <svg class="w-5 h-5 text-white backUrgent" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd"
@@ -67,13 +67,13 @@
             <div class="my-4 mt-6 -mx-2 lg:flex">
                 <!-- Instruction for seller -->
                 <div class="lg:px-14 lg:w-1/2">
-                    <div class="p-2 mt-2 bg-gray-100 rounded-full">
+                    <!-- <div class="p-2 mt-2 bg-gray-100 rounded-full">
                         <h1 class="ml-3 uppercase font-medium">Instruction for seller</h1>
                     </div>
                     <div class="p-4">
                         <p class="mb-4 italic text-xs">If you have some information for the seller you can leave them in the box below</p>
                         <textarea class="w-full h-32 p-2 bg-gray-100 rounded mt-4"></textarea>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- Order Details -->
                 <div class="lg:px-4 lg:w-1/2">
@@ -85,7 +85,7 @@
                         <p class="mb-6 italic text-xs">Shipping and additionnal costs are calculated based on values you have entered</p>
                         <div class="flex justify-between border-b">
                             <div class="lg:px-4 lg:py-2 text-base lg:text-lg text-center text-gray-800">
-                                SubTotal
+                                Subtotal
                             </div>
                             <div class="lg:px-4 lg:py-2 lg:text-base text-center text-gray-900">
                             <?= $cart->totalPrice(false) ?> $
@@ -96,7 +96,7 @@
                                 TVA
                             </div>
                             <div class="lg:px-4 lg:py-2 lg:text-base text-center text-gray-900">
-                            <?= $cart->totalPrice(true) - $cart->totalPrice(false) ?> $
+                            <?= $cart->totalVAT() ?> $
                             </div>
                         </div>
                         <div class="flex justify-between pt-4 border-b">
@@ -108,7 +108,7 @@
                             </div>
                         </div>
                         <!-- Button checkout -->
-                        <a href="#">
+                        <a href="/checkout/finish">
                             <button
                                 class="flex justify-center w-full px-10 py-2 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
                                 <svg aria-hidden="true" data-prefix="far" data-icon="credit-card" class="w-7"
@@ -122,8 +122,14 @@
                     </div>
                 </div>
             </div>
+            <? else: ?>
+            <section class="text-xl font-bold">
+                Your cart is empty !
+            </section>
+            <? endif ?>
         </div>
     </div>
 </div>
 
+<? $ASSET::script('cart') ?>
 <? $ASSET::script_url('https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js') ?>
