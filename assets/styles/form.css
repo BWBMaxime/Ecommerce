@@ -26,7 +26,7 @@
     display: inline;
   }
   
-  input[type=button] {
+  input#btnSubmit {
     background-color: #263843;
     padding: 8px 20px;
     border: none;
@@ -35,6 +35,16 @@
     float: right;
     color: white;
     font-size: 13px;
+  }
+  input#btnDelete {
+    background-color: #EF9343;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    float: left;
+    color: white;
+    font-size: 11px;
   }
   
   input[type=submit]:hover {

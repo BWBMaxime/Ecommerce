@@ -1,85 +1,67 @@
 <? $ASSET::style('footer') ?>
 
-<footer class="flex flex-col justify-center">
-    <section class="w-full flex justify-center">
-        <div class="container flex px-3 py-8 ">
-            <div class="w-full mx-auto flex flex-wrap">
-                <div class="px-3 md:px-0">
-                    <h3 class="titre-entreprise"> A propos de l'entreprise </h3>
-                    <br>
-                    <p class="resume-entreprise">
-                        L'entreprise de e-commerce a été racheté par Marylise, Raphael, Maxime et Fanny en 2021 mais elle a été crée en 1853 par Monsieur et Madame Splaaaaf. Grâce à notre savoir faire et à notre professionnalisme, nous vous présentons des produits de grandes qualités.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+<hr>
 
-    <hr>
+<footer class="flex flex-col justify-center">
 
     <section class="bg-white dark:bg-gray-800 pt-4 pb-8 xl:pt-8">
         <div class="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 text-gray-400 dark:text-gray-300">
             <ul class="text-lg font-light pb-8 flex flex-wrap justify-center">
-                <li class="w-1/2 md:w-1/3 lg:w-1/3">
+
+                <li class="w-1/2">
                     <div class="text-center">
-                        <h2 class="mentions-legales">
-                            MENTIONS LEGALES
-                        </h2>
-                        <ul>
-                            <li class="liens">
-                                <? $ASSET::document('cgv', 'Conditions Générales de Ventes', true) ?>
-                                <br>
-                                <? $ASSET::document('cgu', 'Conditions Générales d\'Utilisation', true) ?>
-                                <br>
-                                <? $ASSET::document('cookies', 'Cookies et Protection des Données Personnelles', true) ?>
-                            </li> 
-                        </ul>
+                        <h3 class="titre-entreprise uppercase"> ABOUT US </h3>
+                        <br>
+                        <p class="resume-entreprise text-sm">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat, saepe! Aperiam saepe, magnam reprehenderit eligendi dolorum expedita quasi! Voluptate voluptatum eligendi harum excepturi maxime impedit quis, sit dicta aliquid quaerat? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias ipsum soluta veritatis eveniet, at voluptatibus, sit obcaecati magni beatae, modi totam unde nulla necessitatibus hic impedit reiciendis libero repudiandae distinctio.
+                        </p>
                     </div>
                 </li>
 
-                <li class="w-1/2 md:w-1/3 lg:w-1/3">
-                    <div class="text-center">
-                        <h2 class="reseaux">
-                            RESEAUX SOCIAUX
-                        </h2>
-                        <br>
-                        <ul>
-                            <li class="reseaux-liens">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Facebook_logo_36x36.svg/1200px-Facebook_logo_36x36.svg.png" alt="logo" height="30px" width="30px" class="imagebis1">
-                            </li>
-                            <br>
-                            <li class="reseaux-liens">
-                                <img src="https://i2.wp.com/www.key-digital.co.uk/wp-content/uploads/2017/04/Twitter-logo-1.png" alt="logo" height="40px" width="40px" class="imagebis2">
-                            </li>
-                        </ul>
-                    </div>
+                <li class="w-1/2">
+                    <ul class="flex-col">
+                        <li class="pb-12">
+                            <div class="text-center">
+                                <h2 class="mentions-legales">
+                                    MENTIONS LEGALES
+                                </h2>
+                                <ul>
+                                    <li class="liens">
+                                        <? $ASSET::document('cgv', 'Conditions Générales de Ventes', true) ?>
+                                        <br>
+                                        <? $ASSET::document('cgu', 'Conditions Générales d\'Utilisation', true) ?>
+                                        <br>
+                                        <? $ASSET::document('cookies', 'Cookies et Protection des Données Personnelles', true) ?>
+                                    </li> 
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="text-center">
+                                <h2 class="contact">
+                                    CONTACT
+                                </h2>
+                                <ul>
+                                    <li class="contact-liens">
+                                            625 Avenue de Toulouse, 34000 Montpellier
+                                    </li>
+                                    <li class="contact-liens">
+                                    <a href="mailto:bwb.e-commerce@fondespierre.com?subject=Sujet du message">
+                                            bwb.e-commerce@fondespierre.com
+                                        </a>
+                                    </li>
+                                    <li class="contact-liens">
+                                        <a href="tel:+3305147884">
+                                            +33 05 14 78 84
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
                 </li>
-                
-                <li class="w-1/2 md:w-1/3 lg:w-1/3">
-                    <div class="text-center">
-                        <h2 class="contact">
-                            CONTACT
-                        </h2>
-                        <ul>
-                            <li class="contact-liens">
-                                    625 Avenue de Toulouse
-                            </li>
-                            <li class="contact-liens">
-                                    34000 Montpellier
-                            </li>
-                            <li class="contact-liens">
-                            <a href="mailto:bwb.e-commerce@fondespierre.com?subject=Sujet du message">
-                                    bwb.e-commerce@fondespierre.com
-                                </a>
-                            </li>
-                            <li class="contact-liens">
-                                <a href="tel:01234567890">
-                                    +33 05 14 78 84
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+
             </ul>
         </div>
 

@@ -9,6 +9,7 @@
         }
     ],
     "require": {
+        "firebase/php-jwt": "^5.4",
         "league/oauth2-client": "^2.6",
         "microsoft/microsoft-graph": "^1.34"
     },

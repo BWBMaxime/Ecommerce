@@ -56,7 +56,20 @@ final class UserController extends Controller
      * Supprimer Profil Utilisateur
      */
     public function deleteUserProfile()
-    {}
+    {
+        // récupérer l'id
+        $id = HTTP::request(true)->id;
+        // lancer la suppression de l'utilisateur
+        $result = $this->deleteUser($id);
+        // repondre 200 avec un message de success ou 400 d'erreur
+        $httpCodeResponse = 200;
+        if ($result == false) {
+            $httpCodeResponse = 500;
+        } else {
+            $result = ["status" => "success"];
+        }
+        HTTP::response($httpCodeResponse, $result, true);
+    }
 
     /**
      * Afficher 1 méthode de paiement
@@ -171,6 +184,12 @@ final class UserController extends Controller
                 email = '${email}',
                 birth = '${birth}',
                 phone = '${phone}'
+            WHERE id = ${id}"
+        );
+    }
+    private function deleteUser($id) { 
+        return $this->db->query(
+            "DELETE FROM User
             WHERE id = ${id}"
         );
     }

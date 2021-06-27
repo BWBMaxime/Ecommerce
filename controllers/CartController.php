@@ -19,7 +19,7 @@ final class CartController extends Controller
     {
 
         View::render('session/cart', array(
-            'cart' => $this->cart()
+            'cart' => $this->cart(true)
         ), 'Your Cart');
 
     }
@@ -102,25 +102,33 @@ final class CartController extends Controller
     /**
      * Commande validée
      */
-    public function getCheckout()
+    public function getCheckout(string $checkout)
     {
         
-        View::render('checkout/finish', array(), 'Checkout');
+        View::render('session/checkout', array(
+            'checkout' => $checkout
+        ), 'Checkout');
 
     }
     
     /**
-     * Mise à jour / Validation de la commande
+     * Validation de la commande
      */
-    public function updateCheckout()
-    {}
+    public function checkout()
+    {
 
-    private function cart()
+        $checkout = $this->newCheckout($this->cart(), 189);
+        $_SESSION['CART'] = [];
+        HTTP::response(200, $checkout);
+
+    }
+
+    private function cart(bool $max = false)
     {
 
         if (!isset($_SESSION['CART'])) $_SESSION['CART'] = [];
         return (count($_SESSION['CART']) < 1) ?
-            array() : new CartModel($this->getCartProducts($_SESSION['CART']));
+            [] : new CartModel(($max) ? $this->getProducts($_SESSION['CART']) : $this->getProductsMin($_SESSION['CART']));
 
     }
 
@@ -155,7 +163,7 @@ final class CartController extends Controller
 
     }
 
-    private function getCartProducts(array $products)
+    private function getProducts(array $products)
     {
         
         $result = $this->db->query_objects('ProductModel',
@@ -167,6 +175,53 @@ final class CartController extends Controller
         );
         array_walk($result, function(&$obj, $key, $value){ $obj->setQuantity($value[$key]['quantity']); }, $products);
         return $result;
+
+    }
+
+    private function getProductsMin(array $products)
+    {
+        
+        $result = $this->db->query_objects('ProductModel',
+           "SELECT Product.id, Product.price, Category.VAT
+            FROM Product
+            INNER JOIN Category
+            ON Product.category = Category.id
+            WHERE Product.id = " . join(" OR Product.id = ", array_map(function($x) { return $x['id']; }, $products))
+        );
+        array_walk($result, function(&$obj, $key, $value){ $obj->setQuantity($value[$key]['quantity']); }, $products);
+        return $result;
+
+    }
+
+    private function newCheckout(object $cart, int $id = null)
+    {
+        
+        $price = $cart->totalPrice(true);
+        $user = ($id) ? $id : 'null';
+
+        $this->db->query(
+           "INSERT INTO Checkout (tracking, contact, amount, date, bill, user, state)
+            VALUES ('wZErxrv7mb5GfzNBa9aBmshIleSkxFQkaxlg3fNwD31Jmxn', 'pdudson2@arstechnica.com', ${price}, CURRENT_TIMESTAMP, 'https://sohu.com/justo/maecenas/rhoncus/aliquam/lacus/morbi.aspx', ${user}, 0)"
+        );
+
+        $checkout = $this->db->lastID();
+        $this->checkoutProducts($checkout, $cart->products());
+        return $checkout;
+
+    }
+
+    private function checkoutProducts(int $checkout, array $products)
+    {
+        
+        $this->db->query(join(';',
+            array_map(function($product) use($checkout)
+            {
+                $id = $product->id();
+                $quantity = $product->quantity();
+                return "INSERT INTO CheckoutProduct (checkout, product, quantity) VALUES (${checkout}, ${id}, ${quantity})";
+
+            }, $products)
+        ));
 
     }
     

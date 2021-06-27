@@ -19,6 +19,13 @@ final class Database
 
     }
 
+    public function lastID()
+    {
+
+        return $this->pdo->lastInsertId();
+
+    }
+
     public function query(string $query) : object|false
     {
 
