@@ -29,7 +29,9 @@ final class UserController extends Controller
      * Modifier infos profil Utilisateur
      */
     public function editUserProfile()
-    {}
+    {
+        
+    }
 
     /**
      * Supprimer Profil Utilisateur

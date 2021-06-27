@@ -11,7 +11,7 @@
                 </div>
                 <div class="">
                     <div class="container">
-                        <form action="/action_page.php">
+                        <form method="POST">
                             <div class="row">
                                 <div class="col-25 mt-3 text-sm text-gray-600">
                                     <label for="fname">First Name</label>
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                             <div class="row text-sm text-gray-600 text-white">
-                                <input type="submit" value="Submit">
+                                <input id="btnSubmit" type="submit" value="Submit">
                             </div>
                         </form>
                     </div>
