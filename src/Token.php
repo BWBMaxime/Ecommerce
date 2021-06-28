@@ -10,7 +10,6 @@ final class Token
     public static function encode($payload)
     {
 
-        $payload['EXP'] = Cookie::expiration();
         Cookie::set('TOKEN', JWT::encode($payload, Env::get('PASS')), Cookie::expiration());
 
     }

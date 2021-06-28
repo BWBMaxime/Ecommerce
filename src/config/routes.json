@@ -18,14 +18,9 @@
     },
     "/callback": "SessionController::auth",
     "/user": {
-        "GET":  "UserController::getUserProfile",
-        "POST": "UserController::editUserProfile",
-        "DELETE": "UserController::deleteUserProfile"
-    },
-    "/user/delivery": {
-        "GET":  "UserController::getUserDelivery",
-        "POST": "UserController::editUserDelivery",
-        "DELETE": "UserController::deleteUserDelivery"
+        "GET":  "UserController::getUser",
+        "POST": "UserController::editUser",
+        "DELETE": "UserController::deleteUser"
     }
 
 }

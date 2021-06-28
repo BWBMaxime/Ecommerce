@@ -36,7 +36,7 @@ final class SessionController extends Controller
 
             $user = Provider::Microsoft();
             Token::encode(array(
-                'id' => $user->getId(),
+                'token' => $user->getId(),
                 'mail' => $user->getMail()
             ));
             Session::status(true);
