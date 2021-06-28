@@ -23,7 +23,7 @@ final class ProductController extends Controller
             'current_page' => $page,
             'last_page' => $this->getLastPage()
         ));
-
+       
     }
 
     /**
@@ -49,16 +49,28 @@ final class ProductController extends Controller
 
     private function getPagedProducts($page = 1, $limit = 20)
     {
+        if(isset($_GET['s']) AND !empty($_GET['s'])){
+            $search = htmlspecialchars($_GET['s']);
+           return $this->db->query_objects('ProductModel',
+            "SELECT Product.id, Product.name, Product.price, Product.stock, Product.picture1, Category.VAT
+            FROM Product 
+            INNER JOIN Category
+            ON Product.category = Category.id
+            WHERE Product.name LIKE '%".$search."%' ORDER BY id DESC
+            LIMIT ${limit}
+            OFFSET " . (($page < 1) ? 0 : ($page - 1)) * $limit 
+            );
 
-        return $this->db->query_objects('ProductModel',
+        }else{
+            return $this->db->query_objects('ProductModel',
           "SELECT Product.id, Product.name, Product.price, Product.stock, Product.picture1, Category.VAT
            FROM Product 
            INNER JOIN Category
            ON Product.category = Category.id
            LIMIT ${limit}
            OFFSET " . (($page < 1) ? 0 : ($page - 1)) * $limit
-        );
-
+            );
+        }
     }
 
     private function getAllProducts()

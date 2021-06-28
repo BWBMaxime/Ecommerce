@@ -1,5 +1,6 @@
 <? $ASSET::style('navbar') ?>
 
+
 <nav id="navbar" class="w-full fixed bg-white z-40 top-0 py-1 shadow-xl">
     <div class="w-full container mx-auto flex items-center justify-between mt-0 px-6 py-3">
         <label for="menu-toggle" class="cursor-pointer md:hidden block">
@@ -20,11 +21,15 @@
             </nav>
         </div>
 
-        <div class="order-6 md:order-2 w-1/2">  <!-- barre de recherche -->
-            <input type="text" class="col-8 border-2 p-2 w-full " placeholder="Search a product..."
+        <form method="GET" class="order-6 md:order-2 w-1/2" >  <!-- barre de recherche -->
+            <input type="text" name="s" class="col-8 border-2 p-2 w-full " placeholder="Search a product..."
                 id="search-filter">
-        </div>
-
+                <input class="pl-3 inline-block no-underline hover:text-black"  type='submit' value='Search'>
+                          
+                        
+                        
+        </form>
+    
         <div class="order-2 md:order-3 flex items-center" id="nav-content">
         <? if ($SESSION::isLogged()): ?>
             <a href="/user" title="PROFILE"><? $ASSET::image('avatar') ?></a>
