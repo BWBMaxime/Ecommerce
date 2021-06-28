@@ -23,7 +23,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-25 mt-3 text-sm ">
-                                    <label for="lname">Last Name</label>
+                                    <label for="lname">Last Name </label>
                                 </div>
                                 <div class="col-75 text-sm">
                                     <input class="data" type="text" name="lastname" placeholder="Doe" value="<?= $user->lastname() ?>">
@@ -73,7 +73,7 @@
                         <div class="flex items-center p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800 border border-gray-800">
                             <div class="space-y-6">
                                 <div>
-                                    <p class="text-m font-bold color4C">
+                                    <p class="text-m font-bold color4C"> 
                                         Default payment method
                                     </p>
                                     <p class="mt-4 text-sm">
