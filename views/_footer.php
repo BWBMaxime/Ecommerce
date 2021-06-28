@@ -2,7 +2,7 @@
 
 <hr>
 
-<footer class="flex flex-col justify-center">
+<footer class="flex flex-col justify-center pt-10">
 
     <section class="bg-white dark:bg-gray-800 pt-4 pb-8 xl:pt-8">
         <div class="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 text-gray-400 dark:text-gray-300">
@@ -23,15 +23,15 @@
                         <li class="pb-12">
                             <div class="text-center">
                                 <h2 class="mentions-legales">
-                                    MENTIONS LEGALES
+                                    LEGAL MENTIONS
                                 </h2>
                                 <ul>
                                     <li class="liens">
-                                        <? $ASSET::document('cgv', 'Conditions Générales de Ventes', true) ?>
+                                        <? $ASSET::document('cgu', 'General User Conditions', true) ?>
                                         <br>
-                                        <? $ASSET::document('cgu', 'Conditions Générales d\'Utilisation', true) ?>
+                                        <? $ASSET::document('cgv', 'General Selling Conditions', true) ?>
                                         <br>
-                                        <? $ASSET::document('cookies', 'Cookies et Protection des Données Personnelles', true) ?>
+                                        <? $ASSET::document('cookies', 'General Data Protection Regulation', true) ?>
                                     </li> 
                                 </ul>
                             </div>
@@ -65,9 +65,7 @@
             </ul>
         </div>
 
-    <hr>
-
-        <div class="px-3 md:px-0">
+        <div class="mt-5 px-3 md:px-0">
             <h3 class="copyright"> 2021 Copyright@e-commerce </h3>     
         </div>             
     </section>

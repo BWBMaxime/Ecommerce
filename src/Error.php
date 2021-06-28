@@ -1,6 +1,7 @@
 <?
 
 namespace Wails\Core;
+use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 
 final class Error
 {
@@ -51,10 +52,18 @@ final class Error
 
     }
 
-    public static function script($num)
+    public static function script(string|int $num)
     {
 
         Utils::log("SCRIPT ERROR : Missing arguments, number of required arguments is ${num}" . PHP_EOL);
+        exit();
+
+    }
+
+    public static function provider(IdentityProviderException $error)
+    {
+
+        Utils::log("PROVIDER ERROR : " . $error->getMessage() . PHP_EOL);
         exit();
 
     }

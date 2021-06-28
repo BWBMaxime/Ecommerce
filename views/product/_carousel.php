@@ -10,15 +10,15 @@
                 <div class="container mx-auto">
                     <div
                         class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
-                        <p class="text-black text-2xl my-4">Stripy Zig Zag Jigsaw Pillow and Duvet Set</p>
+                        <p class="text-black text-2xl my-4 pl-5">Stripy Zig Zag Jigsaw Pillow and Duvet Set</p>
                     </div>
                 </div>
             </div>
         </div>
         <label for="carousel-3"
-            class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+            class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold color4C hover:text-white rounded-full bg-white hover:bg-indigo-500 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
         <label for="carousel-2"
-            class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+            class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold color4C hover:text-white rounded-full bg-white hover:bg-indigo-500 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
 
         <!--Slide 2-->
         <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
@@ -29,16 +29,16 @@
                 <div class="container mx-auto">
                     <div
                         class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
-                        <p class="text-black text-2xl my-4">Real Bamboo Wall Clock</p>
+                        <p class="text-black text-2xl my-4 pl-5">Real Bamboo Wall Clock</p>
                     </div>
                 </div>
 
             </div>
         </div>
         <label for="carousel-1"
-            class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+            class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold color4C hover:text-white rounded-full bg-white hover:bg-indigo-500  leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
         <label for="carousel-3"
-            class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+            class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold color4C hover:text-white rounded-full bg-white hover:bg-indigo-500  leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
 
         <!--Slide 3-->
         <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
@@ -48,31 +48,15 @@
 
                 <div class="container mx-auto">
                     <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
-                        <p class="text-black text-2xl my-4">Brown and blue hardbound book</p>
+                        <p class="text-black text-2xl my-4 pl-5">Brown and blue hardbound book</p>
                     </div>
                 </div>
 
             </div>
         </div>
         <label for="carousel-2"
-            class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+            class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold color4C hover:text-white rounded-full bg-white hover:bg-indigo-500  leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
         <label for="carousel-1"
-            class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
-
-        <!-- Add additional indicators for each slide-->
-        <ol class="carousel-indicators">
-            <li class="inline-block mr-3">
-                <label for="carousel-1"
-                    class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
-            </li>
-            <li class="inline-block mr-3">
-                <label for="carousel-2"
-                    class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
-            </li>
-            <li class="inline-block mr-3">
-                <label for="carousel-3"
-                    class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
-            </li>
-        </ol>
+            class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold color4C hover:text-white rounded-full bg-white hover:bg-indigo-500  leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
     </div>
 </div>

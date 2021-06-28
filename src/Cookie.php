@@ -1,6 +1,8 @@
 <?
 
 namespace Wails\Core;
+use Firebase\JWT\JWT;
+use Exception;
 
 final class Cookie
 {
@@ -12,10 +14,10 @@ final class Cookie
 
     }
     
-    public static function set(string $name, mixed $value, int $time)
+    public static function set(string $name, mixed $value)
     {
 
-        setcookie($name, $value, time() + $time, '/');
+        setcookie($name, $value, self::expiration(), '/', '');
 
     }
     
@@ -23,6 +25,13 @@ final class Cookie
     {
 
         setcookie($name, null, time() - 3600);
+
+    }
+
+    public static function expiration()
+    {
+
+        return time() + (3600 * Env::get('EXP'));
 
     }
 

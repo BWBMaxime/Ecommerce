@@ -8,7 +8,7 @@ final class CartModel extends Model
 
     private array $products;
 
-    public function __construct($products)
+    public function __construct(array $products)
     {
 
         $this->products = $products;

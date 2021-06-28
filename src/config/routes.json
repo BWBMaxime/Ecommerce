@@ -8,15 +8,15 @@
         "POST": "CartController::updateProduct",
         "DELETE": "CartController::deleteProduct"
     },
-    "/checkout": {
-        "GET": "CartController::getCheckout",
+    "/checkout/{checkout_id}": "CartController::getCheckout",
+    "/checkout" : {
         "POST": "CartController::checkout"
     },
     "/session": {
         "GET": "SessionController::login",
-        "POST": "SessionController::auth",
         "DELETE": "SessionController::logout"
     },
+    "/callback": "SessionController::auth",
     "/user": {
         "GET":  "UserController::getUserProfile",
         "POST": "UserController::editUserProfile",
