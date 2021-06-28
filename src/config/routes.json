@@ -14,9 +14,9 @@
     },
     "/session": {
         "GET": "SessionController::login",
-        "POST": "SessionController::auth",
         "DELETE": "SessionController::logout"
     },
+    "/callback": "SessionController::auth",
     "/user": {
         "GET":  "UserController::getUserProfile",
         "POST": "UserController::editUserProfile",

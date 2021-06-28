@@ -30,7 +30,7 @@ final class Token
 
     }
 
-    public function isSet()
+    public static function isSet()
     {
 
         return self::decode((isset($_COOKIE['TOKEN'])) ? $_COOKIE['TOKEN'] : null);

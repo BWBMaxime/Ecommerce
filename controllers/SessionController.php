@@ -21,16 +21,8 @@ final class SessionController extends Controller
     public function login()
     {
         
-        if (Session::isLogged()) {
-
-            View::redirect('/user');
-
-        } else {
-
-            Session::setURL();
-            View::redirect(Provider::url('microsoft'));
-
-        }
+        Session::setURL();
+        View::redirect((self::isLogged()) ? '/user' : Provider::url('microsoft'));
 
     }
 
@@ -67,7 +59,7 @@ final class SessionController extends Controller
         Session::setURL();
         Session::status(false);
         Cookie::unset('TOKEN');
-        View::redirect(Session::getURL());
+        HTTP::response(200, '/');
 
     }
 
@@ -78,7 +70,7 @@ final class SessionController extends Controller
     {
 
         Session::setURL();
-        // if (!$this->security->acceptConnexion()) View::redirect('/session');
+        View::redirect((self::isLogged()) ? Session::setURL() : '/session');
 
 
 
@@ -99,22 +91,15 @@ final class SessionController extends Controller
 
     }
 
-    // /**
-    //  * Vérifie si l'utilisateur est connecté
-    //  */
-    // private function isLogged() : bool
-    // {
+    /**
+     * Vérifie si l'utilisateur est connecté
+     */
+    private static function isLogged() : bool
+    {
 
-    //     setcookie('ID', '1', time()+3600);
-    //     setcookie('TOKEN', 'v9fFLsdDjwYgZHNAaQGUrvreakSpg1PGyV3hZd', time()+3600);
-    //     // $this->logout();
+        return (Session::isSet() && Token::isSet() && Session::isLogged()) ? true : false;
 
-    //     if (Session::isSet() && isset($_COOKIE['ID']) && isset($_COOKIE['TOKEN']))
-    //         return ($this->checkUser('1', 'v9fFLsdDjwYgZHNAaQGUrvreakSpg1PGyV3hZd')) ? true : false;
-    //         // return ($this->checkUser($_COOKIE['ID'], $_COOKIE['TOKEN'])) ? true : false;
-    //     return false;
-
-    // }
+    }
 
     // private function getUser(string $token) : object|false
     // {
