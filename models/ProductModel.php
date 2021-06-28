@@ -1,6 +1,8 @@
 <?
 
 namespace Wails\Models;
+
+use Wails\Core\Asset;
 use Wails\Core\Model;
 
 final class ProductModel extends Model
@@ -27,13 +29,13 @@ final class ProductModel extends Model
     { return (int) $this->quantity; }
 
     public function picture1()
-    { return $this->picture1; }
+    { return ($this->picture1) ? $this->picture1 : Asset::image_path('blank'); }
 
     public function picture2()
-    { return $this->picture2; }
+    { return ($this->picture2) ? $this->picture2 : Asset::image_path('blank'); }
 
     public function picture3()
-    { return $this->picture3; }
+    { return ($this->picture3) ? $this->picture3 : Asset::image_path('blank'); }
 
     public function category()
     { return $this->category; }

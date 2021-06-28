@@ -15,7 +15,7 @@
             <? foreach ($products as $product): ?>
             <div class="w-full md:w-1/3 xl:w-1/5 p-6 flex flex-col">
                 <a href="/product/<?= $product->id() ?>">
-                    <img class="hover:grow hover:shadow-lg" src="<?= $product->picture1() ?>">
+                    <img class="hover:grow hover:shadow-lg border border-1 border-blue-200 p-2 rounded-lg" src="<?= $product->picture1() ?>">
                     <div class="pt-3 flex items-center justify-between">
                         <p title="<?= $product->name() ?>" class="truncate"><?= $product->name() ?></p>
                     </div>
