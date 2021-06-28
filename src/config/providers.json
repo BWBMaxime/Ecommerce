@@ -1,0 +1,11 @@
+{
+    "microsoft": {
+        "clientId": "37cd65f9-9558-476e-b00f-832b4a88ee5a",
+        "clientSecret": ".59WZ5aWxDYy9.~5_.5ovo5ktW~YrIs8Fj",
+        "redirectUri": "http://localhost:4666/auth",
+        "urlAuthorize": "https://login.microsoftonline.com/719c38d6-e941-4efc-b273-49f2a9b06406/oauth2/v2.0/authorize",
+        "urlAccessToken": "https://login.microsoftonline.com/719c38d6-e941-4efc-b273-49f2a9b06406/oauth2/v2.0/token",
+        "urlResourceOwnerDetails": "",
+        "scopes": "user.read"
+    }
+}

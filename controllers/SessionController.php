@@ -5,10 +5,12 @@ use Wails\Core\Controller;
 use Wails\Core\Cookie;
 use Wails\Core\Error;
 use Wails\Core\HTTP;
+use Wails\Core\Provider;
 use Wails\Core\Session;
+use Wails\Core\Token;
 use Wails\Core\View;
-use Microsoft\Graph\Graph;
-use Microsoft\Graph\Model;
+use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
+
 
 final class SessionController extends Controller
 {
@@ -26,7 +28,7 @@ final class SessionController extends Controller
         } else {
 
             Session::setURL();
-            View::redirect($_SESSION['REDIRECT_URL']);
+            View::redirect(Provider::url('microsoft'));
 
         }
 
@@ -38,14 +40,19 @@ final class SessionController extends Controller
     public function auth()
     {
 
-        if (true) {
+        try {
 
+            $user = Provider::Microsoft();
+            Token::encode(array(
+                'id' => $user->getId(),
+                'mail' => $user->getMail()
+            ));
             Session::status(true);
             View::redirect(Session::getURL());
 
-        } else {
-
-            Error::status(403);
+        } catch(IdentityProviderException $error) {
+            
+            Error::provider($error);
 
         }
 

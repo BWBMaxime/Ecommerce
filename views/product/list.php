@@ -23,7 +23,7 @@
                 </a>
             </div>
             <? endforeach ?>
-
+<? var_dump(\Wails\Core\Env::get('LOL')) ?>
         </div>
     </section>
 </div>

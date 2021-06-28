@@ -4,10 +4,12 @@
         <div class="my-8">
             <p class="font-semibold text-sm color26 leading-tight uppercase">Order</p>
             <p class="font-bold text-2xl color26 leading-tight uppercase">#<?= $checkout ?></p>
-            <p class="font-bold text-3xl text-gray-100 leading-tight uppercase py-5">Checkout complete !</p>
+            <p class="font-bold text-3xl text-gray-100 leading-tight uppercase py-8 pb-5">Checkout complete !</p>
         </div>
-        <button class="font-thin rounded-lg text-gray-100 font-medium tracking-widest backColor26 py-4 px-6 uppercase">
-            Continue shopping
-        </button>
+        <a href="/">
+            <button class="font-thin rounded-lg text-gray-100 font-medium tracking-widest backColor26 py-4 px-8 uppercase">
+                Continue shopping
+            </button>
+        </a>
     </div>
 </div>

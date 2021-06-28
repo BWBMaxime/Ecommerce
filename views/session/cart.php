@@ -1,8 +1,8 @@
 <!-- Cart -->
 <div class="w-full flex justify-center my-6">
-    <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
-        <div class="flex-1">
-            <? if ($cart): ?>
+    <div class="flex flex-col w-full text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
+        <? if ($cart): ?>
+        <div class="flex-1 p-8">
             <!-- Table of cart -->
             <table class="w-full text-sm lg:text-base" cellspacing="0">
                 <thead>
@@ -25,7 +25,10 @@
                                 <!-- Product picture -->
                                 <img src="<?= $product->picture1() ?>" class="w-20 rounded bg-gray-300 border border-1 border-gray-400" alt="Thumbnail">
                                 <!-- Product name -->
-                                <p class="px-5 w-max font-bold text-lg mt-4 hover:text-gray-400 truncate"><?= $product->name() ?></p>
+                                <p title="<?= $product->name() ?>"
+                                    class="px-5 w-max font-bold text-lg mt-4 hover:text-gray-600 truncate">
+                                    <?= $product->name() ?>
+                                </p>
                             </a>
                         </td>
                         <!-- Quantity -->
@@ -48,7 +51,7 @@
                         </td>
                         <!-- Delete icon -->
                         <td class="text-center">
-                            <button class="delete inline-block p-3 text-center text-white transition rounded-full shadow ripple hover:shadow-lg focus:outline-none backUrgent">
+                            <button class="delete inline-block p-3 text-center text-white transition rounded-full shadow ripple hover:shadow-lg focus:outline-none backUrgent" title="RETIRER DU PANIER">
                                 <svg class="w-5 h-5 text-white backUrgent" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd"
@@ -62,7 +65,7 @@
                 </tbody>
             </table>
 
-            <hr class="pb-6 mt-10 border-gray-600">
+            <hr class="my-10">
             <!-- Cart information -->
             <div class="my-4 mt-6 -mx-2 lg:flex">
                 <!-- Instruction for seller -->
@@ -119,12 +122,22 @@
                     </div>
                 </div>
             </div>
-            <? else: ?>
-            <section class="text-xl font-bold">
-                Your cart is empty !
-            </section>
-            <? endif ?>
         </div>
+        <? else: ?>
+            <div class="w-full text-center rounded-lg py-16" style="background-image: linear-gradient(to right bottom, #494650, #5b6579, #4d5163, #3e5077, #5d6d91);">
+                <div class="flex flex-col text-center justify-center items-center">
+                    <? $ASSET::image('empty') ?>
+                    <p class="font-bold text-3xl text-gray-100 leading-tight uppercase my-8 py-8 pb-5">
+                        Your cart is empty !
+                    </p>
+                    <a href="/">
+                        <button class="font-semibold rounded-lg bg-gray-100 font-medium tracking-widest color26 py-4 px-8 uppercase">
+                            Start shopping
+                        </button>
+                    </a>
+                </div>
+            </div>
+        <? endif ?>
     </div>
 </div>
 

@@ -23,15 +23,15 @@
                         <li class="pb-12">
                             <div class="text-center">
                                 <h2 class="mentions-legales">
-                                    MENTIONS LEGALES
+                                    LEGAL MENTIONS
                                 </h2>
                                 <ul>
                                     <li class="liens">
-                                        <? $ASSET::document('cgv', 'Conditions Générales de Ventes', true) ?>
+                                        <? $ASSET::document('cgu', 'General User Conditions', true) ?>
                                         <br>
-                                        <? $ASSET::document('cgu', 'Conditions Générales d\'Utilisation', true) ?>
+                                        <? $ASSET::document('cgv', 'General Selling Conditions', true) ?>
                                         <br>
-                                        <? $ASSET::document('cookies', 'Cookies et Protection des Données Personnelles', true) ?>
+                                        <? $ASSET::document('cookies', 'General Data Protection Regulation', true) ?>
                                     </li> 
                                 </ul>
                             </div>

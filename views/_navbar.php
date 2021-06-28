@@ -14,7 +14,7 @@
                 <ul class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0" id="cartsize">
                     <a class="flex items-center" href="/">
                         <? $ASSET::image('logo', 'ECOMMERCE Website Logo') ?>
-                        <h1 class="font-bold pl-5">ECOMMERCE</h1>
+                        <h1 title="HOME" class="font-bold pl-5">ECOMMERCE</h1>
                     </a>
                 </ul>
             </nav>
@@ -27,13 +27,12 @@
 
         <div class="order-2 md:order-3 flex items-center" id="nav-content">
         <? if ($SESSION::isLogged()): ?>
-            <div><input class="favorite styled" type="button" value="Profile"></div>  <!-- Bouton Profil -->
-            <div><input class="favorite styled2" type="button" value="Logout"></div>   <!-- Bouton Log Out-->
+            <a href="/user" title="PROFILE"><? $ASSET::image('avatar') ?></a>
+            <img title="DISCONNECT" class="disconnect mx-5 cursor-pointer" src="<?= $ASSET::image_path('logout') ?>">
         <? else: ?>
-            <a href="/session"><input class="favorite styled" type="button" value="Login"></a>  <!-- Bouton Login -->
-            <div><input class="favorite styled2" type="button" value="Sign In"></div>   <!-- Bouton Sign In-->
+            <a href="/session" title="CONNECT" class="mr-5"><? $ASSET::image('avatar') ?></a>
         <? endif ?>
-            <a class="pl-3 inline-block no-underline color4C hover:text-gray" href="/cart">     <!-- icone du panier --> 
+            <a class="pl-3 inline-block no-underline color4C hover:text-gray" href="/cart" title="CART">
                 <svg class="cart fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                     viewBox="0 0 24 24">
                     <path
