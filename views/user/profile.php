@@ -80,10 +80,10 @@
                                         Bank card
                                     </p>
                                     <p class="text-sm">
-                                        Type : <?= $paymentUser->type() ?>
+                                        Type : <?= 'NONE' ?>
                                     </p>
                                     <p class="text-sm">
-                                        Name : <?= $paymentUser->name() ?>
+                                        Name : <?= 'NONE' ?>
                                     </p>
                                 </div>
                                 <div class="w-64 h-40 m-auto rounded-xl relative text-white shadow-xl transition-transform transform hover:scale-105">
@@ -96,7 +96,7 @@
                                                     Name
                                                 </p>
                                                 <p class="font-medium tracking-widest text-xs">
-                                                    <?= $paymentUser->name() ?>
+                                                    <?= 'NONE' ?>
                                                 </p>
                                             </div>
                                             <img class="w-12 h-12" src="https://i.imgur.com/bbPHJVe.png"/>
@@ -106,7 +106,7 @@
                                                 Card Number
                                             </p>
                                             <p class="font-medium tracking-more-wider text-xs">
-                                                <?= $paymentUser->number() ?>
+                                                <?= 'XXXX-XXXX-XXXX' ?>
                                             </p>
                                         </div>
                                         <div class="pt-2 pr-2">
@@ -124,7 +124,7 @@
                                                         Expiry
                                                     </h1>
                                                     <p class="font-medium tracking-wider text-xs">
-                                                        <?= $paymentUser->expiration() ?>
+                                                        <?= 'YY/MM' ?>
                                                     </p>
                                                 </div>
                                                 <div class="">
@@ -152,16 +152,16 @@
                                         Default delivery method
                                     </p>
                                     <p class="mt-4 text-sm font-light dark:text-gray-400 uppercase font-semibold">
-                                        <?= $deliveryUser->type() ?>
+                                        <?= 'NONE' ?>
                                     </p>
                                     <p class="text-sm font-light dark:text-gray-400">
-                                        <?= $user->firstname() ?>  <?= $user->lastname() ?>
+                                        John Doe
                                     </p>
                                     <p class="text-sm font-light dark:text-gray-400">
-                                        <?= $deliveryUser->number() . " " . $deliveryUser->street() . " - " . $deliveryUser->additional() ?>
+                                        12, Boulevard de Strasbourg
                                     </p>
                                     <p class="text-sm font-light dark:text-gray-400">
-                                        <?= $deliveryUser->zipcode() . " " . $deliveryUser->city() . ", " . $deliveryUser->country()?>
+                                        34000, Montpellier, FR
                                     </p>
                                 </div>
                                 <div class="w-64 h-40 rounded-xl relative text-white shadow-lg transition-transform transform hover:scale-105">
@@ -181,9 +181,8 @@
         </div>
     </div>
 
-
-        <!-- Order Table -->
-    <div class="flex absolute bottom-0">
+    <!-- Order Table -->
+    <div class="flex absolute" style="bottom: -96;">
         <div class="grid overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="shadow-lg overflow-hidden border border-gray-800 sm:rounded-lg">
@@ -216,7 +215,8 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
+                    <tbody class="bg-white divide-y divide-gray-200 flex-col">
+                    <? foreach($orders as $order): ?>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="text-sm text-center font-semibold"><?= $order->date() ?></div>
@@ -246,6 +246,7 @@
                             </span> -->
                         </td>
                     </tr>
+                    <? endforeach ?>
                     </tbody>
                 </table>
                 </div>
@@ -253,4 +254,5 @@
         </div>
     </div>
 </div>
+
 <? $ASSET::script('user') ?>

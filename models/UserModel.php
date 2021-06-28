@@ -1,6 +1,7 @@
 <?
 
 namespace Wails\Models;
+use Wails\Core\Asset;
 use Wails\Core\Model;
 
 final class UserModel extends Model
@@ -32,7 +33,7 @@ final class UserModel extends Model
     { return $this->phone; }
     
     public function picture()
-    { return $this->picture; }
+    { return ($this->picture) ? $this->picture : Asset::image_path('blank'); }
     
     public function payment()
     { return $this->payment; }

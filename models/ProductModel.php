@@ -1,7 +1,6 @@
 <?
 
 namespace Wails\Models;
-
 use Wails\Core\Asset;
 use Wails\Core\Model;
 

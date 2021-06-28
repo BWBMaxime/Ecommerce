@@ -7,6 +7,13 @@ use Exception;
 final class Token
 {
 
+    public static function get(string $key)
+    {
+
+        return self::decode($_COOKIE['TOKEN'])->{$key};
+
+    }
+
     public static function encode($payload)
     {
 

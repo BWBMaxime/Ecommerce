@@ -35,12 +35,18 @@ final class SessionController extends Controller
         try {
 
             $user = Provider::Microsoft();
-            Token::encode(array(
-                'token' => $user->getId(),
-                'mail' => $user->getMail()
-            ));
-            Session::status(true);
-            View::redirect(Session::getURL());
+            
+            if ($user) {
+
+                $this->setUserProfile($user);
+                Session::status(true);
+                View::redirect((Session::getURL()));
+
+            } else {
+
+                View::redirect('/');
+
+            }
 
         } catch(IdentityProviderException $error) {
             
@@ -58,6 +64,7 @@ final class SessionController extends Controller
 
         Session::setURL();
         Session::status(false);
+        session_destroy();
         Cookie::unset('TOKEN');
         HTTP::response(200, '/');
 
@@ -70,24 +77,7 @@ final class SessionController extends Controller
     {
 
         Session::setURL();
-        View::redirect((self::isLogged()) ? Session::setURL() : '/session');
-
-
-
-
-
-        // $controller = new self();
-
-        // if ($controller->isLogged()) {
-
-        //     Session::status(true);
-
-        // } else {
-
-        //     Session::status(false);
-        //     $controller->login();
-
-        // };
+        if (!self::isLogged()) View::redirect('/session');
 
     }
 
@@ -101,27 +91,51 @@ final class SessionController extends Controller
 
     }
 
-    // private function getUser(string $token) : object|false
-    // {
+    private function setUserProfile(object $user)
+    {
 
-    //     return $this->db->query_object("UserModel",
-    //        "SELECT id, token
-    //         FROM User
-    //         WHERE token = '${token}'"
-    //     );
+        list($obj, $lastID) = $this->getCurrentUser($user->getId());
+        if (!$obj) $lastID = $this->setCurrentUser($user);
 
-    // }
+        Token::encode(array(
+            'id' => self::sanitize($obj->id(), $lastID),
+            'token' => self::sanitize($obj->token(), $user->getId()),
+            'email' => self::sanitize($obj->email(), $user->getMail())
+        ));
 
-    // private function checkUser(string $id, string $token) : object|false
-    // {
+    }
 
-    //     return $this->db->query_object("UserModel",
-    //        "SELECT id
-    //         FROM User
-    //         WHERE id = ${id}
-    //         AND token = '${token}'"
-    //     );
+    private function getCurrentUser(string|int $token) : array
+    {
 
-    // }
+        return array($this->db->query_object("UserModel",
+           "SELECT id, token, email
+            FROM User
+            WHERE token = '${token}'"
+        ), $this->db->lastID());
+
+    }
+
+    private function setCurrentUser(object $user) : string|array
+    {
+
+        $token = $user->getId();
+        $email = $user->getMail();
+
+        $this->db->query(
+           "INSERT INTO User (token, email)
+            VALUES ('${token}', '${email}')"
+        );
+
+        return $this->db->lastID();
+
+    }
+
+    private static function sanitize(mixed $target, mixed $alternative) : mixed
+    {
+
+        return (!isset($target) || $target == null || $target == false) ? $alternative : $target;
+
+    }
 
 }
