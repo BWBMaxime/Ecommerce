@@ -21,13 +21,9 @@
             </nav>
         </div>
 
-        <form method="GET" class="order-6 md:order-2 w-1/2" >  <!-- barre de recherche -->
-            <input type="text" name="s" class="col-8 border-2 p-2 w-full " placeholder="Search a product..."
-                id="search-filter">
-                <input class="pl-3 inline-block no-underline hover:text-black"  type='submit' value='Search'>
-                          
-                        
-                        
+        <form class="w-1/2" >  <!-- barre de recherche -->
+            <input type="text" name="search" class="search-bar col-8 border-2 p-2 w-full" placeholder="Search a product...">
+            <input class="search-btn pl-3 inline-block no-underline hover:text-black" type="button" value="Search">             
         </form>
     
         <div class="order-2 md:order-3 flex items-center" id="nav-content">

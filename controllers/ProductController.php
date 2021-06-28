@@ -60,7 +60,6 @@ final class ProductController extends Controller
             LIMIT ${limit}
             OFFSET " . (($page < 1) ? 0 : ($page - 1)) * $limit 
             );
-
         }else{
             return $this->db->query_objects('ProductModel',
           "SELECT Product.id, Product.name, Product.price, Product.stock, Product.picture1, Category.VAT
