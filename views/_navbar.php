@@ -21,9 +21,11 @@
             </nav>
         </div>
 
-        <form class="w-1/2" >  <!-- barre de recherche -->
-            <input type="text" name="search" class="search-bar col-8 border-2 p-2 w-full" placeholder="Search a product...">
-            <input class="search-btn pl-3 inline-block no-underline hover:text-black" type="button" value="Search">             
+        <form class="order-6 md:order-2 w-1/2 flex" >  <!-- barre de recherche -->
+            <input type="text" name="search" class="search col-8 border-2 p-2 w-full" placeholder="Search a product...">
+            <button class="search bg-gray-200 px-5 inline-block no-underline hover:text-black" type="button" value="Search">
+                <? $ASSET::image('search') ?>
+            </button>
         </form>
     
         <div class="order-2 md:order-3 flex items-center" id="nav-content">

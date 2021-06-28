@@ -17,12 +17,29 @@ final class ProductController extends Controller
     public function home(string $page = '1')
     {
         
-        View::render('product/list', array(
-            'products' => $this->getPagedProducts($page),
-            'categories' => $this->getCategory(),
-            'current_page' => $page,
-            'last_page' => $this->getLastPage()
-        ));
+        if (!self::isSearch()) {
+
+            View::render('product/list', array(
+                'products' => $this->getProducts($page),
+                'current_page' => (int) $page,
+                'last_page' => $this->getLastPage(),
+                'search' => false
+            ));
+
+        } else {
+
+            $last_page = $this->searchLastPage($_GET['search']);
+
+            if ($last_page < $page) View::redirect('/');
+
+            View::render('product/list', array(
+                'products' => $this->searchProducts($page, $_GET['search']),
+                'current_page' => (int) $page,
+                'last_page' => $last_page,
+                'search' => true
+            ));
+
+        }
        
     }
 
@@ -45,43 +62,6 @@ final class ProductController extends Controller
             Error::status(404);
  
         }
-    }
-
-    private function getPagedProducts($page = 1, $limit = 20)
-    {
-        if(isset($_GET['s']) AND !empty($_GET['s'])){
-            $search = htmlspecialchars($_GET['s']);
-           return $this->db->query_objects('ProductModel',
-            "SELECT Product.id, Product.name, Product.price, Product.stock, Product.picture1, Category.VAT
-            FROM Product 
-            INNER JOIN Category
-            ON Product.category = Category.id
-            WHERE Product.name LIKE '%".$search."%' ORDER BY id DESC
-            LIMIT ${limit}
-            OFFSET " . (($page < 1) ? 0 : ($page - 1)) * $limit 
-            );
-        }else{
-            return $this->db->query_objects('ProductModel',
-          "SELECT Product.id, Product.name, Product.price, Product.stock, Product.picture1, Category.VAT
-           FROM Product 
-           INNER JOIN Category
-           ON Product.category = Category.id
-           LIMIT ${limit}
-           OFFSET " . (($page < 1) ? 0 : ($page - 1)) * $limit
-            );
-        }
-    }
-
-    private function getAllProducts()
-    {
-
-        
-        return $this->db->query_objects('ProductModel',
-          "SELECT Product.id, Product.name, Product.price, Product.stock, Product.picture1, Category.VAT
-           FROM Product 
-           INNER JOIN Category
-           ON Product.category = Category.id"
-        );
 
     }
 
@@ -99,23 +79,73 @@ final class ProductController extends Controller
 
     }
 
-    private function getLastPage($limit = 20)
+    private function getProducts($page, int $limit = 20)
+    {
+        
+        return $this->db->query_objects('ProductModel',
+          "SELECT Product.id, Product.name, Product.price, Product.stock, Product.picture1, Category.VAT
+           FROM Product 
+           INNER JOIN Category
+           ON Product.category = Category.id
+           LIMIT ${limit}
+           OFFSET " . (($page < 1) ? 0 : ($page - 1)) * $limit
+        );
+
+    }
+
+    private function getLastPage(int $limit = 20)
     {
 
-        return ceil($this->db->query_result(
+        return (int) ceil($this->db->query_result(
           "SELECT COUNT(id) AS result
            FROM Product"
         ) / $limit);
 
     }
 
+    private function searchProducts(string|int $page, string $search, int $limit = 20)
+    {
+        
+        return $this->db->query_objects('ProductModel',
+          "SELECT Product.id, Product.name, Product.price, Product.stock, Product.picture1, Category.VAT
+           FROM Product 
+           INNER JOIN Category
+           ON Product.category = Category.id
+           WHERE Product.name
+           LIKE '%${search}%'
+           LIMIT ${limit}
+           OFFSET " . (($page < 1) ? 0 : ($page - 1)) * $limit
+        );
+
+    }
+
+    private function searchLastPage(string $search, int $limit = 20)
+    {
+
+        return (int) ceil($this->db->query_result(
+          "SELECT COUNT(id) AS result
+           FROM Product
+           WHERE Product.name
+           LIKE '%${search}%'"
+        ) / $limit);
+
+    }
+
     private function getCategory()
     {
+
         return $this->db->query_objects('CategoryModel',
            "SELECT *
             FROM Category"
         );
+
     }
 
+    private static function isSearch()
+    {
+
+        return (isset($_GET) && isset($_GET['search'])) ? preg_match('/^\w+$/i', $_GET['search']) : false;
+
+    }
 
 }

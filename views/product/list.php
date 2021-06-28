@@ -23,7 +23,7 @@
                 </a>
             </div>
             <? endforeach ?>
-            
+
         </div>
     </section>
 </div>
@@ -31,6 +31,8 @@
 <!-- Pagination -->
 <div class="flex items-center justify-center mb-20">
 
-    <? $VIEW::include('product/_pagination', array('current_page' => $current_page, 'last_page' => $last_page)) ?>
+    <? $VIEW::include('product/_pagination', array(
+        'current_page' => $current_page, 'last_page' => $last_page, 'search' => $search
+    )) ?>
 
 </div>
