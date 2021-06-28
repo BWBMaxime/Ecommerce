@@ -6,14 +6,15 @@
         <!-- User Card -->
         <div class="grid max-w-xs mt-6">
             <div class="bg-white shadow-lg rounded-lg border border-gray-800">
-                <div class="photo-wrapper pt-4">
-                    <img class="w-32 h-32 rounded-full mx-auto shadow-lg" src="<?= $user->picture() ?>" alt="Picture user">
+                <div class="photo-wrapper pt-3">
+                    <img class="w-28 h-28 rounded-full mx-auto shadow-lg" src="<?= $user->picture() ?>" alt="Picture user">
                 </div>
                 <div class="">
                     <div class="container">
                         <form>
                             <div class="row">
-                                <div class="col-25 mt-3 text-sm">
+                                <input class="data" type="hidden" name="id" value="<?= $user->id() ?>">
+                                <div class="col-25 mt-2 text-sm">
                                     <label for="fname">First Name</label>
                                 </div>
                                 <div class="col-75 text-sm">
@@ -22,7 +23,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-25 mt-3 text-sm ">
-                                    <label for="lname">Last Name</label>
+                                    <label for="lname">Last Name </label>
                                 </div>
                                 <div class="col-75 text-sm">
                                     <input class="data" type="text" name="lastname" placeholder="Doe" value="<?= $user->lastname() ?>">
@@ -53,7 +54,8 @@
                                 </div>
                             </div>
                             <div class="row text-sm text-gray-600 text-white">
-                                <input id="btnSubmit" type="button" value="Submit">
+                                <input id="btnSubmit" class="mt-2" type="button" value="Submit">
+                                <input id="btnDelete" class="mt-3" type="button" value="Delete my account">
                             </div>
                         </form>
                     </div>
@@ -71,7 +73,7 @@
                         <div class="flex items-center p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800 border border-gray-800">
                             <div class="space-y-6">
                                 <div>
-                                    <p class="text-m font-bold color4C">
+                                    <p class="text-m font-bold color4C"> 
                                         Default payment method
                                     </p>
                                     <p class="mt-4 text-sm">
@@ -138,7 +140,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <a class="text-xs text-indigo-500 hover:underline hover:text-indigo-600 font-medium" href="/user/payment">View all</a>
+                                    <!-- <a class="text-xs text-indigo-500 hover:underline hover:text-indigo-600 font-medium" href="/user/payment">View all</a> -->
                                 </div>
                             </div>
                         </div>
@@ -169,7 +171,7 @@
                                     sizes="(max-width: 1068px) 100vw, 1068px" alt="" title="capture">
                                 </div>
                                 <div class="text-center">
-                                    <a class="text-xs text-indigo-500 hover:underline hover:text-indigo-600 font-medium" href="/user/delivery">View all</a>
+                                    <!-- <a class="text-xs text-indigo-500 hover:underline hover:text-indigo-600 font-medium" href="/user/delivery">View all</a> -->
                                 </div>
                             </div>
                         </div>
@@ -224,7 +226,7 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center">
                             <span class="px-2 inline-flex text-xs leading-7 font-semibold rounded-full bg-gray-200 hover:text-gray-500">
-                                <a href="" class="underline truncate w-60"><?= $order->tracking() ?></a>
+                                <p class="underline truncate w-60"><?= $order->tracking() ?></p>
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
@@ -239,7 +241,9 @@
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-xs font-medium">
-                            <a href="<?= $order->bill() ?>" class="text-indigo-600 hover:text-indigo-900 hover:underline">Edit the invoice</a>
+                            <!-- <span class="text-indigo-600 hover:text-indigo-900 hover:underline">
+                                Invoice
+                            </span> -->
                         </td>
                     </tr>
                     </tbody>

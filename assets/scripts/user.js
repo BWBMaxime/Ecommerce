@@ -17,25 +17,30 @@ submit.addEventListener('click', event => {
     };
 
     HTTP.post('/user', form, true, result => {
-       if (result !== false && result["status"] == "success") {
-            alert("Your information has been updated")
-       }
+        if (result !== false && result["status"] == "success") {
+            alert("Your account has been updated");
+        }
+        refresh();
     });
-    setTimeout(() => { window.location.reload() }, 300);
 })
-
 
 
 
 /** DELETE METHOD */
 
-// on récupère l'évènement du bouton submit
-// const delete = document.querySelector("input#btnDelete");
+// on récupère l'évènement du bouton Delete account
+const deleteBtn = document.querySelector("input#btnDelete");
 
-// delete.addEventListener('click', event => {
-//     HTTP.delete('/cart', { 'id': product.id }, true)
-//         setTimeout(() => { window.location.reload() }, 300)
-// })
+deleteBtn.addEventListener('click', event => {
+    HTTP.delete('/user', { 'id': getValueByKey('id') }, true, result => {
+        if (result !== false && result["status"] == "success") {
+            if (confirm("Do you want to confirm the deletion of your account?")) {
+                window.location.replace('/');
+            }
+        }
+    })
+    
+})
 
 
 
@@ -51,6 +56,6 @@ function getValueByKey(key) {
             }
             break;
         }
-      }
+    }
     return returnValue;
 }
