@@ -10,7 +10,7 @@ final class Token
     public static function get(string $key)
     {
 
-        return self::decode($_COOKIE['TOKEN'])->{$key};
+        return (isset($_COOKIE['TOKEN'])) ? self::decode($_COOKIE['TOKEN'])->{$key} : null;
 
     }
 

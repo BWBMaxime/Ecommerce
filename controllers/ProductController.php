@@ -131,16 +131,6 @@ final class ProductController extends Controller
 
     }
 
-    private function getCategory()
-    {
-
-        return $this->db->query_objects('CategoryModel',
-           "SELECT *
-            FROM Category"
-        );
-
-    }
-
     private static function isSearch()
     {
 

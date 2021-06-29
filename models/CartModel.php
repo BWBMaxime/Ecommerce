@@ -2,6 +2,7 @@
 
 namespace Wails\Models;
 use Wails\Core\Model;
+use Wails\Core\Utils;
 
 final class CartModel extends Model
 {
@@ -34,6 +35,15 @@ final class CartModel extends Model
             return $obj->totalPrice($VAT);
         }, $this->products));
         
+    }
+
+    public function isAvailable() : bool
+    {
+
+        return Utils::array_check(array_map(function($obj) {
+            return $obj->isAvailable();
+        }, $this->products));
+
     }
 
 }

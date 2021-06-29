@@ -6,6 +6,14 @@ use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 final class Error
 {
 
+    public static function misc(string $message)
+    {
+
+        Utils::log($message);
+        exit();
+
+    }
+
     public static function status(int $status)
     {
 
@@ -23,7 +31,7 @@ final class Error
     public static function syntax(string $file)
     {
 
-        Utils::pre("SYNTAX ERROR : ${file}");
+        Utils::log("SYNTAX ERROR : ${file}");
         exit();
 
     }
@@ -31,7 +39,7 @@ final class Error
     public static function file(string $file)
     {
 
-        Utils::pre("FILE NOT FOUND : ${file}");
+        Utils::log("FILE NOT FOUND : ${file}");
         exit();
 
     }
@@ -39,7 +47,7 @@ final class Error
     public static function method(string $class, string $method, string $http = 'GET')
     {
 
-        Utils::pre("METHOD ERROR : Method \"${http}:${method}\" of Class \"${class}\" doesn't exist");
+        Utils::log("METHOD ERROR : Method \"${http}:${method}\" of Class \"${class}\" doesn't exist");
         exit();
 
     }
@@ -47,7 +55,7 @@ final class Error
     public static function http(string $method, string $http = 'GET')
     {
 
-        Utils::pre("HTTP ERROR : Method \"${method}\" doesn't exist for HTTP request \"${http}\"");
+        Utils::log("HTTP ERROR : Method \"${method}\" doesn't exist for HTTP request \"${http}\"");
         exit();
 
     }

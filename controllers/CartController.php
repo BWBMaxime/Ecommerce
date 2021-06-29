@@ -6,6 +6,7 @@ use Wails\Core\Cookie;
 use Wails\Core\Error;
 use Wails\Core\HTTP;
 use Wails\Core\Session;
+use Wails\Core\Token;
 use Wails\Core\View;
 use Wails\Models\CartModel;
 
@@ -76,8 +77,7 @@ final class CartController extends Controller
     public function deleteProduct()
     {
 
-        if (isset(HTTP::request(true)->id))
-        {
+        if (isset(HTTP::request(true)->id)) {
 
             $id = HTTP::request(true)->id;
 
@@ -117,9 +117,18 @@ final class CartController extends Controller
     public function checkout()
     {
 
-        $checkout = $this->newCheckout($this->cart(), 189);
-        $_SESSION['CART'] = [];
-        HTTP::response(200, $checkout);
+        $checkout = $this->processCheckout($this->cart(), Token::get('id'));
+
+        if ($checkout) {
+
+            $_SESSION['CART'] = [];
+            HTTP::response(200, $checkout);
+
+        } else {
+
+            Error::misc('CHECKOUT ERROR : Your order can\'t be validated, please retry later');
+
+        }
 
     }
 
@@ -182,7 +191,7 @@ final class CartController extends Controller
     {
         
         $result = $this->db->query_objects('ProductModel',
-           "SELECT Product.id, Product.price, Category.VAT
+           "SELECT Product.id, Product.price, Product.stock, Category.VAT
             FROM Product
             INNER JOIN Category
             ON Product.category = Category.id
@@ -193,20 +202,35 @@ final class CartController extends Controller
 
     }
 
-    private function newCheckout(object $cart, int $id = null)
+    private function processCheckout(object $cart, int|null $user = null) : bool
+    {
+
+        if (!$cart->isAvailable()) return false;
+
+        $checkout = $this->addCheckout($cart->totalPrice(true), ($user) ? $user : null);
+        $this->checkoutProducts($checkout, $cart->products());
+        $this->updateStocks($cart->products());
+
+        return true;
+
+    }
+
+    private function updateStocks(array $products)
+    {
+
+        $this->db->query();
+
+    }
+
+    private function addCheckout(float $price, int|null $user)
     {
         
-        $price = $cart->totalPrice(true);
-        $user = ($id) ? $id : 'null';
-
         $this->db->query(
            "INSERT INTO Checkout (tracking, contact, amount, date, bill, user, state)
             VALUES ('wZErxrv7mb5GfzNBa9aBmshIleSkxFQkaxlg3fNwD31Jmxn', 'pdudson2@arstechnica.com', ${price}, CURRENT_TIMESTAMP, 'https://sohu.com/justo/maecenas/rhoncus/aliquam/lacus/morbi.aspx', ${user}, 0)"
         );
 
-        $checkout = $this->db->lastID();
-        $this->checkoutProducts($checkout, $cart->products());
-        return $checkout;
+        return $this->db->lastID();
 
     }
 
@@ -216,6 +240,7 @@ final class CartController extends Controller
         $this->db->query(join(';',
             array_map(function($product) use($checkout)
             {
+
                 $id = $product->id();
                 $quantity = $product->quantity();
                 return "INSERT INTO CheckoutProduct (checkout, product, quantity) VALUES (${checkout}, ${id}, ${quantity})";

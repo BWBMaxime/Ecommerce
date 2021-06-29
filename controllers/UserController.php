@@ -90,17 +90,6 @@ final class UserController extends Controller
 
     }
 
-    private function getUserMin(string $id)
-    {
-
-        return $this->db->query_object('UserModel',
-           "SELECT id, firstname, picture
-            FROM User
-            WHERE id = ${id}"
-        );
-
-    }
-
     private function getUserProfile(string $id)
     {
 
@@ -179,6 +168,7 @@ final class UserController extends Controller
         );
         
     }
+    
     private function deleteUserProfile($id) { 
         return $this->db->query(
             "DELETE FROM User

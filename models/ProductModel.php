@@ -42,7 +42,7 @@ final class ProductModel extends Model
     public function VAT()
     { return (int) $this->VAT; }
 
-    public function price(bool $VAT = false)
+    public function price(bool $VAT = false) : float
     {
 
         return (float) number_format(($VAT) ?
@@ -57,8 +57,14 @@ final class ProductModel extends Model
 
     }
 
+    public function isAvailable() : bool
+    {
+
+        return ($this->quantity <= $this->stock) ? true : false;
+
+    }
+
     public function setQuantity($value)
     { $this->quantity = (string) $value; }
-
 
 }
