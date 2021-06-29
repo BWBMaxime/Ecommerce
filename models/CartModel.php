@@ -37,12 +37,19 @@ final class CartModel extends Model
         
     }
 
-    public function isAvailable() : bool
+    public function isConform() : bool
     {
 
         return Utils::array_check(array_map(function($obj) {
             return $obj->isAvailable();
         }, $this->products));
+
+    }
+
+    public function isEmpty() : bool
+    {
+
+        return (count($this->products) < 1) ? true : false;
 
     }
 

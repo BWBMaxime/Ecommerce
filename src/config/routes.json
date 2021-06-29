@@ -8,6 +8,7 @@
         "POST": "CartController::updateProduct",
         "DELETE": "CartController::deleteProduct"
     },
+    "/cart/reset": "CartController::resetCart",
     "/checkout/{checkout_id}": "CartController::getCheckout",
     "/checkout" : {
         "POST": "CartController::checkout"

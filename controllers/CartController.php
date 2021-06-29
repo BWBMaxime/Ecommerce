@@ -26,6 +26,18 @@ final class CartController extends Controller
     }
 
     /**
+     * Vide le panier
+     */
+    public function resetCart()
+    {
+
+        $_SESSION['CART'] = [];
+
+        View::redirect('/cart');
+
+    }
+
+    /**
      * Ajouter produit / Modifier quantité Produit Panier Session/Utilisateur
      */
     public function updateProduct()
@@ -136,8 +148,8 @@ final class CartController extends Controller
     {
 
         if (!isset($_SESSION['CART'])) $_SESSION['CART'] = [];
-        return (count($_SESSION['CART']) < 1) ?
-            [] : new CartModel(($max) ? $this->getProducts($_SESSION['CART']) : $this->getProductsMin($_SESSION['CART']));
+        return (count($_SESSION['CART']) < 1) ? new CartModel([])
+            : new CartModel(($max) ? $this->getProducts($_SESSION['CART']) : $this->getProductsMin($_SESSION['CART']));
 
     }
 
@@ -205,7 +217,7 @@ final class CartController extends Controller
     private function processCheckout(object $cart, int|null $user = null) : bool
     {
 
-        if (!$cart->isAvailable()) return false;
+        if (!$cart->isConform()) return false;
 
         $checkout = $this->addCheckout($cart->totalPrice(true), ($user) ? $user : null);
         $this->checkoutProducts($checkout, $cart->products());
@@ -243,7 +255,9 @@ final class CartController extends Controller
 
                 $id = $product->id();
                 $quantity = $product->quantity();
-                return "INSERT INTO CheckoutProduct (checkout, product, quantity) VALUES (${checkout}, ${id}, ${quantity})";
+                $stock = $product->stock() - $quantity;
+                return "UPDATE Product SET Product.stock = ${stock} WHERE Product.id = ${id};
+                    INSERT INTO CheckoutProduct (checkout, product, quantity) VALUES (${checkout}, ${id}, ${quantity})";
 
             }, $products)
         ));
