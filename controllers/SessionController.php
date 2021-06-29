@@ -59,10 +59,9 @@ final class SessionController extends Controller
     /**
      * Déconnexion
      */
-    public function logout()
+    public static function logout()
     {
 
-        Session::setURL();
         Session::status(false);
         session_destroy();
         Cookie::unset('TOKEN');
@@ -94,14 +93,26 @@ final class SessionController extends Controller
     private function setUserProfile(object $user)
     {
 
-        list($obj, $lastID) = $this->getCurrentUser($user->getId());
-        if (!$obj) $lastID = $this->setCurrentUser($user);
+        list($obj, $id) = $this->getCurrentUser($user->getId());
+        
+        if (!$obj) {
 
-        Token::encode(array(
-            'id' => self::sanitize($obj->id(), $lastID),
-            'token' => self::sanitize($obj->token(), $user->getId()),
-            'email' => self::sanitize($obj->email(), $user->getMail())
-        ));
+            $id = $this->setCurrentUser($user);
+            Token::encode(array(
+                'id' => $id,
+                'token' => $user->getId(),
+                'email' => $user->getMail()
+            ));
+
+        } else {
+
+            Token::encode(array(
+                'id' => $obj->id(),
+                'token' => $obj->token(),
+                'email' => $obj->email()
+            ));
+
+        }
 
     }
 
@@ -134,7 +145,7 @@ final class SessionController extends Controller
     private static function sanitize(mixed $target, mixed $alternative) : mixed
     {
 
-        return (!isset($target) || $target == null || $target == false) ? $alternative : $target;
+        return (isset($target) && $target !== null && $target !== false) ? $target : $alternative;
 
     }
 

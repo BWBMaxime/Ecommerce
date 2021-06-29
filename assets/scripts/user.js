@@ -35,13 +35,9 @@ submit.addEventListener('click', event => {
     HTTP.post('/user', form, true, () => refresh());
 })
 
-
-
 /** DELETE METHOD */
 
 // on récupère l'évènement du bouton Delete account
 const deleteBtn = document.querySelector("input#btnDelete");
 
-deleteBtn.addEventListener('click', () => HTTP.delete('/user', null, false, () => {
-    HTTP.delete('/session', null, false, () => redirect('/'))
-}))
+deleteBtn.addEventListener('click', () => HTTP.delete('/user', null, false, () => redirect('/')))

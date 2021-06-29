@@ -60,12 +60,14 @@ final class UserController extends Controller
         // lancer la suppression de l'utilisateur
         $user = Token::get('id');
         if ($user) $this->deleteUserProfile($user);
-        // repondre 200 avec un message de success ou 400 d'erreur
-        HTTP::response(200);
+
+        // Déconnexion
+        SessionController::logout();
+
     }
 
     /**
-     * Afficher 1 méthode de paiement
+     * Afficher méthode de paiement
      */
     public function getPayment()
     {
