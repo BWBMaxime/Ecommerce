@@ -28,12 +28,12 @@ final class ProductController extends Controller
 
         } else {
 
-            $last_page = $this->searchLastPage($_GET['search']);
+            $last_page = $this->searchLastPage($this->search());
 
             if ($last_page < $page) View::redirect('/');
 
             View::render('product/list', array(
-                'products' => $this->searchProducts($page, $_GET['search']),
+                'products' => $this->searchProducts($page, $this->search()),
                 'current_page' => (int) $page,
                 'last_page' => $last_page,
                 'search' => true
@@ -105,6 +105,13 @@ final class ProductController extends Controller
 
     }
 
+    private function search() : string
+    {
+
+        return htmlspecialchars($_GET['search']);
+
+    }
+
     private function searchProducts(string|int $page, string $search, int $limit = 20)
     {
         
@@ -114,8 +121,7 @@ final class ProductController extends Controller
            INNER JOIN Category
            ON Product.category = Category.id
            WHERE Product.stock >= 1
-           AND
-           WHERE Product.name
+           AND Product.name
            LIKE '%${search}%'
            LIMIT ${limit}
            OFFSET " . (($page < 1) ? 0 : ($page - 1)) * $limit
@@ -130,8 +136,7 @@ final class ProductController extends Controller
           "SELECT COUNT(id) AS result
            FROM Product
            WHERE Product.stock >= 1
-           AND
-           WHERE Product.name
+           AND Product.name
            LIKE '%${search}%'"
         ) / $limit);
 
