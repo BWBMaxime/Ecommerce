@@ -51,29 +51,37 @@ final class CartController extends Controller
             $stock = (int) HTTP::request(true)->stock;
             $add = (bool) HTTP::request(true)->add;
 
-            if ($this->inCart($id)) {
+            if ($this->isProductAvailable($id)) {
 
-                $_SESSION['CART'] = array_values(
-                    array_map(function($product) use($id, $quantity, $stock, $add)
-                        {
-                            return ($product['id'] !== $id) ? $product : array(
-                                'id' => $id,
-                                'quantity' => $this->updateQuantity($quantity, $stock, $add, $product)
-                            );
-                        }, $_SESSION['CART']
-                    )
-                );
+                if ($this->inCart($id)) {
+
+                    $_SESSION['CART'] = array_values(
+                        array_map(function($product) use($id, $quantity, $stock, $add)
+                            {
+                                return ($product['id'] !== $id) ? $product : array(
+                                    'id' => $id,
+                                    'quantity' => $this->updateQuantity($quantity, $stock, $add, $product)
+                                );
+                            }, $_SESSION['CART']
+                        )
+                    );
+        
+                } else {
     
+                    array_push($_SESSION['CART'], array(
+                        'id' => $id,
+                        'quantity' => $this->updateQuantity($quantity, $stock, $add)
+                    ));
+    
+                }
+    
+                HTTP::response(200);
+
             } else {
 
-                array_push($_SESSION['CART'], array(
-                    'id' => $id,
-                    'quantity' => $this->updateQuantity($quantity, $stock, $add)
-                ));
+                Error::misc('PRODUCT ERROR : This product is not available');
 
             }
-
-            HTTP::response(200);
 
         } else {
 
@@ -161,6 +169,19 @@ final class CartController extends Controller
 
     }
 
+    private function isProductAvailable(int $id) : bool
+    {
+    
+        return ($this->db->query_object('ProductModel',
+            "SELECT Product.stock
+            FROM Product
+            INNER JOIN Category
+            ON Product.category = Category.id
+            WHERE Product.id = ${id}"
+        ))->isAvailable();
+    
+    }
+
     private function inCart(int $id) : bool
     {
 
@@ -172,7 +193,7 @@ final class CartController extends Controller
 
     }
 
-    private function updateQuantity(int $quantity, int $stock, bool $add, array $product = array('quantity' => 0)) : int
+    private function updateQuantity(int $quantity, int $stock, bool $add, array $product = ['quantity' => 0]) : int
     {
 
         $result = match ($add) {
@@ -214,27 +235,19 @@ final class CartController extends Controller
 
     }
 
-    private function processCheckout(object $cart, int|null $user = null) : bool
+    private function processCheckout(object $cart, int|null $user = null) : int|false
     {
 
         if (!$cart->isConform()) return false;
 
-        $checkout = $this->addCheckout($cart->totalPrice(true), ($user) ? $user : null);
+        $checkout = $this->addCheckout($cart->totalPrice(true), ($user) ? $user : 'null');
         $this->checkoutProducts($checkout, $cart->products());
-        $this->updateStocks($cart->products());
 
-        return true;
-
-    }
-
-    private function updateStocks(array $products)
-    {
-
-        $this->db->query();
+        return $checkout;
 
     }
 
-    private function addCheckout(float $price, int|null $user)
+    private function addCheckout(float $price, int|string $user)
     {
         
         $this->db->query(
@@ -255,7 +268,7 @@ final class CartController extends Controller
 
                 $id = $product->id();
                 $quantity = $product->quantity();
-                $stock = $product->stock() - $quantity;
+                $stock = $product->leftStock();
                 return "UPDATE Product SET Product.stock = ${stock} WHERE Product.id = ${id};
                     INSERT INTO CheckoutProduct (checkout, product, quantity) VALUES (${checkout}, ${id}, ${quantity})";
 

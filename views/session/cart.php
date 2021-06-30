@@ -41,13 +41,13 @@
                             <!-- Unit price -->
                             <td class="hidden text-center md:table-cell">
                                 <span class="text-sm lg:text-base font-bold">
-                                <?= $product->price(true) ?> $
+                                <?= $product->displayPrice(true) ?> $
                                 </span>
                             </td>
                             <!-- Total price -->
                             <td class="text-center">
                                 <span class="text-sm lg:text-base font-bold">
-                                <?= $product->totalPrice(true) ?> $
+                                <?= $product->displayTotalPrice(true) ?> $
                                 </span>
                             </td>
                             <!-- Delete icon -->
@@ -86,13 +86,13 @@
                         </div>
                         <!-- Billing -->
                         <div class="p-4">
-                            <p class="mb-6 italic text-xs">Shipping and additionnal costs are calculated based on values you have entered</p>
+                            <!-- <p class="mb-6 italic text-xs">Shipping and additionnal costs are calculated based on values you have entered</p> -->
                             <div class="flex justify-between border-b">
                                 <div class="lg:px-4 lg:py-2 text-base lg:text-lg text-center text-gray-800">
                                     Subtotal
                                 </div>
                                 <div class="lg:px-4 lg:py-2 lg:text-base text-center text-gray-900">
-                                <?= $cart->totalPrice(false) ?> $
+                                <?= $cart->displayTotalPrice(false) ?> $
                                 </div>
                             </div>
                             <div class="flex justify-between pt-4 border-b">
@@ -100,7 +100,7 @@
                                     TVA
                                 </div>
                                 <div class="lg:px-4 lg:py-2 lg:text-base text-center text-gray-900">
-                                <?= $cart->totalVAT() ?> $
+                                <?= $cart->displayTotalVAT() ?> $
                                 </div>
                             </div>
                             <div class="flex justify-between pt-4 border-b">
@@ -108,7 +108,7 @@
                                     Total
                                 </div>
                                 <div class="lg:px-4 lg:py-2 m-1 lg:text-lg font-bold text-center text-gray-900">
-                                <?= $cart->totalPrice(true) ?> $
+                                <?= $cart->displayTotalPrice(true) ?> $
                                 </div>
                             </div>
                             <!-- Button checkout -->

@@ -87,6 +87,7 @@ final class ProductController extends Controller
            FROM Product 
            INNER JOIN Category
            ON Product.category = Category.id
+           WHERE Product.stock >= 1
            LIMIT ${limit}
            OFFSET " . (($page < 1) ? 0 : ($page - 1)) * $limit
         );
@@ -98,7 +99,8 @@ final class ProductController extends Controller
 
         return (int) ceil($this->db->query_result(
           "SELECT COUNT(id) AS result
-           FROM Product"
+           FROM Product
+           WHERE Product.stock >= 1"
         ) / $limit);
 
     }
@@ -111,6 +113,8 @@ final class ProductController extends Controller
            FROM Product 
            INNER JOIN Category
            ON Product.category = Category.id
+           WHERE Product.stock >= 1
+           AND
            WHERE Product.name
            LIKE '%${search}%'
            LIMIT ${limit}
@@ -125,6 +129,8 @@ final class ProductController extends Controller
         return (int) ceil($this->db->query_result(
           "SELECT COUNT(id) AS result
            FROM Product
+           WHERE Product.stock >= 1
+           AND
            WHERE Product.name
            LIKE '%${search}%'"
         ) / $limit);

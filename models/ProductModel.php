@@ -22,7 +22,7 @@ final class ProductModel extends Model
     { return (int) $this->stock; }
 
     public function getPrice()
-    { return (float) number_format($this->price, 2); }
+    { return (float) $this->price; }
 
     public function quantity()
     { return (int) $this->quantity; }
@@ -45,22 +45,63 @@ final class ProductModel extends Model
     public function price(bool $VAT = false) : float
     {
 
-        return (float) number_format(($VAT) ?
-            $this->getPrice() + ($this->getPrice() * $this->VAT() / 100) : $this->getPrice(), 2);
+        return (($VAT) ? $this->getPrice() + ($this->getPrice() * $this->VAT() / 100) : $this->getPrice());
 
     }
     
     public function totalPrice(bool $VAT = false)
     {
 
-        return (float) number_format($this->price($VAT) * $this->quantity(), 2);
+        return (float) ($this->price($VAT) * $this->quantity());
+
+    }
+
+    public function displayPrice(bool $VAT = false)
+    {
+
+        return number_format($this->price($VAT), 2);
+
+    }
+
+    public function displayTotalPrice(bool $VAT = false)
+    {
+
+        return number_format($this->totalPrice($VAT), 2);
+
+    }
+
+    public function shortDescription() : string
+    {
+
+        return substr($this->description, 0, 180);
+        
+    }
+
+    public function isLongDescription() : bool
+    {
+
+        return (strlen($this->description) > 180) ? true : false;
+        
+    }
+
+    public function isConform() : bool
+    {
+
+        return ($this->quantity() <= $this->stock() && $this->isAvailable()) ? true : false;
 
     }
 
     public function isAvailable() : bool
     {
 
-        return ($this->quantity <= $this->stock) ? true : false;
+        return ($this->stock() >= 1) ? true : false;
+
+    }
+
+    public function leftStock() : int
+    {
+
+        return (int) $this->stock() - $this->quantity();
 
     }
 

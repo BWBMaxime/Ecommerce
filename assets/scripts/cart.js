@@ -21,6 +21,6 @@ if (products && checkout)
     
     })
     
-    checkout.addEventListener('click', () => HTTP.post('/checkout', null, true, id => redirect(`/checkout/${id}`)))
+    checkout.addEventListener('click', () => HTTP.post('/checkout', null, false, id => redirect(`/checkout/${id}`)))
 
 }

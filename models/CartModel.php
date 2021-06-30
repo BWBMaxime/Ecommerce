@@ -37,11 +37,25 @@ final class CartModel extends Model
         
     }
 
+    public function displayTotalVAT()
+    {
+
+        return number_format($this->totalVAT(), 2);
+        
+    }
+
+    public function displayTotalPrice(bool $VAT = false)
+    {
+
+        return number_format($this->totalPrice($VAT), 2);
+        
+    }
+
     public function isConform() : bool
     {
 
         return Utils::array_check(array_map(function($obj) {
-            return $obj->isAvailable();
+            return $obj->isConform();
         }, $this->products));
 
     }
