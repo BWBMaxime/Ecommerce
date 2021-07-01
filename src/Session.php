@@ -9,7 +9,7 @@ final class Session
     {
 
         session_start();
-        if (!Session::isSet()) Session::status(false);
+        if (!self::isSet()) self::status(false);
 
     }
 

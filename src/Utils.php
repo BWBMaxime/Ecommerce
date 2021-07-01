@@ -5,19 +5,19 @@ namespace Wails\Core;
 final class Utils
 {
 
+    public static function log(mixed $arg, bool $dump = false)
+    {
+
+        ($dump) ? var_dump($arg) : print_r($arg);
+
+    }
+
     public static function pre(mixed $arg, bool $dump = false)
     {
 
         echo "<pre>";
         Utils::log($arg, $dump);
         echo "</pre>";
-
-    }
-
-    public static function log(mixed $arg, bool $dump = false)
-    {
-
-        ($dump) ? var_dump($arg) : print_r($arg);
 
     }
 

@@ -2,7 +2,7 @@
 
 namespace Wails\Core;
 
-abstract class Controller implements CRUDInterface, RepositoryInterface
+abstract class Controller
 {
 
     protected object $db;
@@ -13,17 +13,5 @@ abstract class Controller implements CRUDInterface, RepositoryInterface
         $this->db = new Database();
 
     }
-
-    public function create(array $args) : object { return new Model(); }
-
-    public function retrieve(int $id) : object { return new Model(); }
-
-    public function update(int $id) : bool { return false; }
-
-    public function delete(int $id) : bool { return false; }
-
-    public function getAll() : array { return []; }
-
-    public function getAllBy(array $args) : array { return []; }
 
 }

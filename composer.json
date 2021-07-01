@@ -31,6 +31,7 @@
         "new:controller" : "\\Wails\\Core\\Script::new_controller",
         "new:model" : "\\Wails\\Core\\Script::new_model",
         "db:create" : "\\Wails\\Core\\Script::db_create",
-        "db:seed" : "\\Wails\\Core\\Script::db_seed"
+        "db:seed" : "\\Wails\\Core\\Script::db_seed",
+        "server:apache" : "a2enmod rewrite"
     }
 }

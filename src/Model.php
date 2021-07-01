@@ -2,5 +2,5 @@
 
 namespace Wails\Core;
 
-abstract class Model
+abstract class Model implements CRUDInterface, RepositoryInterface
 {}
