@@ -16,41 +16,6 @@ CREATE SCHEMA IF NOT EXISTS `ecommerce` DEFAULT CHARACTER SET utf8 ;
 USE `ecommerce` ;
 
 -- -----------------------------------------------------
--- Table `ecommerce`.`PaymentMethod`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ecommerce`.`PaymentMethod` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `type` ENUM('visa', 'mastercard', 'americanexpress', 'paypal') NOT NULL,
-  `number` VARCHAR(16) NOT NULL,
-  `name` TINYTEXT NOT NULL,
-  `expiration` DATETIME NOT NULL,
-  `user` INT NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-CREATE INDEX `IDX_paymentmethod` ON `ecommerce`.`PaymentMethod` (`user` ASC) VISIBLE;
-
-
--- -----------------------------------------------------
--- Table `ecommerce`.`DeliveryAddress`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ecommerce`.`DeliveryAddress` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `type` ENUM('home', 'pickup') NOT NULL DEFAULT 'home',
-  `country` TINYTEXT NOT NULL,
-  `city` TINYTEXT NOT NULL,
-  `zipcode` VARCHAR(10) NOT NULL,
-  `street` TINYTEXT NOT NULL,
-  `number` INT NOT NULL,
-  `additional` LONGTEXT NULL,
-  `user` INT NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-CREATE INDEX `IDX_delivery` ON `ecommerce`.`DeliveryAddress` (`user` ASC) VISIBLE;
-
-
--- -----------------------------------------------------
 -- Table `ecommerce`.`User`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ecommerce`.`User` (
@@ -62,14 +27,8 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`User` (
   `birth` DATETIME NULL,
   `phone` VARCHAR(12) NULL,
   `picture` TINYTEXT NULL,
-  `payment` INT NULL,
-  `delivery` INT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
-
-CREATE INDEX `IDX_user_payment` ON `ecommerce`.`User` (`payment` ASC) INVISIBLE;
-
-CREATE INDEX `IDX_user_delivery` ON `ecommerce`.`User` (`delivery` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
@@ -124,10 +83,10 @@ CREATE INDEX `IDX_product` ON `ecommerce`.`Product` (`category` ASC, `name` ASC)
 -- Table `ecommerce`.`CheckoutProduct`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ecommerce`.`CheckoutProduct` (
-  `checkout` INT NOT NULL,
+  `ordered` INT NOT NULL,
   `product` INT NOT NULL,
   `quantity` INT NOT NULL,
-  PRIMARY KEY (`checkout`, `product`))
+  PRIMARY KEY (`ordered`, `product`))
 ENGINE = InnoDB;
 
 CREATE INDEX `IDX_checkoutproduct` ON `ecommerce`.`CheckoutProduct` (`product` ASC) INVISIBLE;
